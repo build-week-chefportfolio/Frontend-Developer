@@ -7,13 +7,11 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 import { reducer } from './reducers';
 
-
 import './App.css';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
-
 
 function App() {
   return (
@@ -30,5 +28,3 @@ ReactDOM.render(
   </Provider>,
   rootElement
 );
-
-
