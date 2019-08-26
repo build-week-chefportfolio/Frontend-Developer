@@ -9,7 +9,7 @@ Build Week Project
 Web App
 Click For Trello Board
 
-Proposal
+# Proposal
 
 Bohcura is proposed to be the platform solution where professional chefs and food enthusiasts connect in more meaningful, relationship-centric ways than typical recipe sites and social media platforms provide.
 
@@ -20,7 +20,7 @@ Food enthusiasts can scroll through rosters of chefs and lists of recipes. To ge
 Ultimately, a great value add would be features that let foodies filter chefs by geography, and filter recipes by course/dish, and food type.
 
 
-Features
+# Features
 
 MVP (Click for Key Features)
 Chef profile
@@ -45,35 +45,34 @@ Chefstalk is a social media app that allows chefs to share images of their creat
 Hire A Chef provides a way for people to contact chefs and view their experience but does not focus on imagery and recipes.
 Yummly has features where chefs can post recipes and users can save recipes, but does not have a good feature for users to interact with other users and chefs.
 
-Frameworks - Libraries
+# Frameworks - Libraries
 
 Third-Party Frameworks:  styled components, Semantic UI, Formik, Yup
 - Do APIs require you to contact its maintainer to gain access? No(Unit 3 people?)
 - Are you required to pay to use the API? No(Unit 3 people?)
 - Have you considered using Apple Frameworks? (MapKit, Healthkit, ARKit?)
 
-For Data Scientists
+# For Data Scientists
 
 - Describe the Established data source with at least rough data able to be provided on day 1. 
 - You can gather information about the data set you’ll be working with from the project description. Be sure to collaborate with your PM, and your Backend Architect to chat about the resources you have.
 - Write a description for what the DS problem is (what uncertainty/prediction are we trying to do here? Sentiment analysis? Why is this a useful solution to a problem?)
 - A target (e.g. JSON format or such) for output that DS students can deliver to web/other students for them to ingest and use in the app
 
-Target Audience
+# Target Audience
 
 Target Audience(s): Chefs looking to grow their brand. Foodies looking for quality chefs, and or recipies.
 Potential Users Feedback:  Chefs using social media or template sites are frustrated with the experience of sharing more complete stories of their culinary creations. They want to be able to create profiles that showcase their work and themselves more professionally.
 Validation of solution: While formal validation with thorough user testing hasn’t been completed, user interviews have been conducted.
 
-Research
+# Research
 
 - Research thoroughly before writing a single line of code. Solidify the features of your app conceptually before implementation. Spend the weekend researching so you can hit the ground running on Monday.
 
-Prototype Key Feature(s)
+# Prototype Key Feature(s)
 
 
-MVP
-Wish List
+# MVP
 Chef: Login
 Chef: Profile Editor (CRUD)
 Chef: Recipe Editor (CRUD)
@@ -82,6 +81,7 @@ Foodie: Chef’s Detail Page
 Foodie: Recipes List Page
 Foodie: Recipe Detail Page
 
+# Wish List
 Chef: Recipe Builder (wizard/walk-thru)
 Chef: Profile page templates
 Chef: In-App Messaging (reply to inquiries)
