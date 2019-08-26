@@ -1,3 +1,45 @@
 // Tim
-
-export {/* Whatever actions we make */ } from './actions'
+// Fetch
+export {
+    getChefs,
+    getRecipes,
+    FETCH_CHEF_DATA_START,
+    FETCH_CHEF_DATA_SUCCESS,
+    FETCH_CHEF_DATA_FAILURE,
+    FETCH_RECIPE_DATA_START,
+    FETCH_RECIPE_DATA_SUCCESS,
+    FETCH_RECIPE_DATA_FAILURE
+} from './getActions'
+// DELETE
+export {
+    deleteChefs,
+    deleteRecipes,
+    DELETE_CHEF_DATA_START,
+    DELETE_CHEF_DATA_SUCCESS,
+    DELETE_CHEF_DATA_FAILURE,
+    DELETE_RECIPE_DATA_START,
+    DELETE_RECIPE_DATA_SUCCESS,
+    DELETE_RECIPE_DATA_FAILURE
+} from './deleteActions'
+// UPDATE
+export {
+    postChefs,
+    postRecipes,
+    UPDATES_CURRENT_CHEF_DATA_START,
+    UPDATES_CURRENT_CHEF_DATA_SUCCESS,
+    UPDATES_CURRENT_CHEF_DATA_FAILURE,
+    UPDATES_CURRENT_RECIPE_DATA_START,
+    UPDATES_CURRENT_RECIPE_DATA_SUCCESS,
+    UPDATES_CURRENT_RECIPE_DATA_FAILURE
+} from './deleteActions'
+// PUT
+export {
+    putChefs,
+    putRecipes,
+    PUT_CURRENT_CHEF_DATA_START,
+    PUT_CURRENT_CHEF_DATA_SUCCESS,
+    PUT_CURRENT_CHEF_DATA_FAILURE,
+    PUT_CURRENT_RECIPE_DATA_START,
+    PUT_CURRENT_RECIPE_DATA_SUCCESS,
+    PUT_CURRENT_RECIPE_DATA_FAILURE
+} from './deleteActions'
