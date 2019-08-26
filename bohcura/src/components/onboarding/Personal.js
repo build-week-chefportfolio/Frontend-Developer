@@ -17,6 +17,10 @@ const xpOptions = [
   { value: '16+', label: '16+'}
 ];
 
+const relocateOptions = [
+  { value: 'currently open', label: 'currently open' } ,
+  { value: 'not available',  label: 'not available' }
+];
 
 
 const Personal = ({ props }) => {
@@ -78,16 +82,17 @@ const Personal = ({ props }) => {
       <label htmlFor="relocate" style={{ display: 'block' }}>
         Willing to Relocate
       </label>
-      <select
-        name="relocate"
-        value={values.relocate}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        style={{ display: 'block' }}
-      >
-        <option value="currently open"  label="currently open"/>
-        <option value="not available"  label="not available"/>
-      </select>
+      <Select options={relocateOptions} />
+      {/*<select*/}
+      {/*  name="relocate"*/}
+      {/*  value={values.relocate}*/}
+      {/*  onChange={handleChange}*/}
+      {/*  onBlur={handleBlur}*/}
+      {/*  style={{ display: 'block' }}*/}
+      {/*>*/}
+      {/*  <option value="currently open"  label="currently open"/>*/}
+      {/*  <option value="not available"  label="not available"/>*/}
+      {/*</select>*/}
       {errors.relocate && touched.relocate && <p>{errors.relocate}</p>}
     </div>
 
@@ -109,7 +114,7 @@ const FormikForm = withFormik({
       yearsXP: yearsXP || '',
       locationCity: locationCity || '',
       locationState: locationState || '',
-      relocate: yearsXP || ''
+      relocate: relocate || ''
     }
   },
 
