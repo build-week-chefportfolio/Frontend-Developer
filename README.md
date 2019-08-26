@@ -48,7 +48,7 @@ Validation of solution: While formal validation with thorough user testing hasnâ
 # Prototype Key Feature(s)
 
 
-# MVP
+## MVP
 - Chef: Login
 - Chef: Profile Editor (CRUD)
 - Chef: Recipe Editor (CRUD)
@@ -57,7 +57,7 @@ Validation of solution: While formal validation with thorough user testing hasnâ
 - Foodie: Recipes List Page
 - Foodie: Recipe Detail Page
 
-# Wish List
+## Wish List
 - Chef: Recipe Builder (wizard/walk-thru)
 - Chef: Profile page templates
 - Chef: In-App Messaging (reply to inquiries)
