@@ -73,20 +73,20 @@ Validation of solution: While formal validation with thorough user testing hasn�
 
 
 # MVP
-Chef: Login
-Chef: Profile Editor (CRUD)
-Chef: Recipe Editor (CRUD)
-Foodie: Chefs List Page
-Foodie: Chef’s Detail Page
-Foodie: Recipes List Page
-Foodie: Recipe Detail Page
+- Chef: Login
+- Chef: Profile Editor (CRUD)
+- Chef: Recipe Editor (CRUD)
+- Foodie: Chefs List Page
+- Foodie: Chef’s Detail Page
+- Foodie: Recipes List Page
+- Foodie: Recipe Detail Page
 
 # Wish List
-Chef: Recipe Builder (wizard/walk-thru)
-Chef: Profile page templates
-Chef: In-App Messaging (reply to inquiries)
-Chef: Accept retainer payments in-app
-Foodie: Their own profiles
-Foodie: Fave/save chefs
-Foodie: Fave/save recipes (My recipe box)
-Foodie: Social share chefs, and recipes
+- Chef: Recipe Builder (wizard/walk-thru)
+- Chef: Profile page templates
+- Chef: In-App Messaging (reply to inquiries)
+- Chef: Accept retainer payments in-app
+- Foodie: Their own profiles
+- Foodie: Fave/save chefs
+- Foodie: Fave/save recipes (My recipe box)
+- Foodie: Social share chefs, and recipes
