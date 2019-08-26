@@ -31,3 +31,86 @@
     transform: rotate(360deg);
   }
 }
+
+.signUpContainer{
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  margin: 100px auto;
+  background: rgba(255, 255, 255, 0.92);
+  padding-top: 50px;
+  font-family: 'Fahkwang', sans-serif;
+  font-style: 600;
+  font-size: 16px;
+  line-height: 52px;
+  text-align: center;
+  vertical-align: center;
+}
+
+.signUpBottom {
+  display: flex;
+  width: 90%;
+  margin: 200px auto;
+  justify-content: space-between;
+}
+
+.signUpBottom p {
+  font-size: 150%;
+  text-align: left;
+}
+
+.signUpForm {
+  width: 37%;
+  margin-left: 100px;
+  margin-right: 50px;
+}
+
+.signUpForm button{
+  width: 75%;
+  background: #C4C4C4;
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+}
+
+.signUpText {
+  width: 45%;
+  margin-top: 0px;
+  font-family: 'Libre Franklin', sans-serif;
+  font-style: Medium; 
+  font-size: 34px;
+  line-height: 42px;
+  line-height: 102%;
+  text-align: left;
+  vertical-align: center;
+}
+
+.signUpEmail {
+  background: #FFFFFF;
+  width: 100%;
+  height: 30px;
+  display: block;
+  margin: 15px 0;
+  border: none;
+  border-bottom: 2px solid grey;
+  margin-top: 0;
+}
+
+.signUpPassword {
+  background: #FFFFFF;
+  width: 100%;
+  height: 30px;
+  display: block;
+  margin: 15px 0;
+  border: none;
+  border-bottom: 2px solid grey;
+}
+.signUpConfirmPassword {
+  background: #FFFFFF;
+  width: 100%;
+  height: 30px;
+  display: block;
+  margin: 15px 0;
+  border: none;
+  border-bottom: 2px solid grey;
+}
