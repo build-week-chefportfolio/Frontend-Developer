@@ -10,6 +10,7 @@ import { reducer } from './reducers';
 
 import './App.css';
 
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
@@ -18,6 +19,7 @@ const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 function App() {
   return (
     <div className="App">
+
 
     </div>
   );
