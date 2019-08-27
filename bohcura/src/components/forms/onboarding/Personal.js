@@ -10,7 +10,7 @@ import * as Yup from 'yup';
 import mapStateToProps from "react-redux/es/connect/mapStateToProps";
 import mapDispatchToProps from "react-redux/es/connect/mapDispatchToProps"
 
-import { postChefs } from '../../actions';
+import { postChefs } from '../../../actions';
 
 
 // set options for react-select
@@ -99,7 +99,7 @@ const FormikForm = withFormik({
       yearsXp: yearsXP || '',
       city: city || '',
       state: state || '',
-      relocate: relocate || boolean
+      relocate: relocate || ''
     }
   },
 

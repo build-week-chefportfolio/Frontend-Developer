@@ -7,7 +7,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
-import { putChefs } from '../../actions'
+import { putChefs } from '../../../actions'
 
 const Onboarding = (props) => {
     const [chef, setChef] = useState({ steps: 1 })

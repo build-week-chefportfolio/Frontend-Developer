@@ -9,7 +9,7 @@ import React, { useState } from 'react';
 import {withFormik, Form, Field, ErrorMessage, setIn} from 'formik';
 import * as Yup from 'yup';
 import Select from 'react-select';
-import Nav from '../Nav';
+import Nav from '../../Nav';
 import styled from 'styled-components';
 
 const phoneValidation = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
