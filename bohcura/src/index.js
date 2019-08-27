@@ -11,9 +11,10 @@ import './App.css';
 import SignUp from "./components/Signup";
 
 
-import Confirmation from "./components/onboarding/Confirmation";
-import Personal from "./components/onboarding/Personal";
+import Confirmation from "./components/forms/onboarding/Confirmation";
+import Personal from "./components/forms/onboarding/Personal";
 import Signup from "./components/Signup";
+import HomePage from "./components/HomePage";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -23,6 +24,7 @@ const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 function App() {
   return (
     <div className="App">
+      <HomePage />
       <Signup />
       <Personal />
       <Confirmation />
@@ -34,7 +36,6 @@ const rootElement = document.getElementById('root');
 ReactDOM.render(
   <Provider store={store}>
     <App />
-    <SignUp />
   </Provider>,
   rootElement
 

@@ -10,7 +10,7 @@ import * as Yup from 'yup';
 import mapStateToProps from "react-redux/es/connect/mapStateToProps";
 import mapDispatchToProps from "react-redux/es/connect/mapDispatchToProps"
 
-import { postChefs } from '../../actions/postActions';
+import { postChefs } from '../../../actions';
 
 
 
