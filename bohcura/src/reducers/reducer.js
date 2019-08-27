@@ -1,6 +1,7 @@
 import { } from '../actions';
 
 const initialState = {
+    recipe: {},
     recipes: [{
         id: '',
         image: '',
