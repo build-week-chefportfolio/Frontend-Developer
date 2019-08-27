@@ -20,10 +20,13 @@ import Feed from "./components/feed/Feed";
 import Dashboard from "./components/Dashboard";
 import Profile from "./components/Profile";
 import Recipe from "./components/Recipe";
+import Personal from "./components/forms/onboarding/Personal";
+import RecipesList from './components/feed/RecipeList';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
+
 
 
 function App() {
@@ -37,6 +40,12 @@ function App() {
       <Route path="/profile/:id" component={Profile} />
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/recipe/:id" component={Recipe} />
+      <Signup />
+      <Personal />
+      <Confirmation />
+      <RecipesList />
+      <Signup />
+      <Personal />
     </div>
   )
 }
@@ -49,6 +58,3 @@ ReactDOM.render(
   rootElement
 
 );
-
-
-
