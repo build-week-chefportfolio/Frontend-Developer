@@ -15,6 +15,7 @@ import Signup from "./components/Signup";
 // import Personal from "./components/onboarding/Personal";
 // import SignIn from "./components/Signin";
 
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
@@ -24,7 +25,12 @@ const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 function App() {
   return (
     <div className="App">
+<<<<<<< HEAD
       {/*    <SignIn />
+=======
+      <Signup />
+      <Personal />
+>>>>>>> 2e3e28dcccfc683764e65819849f2ad97562bd35
       <Confirmation />
       
   <Personal /> */}
