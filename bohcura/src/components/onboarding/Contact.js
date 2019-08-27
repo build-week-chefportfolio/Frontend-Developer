@@ -22,7 +22,7 @@ const Contact = ({ errors, touched, values, status }) => {
 
     return (
       <div className="personal-form">
-        <h1>Contact Page</h1>
+        <h1>Contact</h1>
         <Form>
           <Field type="text" name="name" placeholder="Name" />
           {touched.name && errors.name && (
@@ -32,6 +32,9 @@ const Contact = ({ errors, touched, values, status }) => {
           <Field type="text" name="email" placeholder="Email" />
           {touched.email && errors.email && <p className="error">{errors.email}</p>}
 
+          <Field type="text" name="message" placeholder="Message" />
+          {touched.message && errors.message && <p className="error">{errors.Message}</p>}
+
           <button type="submit">Submit</button>
 
         </Form>
@@ -40,16 +43,18 @@ const Contact = ({ errors, touched, values, status }) => {
   };
 
   const contactPage = withFormik({
-    mapPropsToValues({ name, email }) {
+    mapPropsToValues({ name, email, message }) {
       return {
         name: name || "",
         email: email || "",
+        message: message || "",
       };
     },
 
     validationSchema: Yup.object().shape({
       name: Yup.string().required("Please provide your name"),
-      email: Yup.string().required("Please provide an email")
+      email: Yup.string().required("Please provide an email"),
+      message: Yup.string().required("Please type your message")
     }),
 
     handleSubmit(values, { setStatus }) {
