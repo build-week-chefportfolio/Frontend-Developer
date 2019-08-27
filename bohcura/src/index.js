@@ -10,9 +10,11 @@ import { reducer } from './reducers';
 import './App.css';
 
 
-import Confirmation from "./components/onboarding/Confirmation";
-import Personal from "./components/onboarding/Personal";
+import Confirmation from "./components/forms/onboarding/Confirmation";
+import Personal from "./components/forms/onboarding/Personal";
 import Signup from "./components/Signup";
+
+import RecipesList from './components/feed/RecipeList';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -25,6 +27,7 @@ function App() {
       <Signup />
       <Personal />
       <Confirmation />
+      <RecipesList />
     </div>
   );
 }
