@@ -70,6 +70,7 @@ const Personal = props => {
           <label htmlFor="yearsXp" style={{ display: 'block' }}>
             Years Experience
           </label>
+
           <Select options={xpOptions} />
           {errors.yearsXP && touched.yearsXP && <p>{errors.yearsXp}</p>}
         </div>
