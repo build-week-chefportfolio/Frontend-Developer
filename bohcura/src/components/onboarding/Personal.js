@@ -7,9 +7,14 @@ import { connect } from 'react-redux';
 import Select from 'react-select';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
+import mapStateToProps from "react-redux/es/connect/mapStateToProps";
+import mapDispatchToProps from "react-redux/es/connect/mapDispatchToProps"
+
+import { postChefs } from '../../actions/postActions';
 
 
 
+// set options for react-select
 const xpOptions = [
   { value: '0 - 5', label: '0-5'},
   { value: '6 - 10', label: '6-10'},
@@ -24,85 +29,76 @@ const relocateOptions = [
 
 
 const Personal = ({ props }) => {
-  const [user, setUser] = useState([]);
 
-  useEffect(() => {
-    if (status) {
-      setUser(user => [...user, status])
-    }
-  }, [status]);
+  const {
+    values,
+    touched,
+    errors,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+  } = props;
+
+  const [chef, postChef] = useState({
+    firstName: '',
+    lastName: '',
+    yearsXp: '',
+    city: '',
+    state: '',
+    relocate: ''
+  });
+
+
+
 
 
   return (
     <div className="reg-form">
       <h1>Welcome to bohcura! Let's create your <br />professional profile real quick..</h1>
       <h3>Tell us a little bit about y ou and how you'd like clients to reach you.</h3>
-  <Form>
-  <div>
-    <Field type="text" name="firstName" placeholder="first name" />
-    {touched.firstName && errors.firstName && <p>{errors.firstName}</p>}
+      <Form>
+        <div>
+          <Field type="text" name="firstName" placeholder="first name" />
+          {touched.firstName && errors.firstName && <p>{errors.firstName}</p>}
         </div>
 
-    <div>
-      <Field type="text" name="lastName" placeholder="last name" />
-      {touched.lastName && errors.lastName && <p>{errors.lastName}</p>}
+        <div>
+          <Field type="text" name="lastName" placeholder="last name" />
+          {touched.lastName && errors.lastName && <p>{errors.lastName}</p>}
+        </div>
+
+        <div>
+          <label htmlFor="yearsXp" style={{ display: 'block' }}>
+            Years Experience
+          </label>
+          <Select options = {xpOptions} />
+          {errors.yearsXP && touched.yearsXP && <p>{errors.yearsXp}</p>}
+        </div>
+
+        <div>
+          <Field type="text" name="locationCity" placeholder="city" />
+          {touched.locationCity && errors.locationCity && <p>{errors.firstName}</p>}
+        </div>
+
+        <div>
+          <Field type="text" name="locationState" placeholder="state" />
+          {touched.locationState && errors.locationState && <p>{errors.locationState}</p>}
+        </div>
+
+        <div>
+          <label htmlFor="relocate" style={{ display: 'block' }}>
+            Willing to Relocate
+          </label>
+          <Select options={relocateOptions} />
+          {errors.relocate && touched.relocate && <p>{errors.relocate}</p>}
+        </div>
+        <button type='submit'>Submit!</button>
+        {/*<button type='submit' disabled={isSubmitting}>Submit!</button>*/}
+      </Form>
+
+      ))}
     </div>
-
-    <div>
-      <label htmlFor="yearsXp" style={{ display: 'block' }}>
-        Years Experience
-      </label>
-    <Select options = {xpOptions} />
-    {/*<select*/}
-    {/*  name="yearsXp"*/}
-    {/*  value={values.yearsXp}*/}
-    {/*  onChange={handleChange}*/}
-    {/*  onBlur={handleBlur}*/}
-    {/*  style={{ display: 'block' }}*/}
-    {/*>*/}
-    {/*  <option value="0 - 5" />*/}
-    {/*  <option value="6 - 10" />*/}
-    {/*  <option value="10 - 15"  />*/}
-    {/*  <option value="16+" />*/}
-    {/*</select>*/}
-      {errors.yearsXP && touched.yearsXP && <p>{errors.yearsXp}</p>}
-    </div>
-
-    <div>
-      <Field type="text" name="locationCity" placeholder="city" />
-      {touched.locationCity && errors.locationCity && <p>{errors.firstName}</p>}
-    </div>
-
-    <div>
-      <Field type="text" name="locationState" placeholder="state" />
-      {touched.locationState && errors.locationState && <p>{errors.locationState}</p>}
-    </div>
-
-    <div>
-      <label htmlFor="relocate" style={{ display: 'block' }}>
-        Willing to Relocate
-      </label>
-      <Select options={relocateOptions} />
-      {/*<select*/}
-      {/*  name="relocate"*/}
-      {/*  value={values.relocate}*/}
-      {/*  onChange={handleChange}*/}
-      {/*  onBlur={handleBlur}*/}
-      {/*  style={{ display: 'block' }}*/}
-      {/*>*/}
-      {/*  <option value="currently open"  label="currently open"/>*/}
-      {/*  <option value="not available"  label="not available"/>*/}
-      {/*</select>*/}
-      {errors.relocate && touched.relocate && <p>{errors.relocate}</p>}
-    </div>
-
-    <button type='submit' disabled={isSubmitting}>Submit!</button>
-  </Form>
-
-
-  ))}
-</div>
-);
+  );
 };
 
 
@@ -111,7 +107,7 @@ const FormikForm = withFormik({
     return {
       firstName: firstName || '',
       lastName: lastName || '',
-      yearsXP: yearsXP || '',
+      yearsXp: yearsXp || '',
       locationCity: locationCity || '',
       locationState: locationState || '',
       relocate: relocate || ''
@@ -136,34 +132,16 @@ const FormikForm = withFormik({
     // relocate:
   }),
 
-  handleSubmit(values, { setStatus, resetForm, setSubmitting }) {
+  handleSubmit: (values, { setSubmitting }) => {
+    setTimeout(() => {
+      alert(JSON.stringify(values, null, 2));
+      setSubmitting(false);
+    }, 1000);
+  },
 
-    // axios
-    //   .post(`http://localhost:5000/api/register/`, values)
-    //   .then(res => {
-    //     console.log(res.data);
-    //     setStatus(res.data);
-    //     // had to move resetForm to the get
-    //     // resetForm();
-    //     setSubmitting(false);
-    //   })
-    //   .catch(err =>  {
-    //     console.log("Registration error: ", err);
-    //     setSubmitting(false);
-    //   });
-    // axios
-    //   .get(`http://localhost:5000/api/restricted/data`, values)
-    //   .then(res => {
-    //     console.log(res.data);
-    //     setStatus(res.data);
-    //     resetForm();
-    //   })
-
-  }
 
 
 })(Personal);
 
 export default FormikForm;
-
 

@@ -64,6 +64,56 @@ const PageDiv = styled.div`
           border-left: 2px solid #c3cfda;
           padding: 5px;
           color: #778895;
+          display: flex;
+          align-items: center;
+          
+          span {
+            
+          }
+        }
+      }
+    }
+  }
+  div.right-page {
+    
+    width: 36%;
+    
+    input {
+      border: 0;
+      margin-left: 5px;
+    }
+    
+    hr.profile-hr {
+      border: 1px solid #c3cfda;
+      width: 88%;
+    }
+    
+    h5.preview-note {
+      width: 100%;
+      font-size: 0.9rem;
+    }
+  
+    div.form-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid #c3cfda;
+      border-radius: 2px;
+      margin: 0 40px;
+      
+      div.profile-img {
+        width: 100%;
+        height: 150px;
+        background: #dfe7ed;
+      }
+      div.title-name, div.info-container {
+        padding: 10px 5px;
+      }
+      div.title-name {
+        display: flex;
+        
+        div.title-icon {
+          width: 20%;
         }
       }
     }
@@ -100,9 +150,15 @@ const ProfileForm = props => {
     console.log(selectedOption);
   };
 
+  const setWidth = e => {
+    let padding = e.target.type === 'number' ? 8 : 0;
+    e.target.style.width = ((e.target.value.length + 1) * 8 + padding) + 'px';
+  };
+
   const handleChange = e => {
     e.preventDefault();
     setInputs({...inputs, [e.target.name]: e.target.value});
+    setWidth(e);
   };
 
   return (
@@ -125,7 +181,7 @@ const ProfileForm = props => {
                   Review and<br /> Confirm.
                 </div>
                 <div className='confirm-tip'>
-                  TIP: Click an item on the card to edit.
+                  <span>TIP: Click an item on the card to edit.</span>
                 </div>
               </div>
             </div>
@@ -146,8 +202,8 @@ const ProfileForm = props => {
                 <div className='title-container'>
                   <div className='title-name'>
                     <span className='title'>Chef</span>
-                    <Field type='text' name='firstName' placeholder='Firstname' onChange={handleChange} value={inputs.firstName} />
-                    <Field type='text' name='lastName' placeholder='Lastname' onChange={handleChange} value={inputs.lastName} />
+                    <Field type='text' name='firstName' placeholder='Firstname' onChange={handleChange} value={inputs.firstName} onLoad={setWidth} />
+                    <Field type='text' name='lastName' placeholder='Lastname' onChange={handleChange} value={inputs.lastName} onLoad={setWidth} />
                   </div>
                   <div className='experience'>
                     <span className='experience-phrase'>
