@@ -12,18 +12,22 @@ import './App.css';
 
 import Confirmation from "./components/onboarding/Confirmation";
 import Signup from "./components/Signup";
-// import Personal from "./components/onboarding/Personal";
+import Personal from "./components/onboarding/Personal";
+import SignIn from "./components/Signin";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 
 
+
 function App() {
   return (
     <div className="App">
+      <SignIn />
       <Confirmation />
       <Signup />
+      <Personal />
     </div>
   );
 }
@@ -36,6 +40,3 @@ ReactDOM.render(
   rootElement
 
 );
-
-
-

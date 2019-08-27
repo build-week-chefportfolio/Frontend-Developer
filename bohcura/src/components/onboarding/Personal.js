@@ -10,25 +10,25 @@ import * as Yup from 'yup';
 import mapStateToProps from "react-redux/es/connect/mapStateToProps";
 import mapDispatchToProps from "react-redux/es/connect/mapDispatchToProps"
 
-import { postChefs } from '../../actions/postActions';
+import { postChefs } from '../../actions';
 
 
 
 // set options for react-select
 const xpOptions = [
-  { value: '0 - 5', label: '0-5'},
-  { value: '6 - 10', label: '6-10'},
-  { value: '11 - 15', label: '11-15'},
-  { value: '16+', label: '16+'}
+  { value: '0 - 5', label: '0-5' },
+  { value: '6 - 10', label: '6-10' },
+  { value: '11 - 15', label: '11-15' },
+  { value: '16+', label: '16+' }
 ];
 
 const relocateOptions = [
-  { value: 'currently open', label: 'currently open' } ,
-  { value: 'not available',  label: 'not available' }
+  { value: 'currently open', label: 'currently open' },
+  { value: 'not available', label: 'not available' }
 ];
 
 
-const Personal = ({ props }) => {
+const Personal = props => {
 
   const {
     values,
@@ -71,7 +71,7 @@ const Personal = ({ props }) => {
           <label htmlFor="yearsXp" style={{ display: 'block' }}>
             Years Experience
           </label>
-          <Select options = {xpOptions} />
+          <Select options={xpOptions} />
           {errors.yearsXP && touched.yearsXP && <p>{errors.yearsXp}</p>}
         </div>
 
