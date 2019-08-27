@@ -4,6 +4,7 @@
 // Public or Private (Contact Info)
 
 // Stretch - Picture / File Upload
+
 // Chris Hernandez
 
 import React from "react";
@@ -70,3 +71,4 @@ const Contact = ({ errors, touched, values, status }) => {
   })(Contact);
 
   export default contactPage;
+
