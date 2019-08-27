@@ -5,7 +5,9 @@ export const axiosWithAuth = () => {
 
     return axios.create({
         headers: {
-            Authorization: token
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': "application/json",
+            Authorization: `${token}`
         }
     });
 };

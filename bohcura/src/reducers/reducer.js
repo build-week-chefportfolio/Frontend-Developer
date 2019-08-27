@@ -7,6 +7,7 @@ const initialState = {
         name: '',
         prepTime: '',
         description: '',
+        chefName: '',
         chefName: ''
     }],
     chefs: [{
@@ -16,7 +17,7 @@ const initialState = {
         yearsXP: '',
         city: '',
         state: '',
-        relocate: '',
+        relocate: true,
         contact: 'email || phone || both',
         phone: '',
         email: '',
@@ -27,7 +28,6 @@ const initialState = {
     isLoading: false,
     error: '',
 };
-
 
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
