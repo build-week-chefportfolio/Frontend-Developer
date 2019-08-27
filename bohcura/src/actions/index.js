@@ -31,7 +31,7 @@ export {
     UPDATES_CURRENT_RECIPE_DATA_START,
     UPDATES_CURRENT_RECIPE_DATA_SUCCESS,
     UPDATES_CURRENT_RECIPE_DATA_FAILURE
-} from './deleteActions'
+} from './postActions'
 // PUT
 export {
     putChefs,
@@ -42,4 +42,4 @@ export {
     PUT_CURRENT_RECIPE_DATA_START,
     PUT_CURRENT_RECIPE_DATA_SUCCESS,
     PUT_CURRENT_RECIPE_DATA_FAILURE
-} from './deleteActions'
+} from './putActions'
