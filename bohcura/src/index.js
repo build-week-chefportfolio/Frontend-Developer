@@ -11,6 +11,8 @@ import './App.css';
 
 
 import Confirmation from "./components/onboarding/Confirmation";
+import Personal from "./components/onboarding/Personal";
+import Signup from "./components/Signup";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -20,6 +22,8 @@ const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 function App() {
   return (
     <div className="App">
+      <Signup />
+      <Personal />
       <Confirmation />
     </div>
   );

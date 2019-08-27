@@ -28,7 +28,7 @@ const relocateOptions = [
 ];
 
 
-const Personal = ({ props }) => {
+const Personal = props => {
 
   const {
     values,
