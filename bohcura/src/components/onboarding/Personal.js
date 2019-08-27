@@ -42,15 +42,11 @@ const Personal = props => {
   const [chef, postChef] = useState({
     firstName: '',
     lastName: '',
-    yearsXp: '',
+    yearsXP: '',
     city: '',
     state: '',
     relocate: ''
   });
-
-
-
-
 
   return (
     <div className="reg-form">
@@ -68,21 +64,21 @@ const Personal = props => {
         </div>
 
         <div>
-          <label htmlFor="yearsXp" style={{ display: 'block' }}>
+          <label htmlFor="yearsXP" style={{ display: 'block' }}>
             Years Experience
           </label>
           <Select options = {xpOptions} />
-          {errors.yearsXP && touched.yearsXP && <p>{errors.yearsXp}</p>}
+          {errors.yearsXP && touched.yearsXP && <p>{errors.yearsXP}</p>}
         </div>
 
         <div>
-          <Field type="text" name="locationCity" placeholder="city" />
-          {touched.locationCity && errors.locationCity && <p>{errors.firstName}</p>}
+          <Field type="text" name="city" placeholder="city" />
+          {touched.city && errors.city && <p>{errors.city}</p>}
         </div>
 
         <div>
-          <Field type="text" name="locationState" placeholder="state" />
-          {touched.locationState && errors.locationState && <p>{errors.locationState}</p>}
+          <Field type="text" name="state" placeholder="state" />
+          {touched.state && errors.state && <p>{errors.state}</p>}
         </div>
 
         <div>
@@ -103,13 +99,13 @@ const Personal = props => {
 
 
 const FormikForm = withFormik({
-  mapPropsToValues({ firstName, lastName, yearsXp, locationCity, locationState, relocate }) {
+  mapPropsToValues({ firstName, lastName, yearsXP, city, state, relocate }) {
     return {
       firstName: firstName || '',
       lastName: lastName || '',
-      yearsXp: yearsXp || '',
-      locationCity: locationCity || '',
-      locationState: locationState || '',
+      yearsXp: yearsXP || '',
+      city: city || '',
+      state: state || '',
       relocate: relocate || ''
     }
   },
@@ -123,10 +119,10 @@ const FormikForm = withFormik({
       .min(4, 'Last name must be 4 characters or longer')
       .required('Last name is required'),
     // yrsExperience: Yup.
-    locationCity: Yup.string()
+    city: Yup.string()
       .min(4, 'City name must be 4 characters or longer')
       .required('City is required'),
-    locationState: Yup.string()
+    state: Yup.string()
       .min(4, 'State must be 4 characters or longer')
       .required('State is required'),
     // relocate:
