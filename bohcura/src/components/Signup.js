@@ -7,18 +7,21 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
+
+import { axiosWithAuth } from '../utilities/axiosWithAuth'
 
 import '../App.css';
 
-function SignUpMod ({ errors, touched, status}) {
-    const [user, setUser] = useState([]);
-    useEffect(() => {
-        if (status) {
-          setUser([...user, status]);
-        }
-      }, [status]);
-    return(
+function SignUpMod({ errors, touched, status }) {
+    // const [user, setUser] = useState([]);
+    // useEffect(() => {
+    //     if (status) {
+    //         setUser([...user, status]);
+    //     }
+    // }, [status]);
+
+    return (
         <div className="signUpContainer">
             <h1>Bohcura: The personal brand platform for personal chefs.</h1>
             <div className="signUpBottom">
@@ -36,8 +39,9 @@ function SignUpMod ({ errors, touched, status}) {
         </div>
     )
 }
+
 const formikHOC = withFormik({
-    mapPropsToValues({email, password, confirmPassword}) {
+    mapPropsToValues({ email, password, confirmPassword }) {
         return {
             email: email || "",
             password: password || "",
@@ -55,12 +59,20 @@ const formikHOC = withFormik({
             .oneOf([yup.ref('password'), null], 'Passwords must match')
             .required("Password is required")
     }),
-    handleSubmit(values, {setStatus}) {
-        axios.post('https://reqres.in/api/users/', values)
-        .then(response => {
-            console.log(response.data);
-            setStatus(response.data);
-        });
+    handleSubmit(values, { setStatus }) {
+        const loginInfo = {
+            'username': values.email,
+            'password': values.password
+        }
+
+        axios
+            .post('https://localhost:2300/api/auth/register', loginInfo)
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(err => {
+                console.log('SignUp Failed', err)
+            })
     }
 })(SignUpMod);
 
