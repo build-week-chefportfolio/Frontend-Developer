@@ -5,16 +5,9 @@ import React from 'react';
 import Select from 'react-select';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
-<<<<<<< HEAD:bohcura/src/components/onboarding/Personal.js
-// import mapStateToProps from "react-redux/es/connect/mapStateToProps";
-// import mapDispatchToProps from "react-redux/es/connect/mapDispatchToProps"
-
-// import { postChefs } from '../../actions';
-=======
 import mapStateToProps from "react-redux/es/connect/mapStateToProps";
 import mapDispatchToProps from "react-redux/es/connect/mapDispatchToProps"
 import { postChefs } from '../../../actions';
->>>>>>> 276f62304c14cdcf856e1d832764ef26fa600942:bohcura/src/components/forms/onboarding/Personal.js
 
 
 

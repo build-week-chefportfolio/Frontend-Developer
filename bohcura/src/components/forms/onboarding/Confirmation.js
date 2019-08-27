@@ -9,11 +9,7 @@ import React, { useState } from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import Select from 'react-select';
-<<<<<<< HEAD:bohcura/src/components/onboarding/Confirmation.js
-// import Nav from '../Nav';
-=======
 import Nav from '../../Nav';
->>>>>>> 276f62304c14cdcf856e1d832764ef26fa600942:bohcura/src/components/forms/onboarding/Confirmation.js
 import styled from 'styled-components';
 
 const phoneValidation = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
