@@ -1,12 +1,49 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { createStore, applyMiddleware, compose } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { reducer } from './reducers';
+import './App.css';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+
+// import Confirmation from "./components/onboarding/Confirmation";
+import Signup from "./components/Signup";
+// import Personal from "./components/onboarding/Personal";
+// import SignIn from "./components/Signin";
+
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
+
+
+
+function App() {
+  return (
+    <div className="App">
+<<<<<<< HEAD
+      {/*    <SignIn />
+=======
+      <Signup />
+      <Personal />
+>>>>>>> 2e3e28dcccfc683764e65819849f2ad97562bd35
+      <Confirmation />
+      
+  <Personal /> */}
+      <Signup />
+    </div>
+  );
+}
+
+const rootElement = document.getElementById('root');
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  rootElement
+);
