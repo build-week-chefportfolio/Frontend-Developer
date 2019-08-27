@@ -8,6 +8,7 @@ import thunk from 'redux-thunk';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { reducer } from './reducers';
 import './App.css';
+import SignUp from "./components/Signup";
 
 
 import Confirmation from "./components/onboarding/Confirmation";
@@ -29,6 +30,7 @@ const rootElement = document.getElementById('root');
 ReactDOM.render(
   <Provider store={store}>
     <App />
+    <SignUp />
   </Provider>,
   rootElement
 
