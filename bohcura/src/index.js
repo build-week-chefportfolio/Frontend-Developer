@@ -11,6 +11,8 @@ import './App.css';
 
 
 import Confirmation from "./components/onboarding/Confirmation";
+import Signup from "./components/Signup";
+// import Personal from "./components/onboarding/Personal";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -21,6 +23,7 @@ function App() {
   return (
     <div className="App">
       <Confirmation />
+      <Signup />
     </div>
   );
 }
