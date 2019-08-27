@@ -6,7 +6,7 @@
 // Stretch - Picture / File Upload
 // Chris Hernandez
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
@@ -34,14 +34,7 @@ const Contact = ({ errors, touched, values, status }) => {
 
           <button type="submit">Submit</button>
 
-          {person.map(personal => (
-          <ul key={personal.id}>
-            <li>Name: {personal.name}</li>
-            <li>Email: {personal.email}</li>
-          </ul>
-        ))}
         </Form>
-
       </div>
     );
   };

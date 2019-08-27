@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { reducer } from './reducers';
 import './App.css';
 
-
+import Contact from "./components/onboarding/Contact";
 import Confirmation from "./components/onboarding/Confirmation";
 import Personal from "./components/onboarding/Personal";
 import Signup from "./components/Signup";
@@ -24,6 +24,7 @@ function App() {
     <div className="App">
       <Signup />
       <Personal />
+      <Contact />
       <Confirmation />
     </div>
   );
