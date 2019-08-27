@@ -10,8 +10,7 @@ import * as Yup from 'yup';
 import mapStateToProps from "react-redux/es/connect/mapStateToProps";
 import mapDispatchToProps from "react-redux/es/connect/mapDispatchToProps"
 
-import { postChefs } from '../../actions/postActions';
-
+import { postChefs } from '../../actions';
 
 
 // set options for react-select
@@ -64,11 +63,8 @@ const Personal = props => {
         </div>
 
         <div>
-          <label htmlFor="yearsXP" style={{ display: 'block' }}>
-            Years Experience
-          </label>
-          <Select options = {xpOptions} />
-          {errors.yearsXP && touched.yearsXP && <p>{errors.yearsXP}</p>}
+          <Field type="text" name="yearsXP" placeholder="years" />
+          {touched.yearsXP && errors.yearsXP && <p>{errors.yearsXP}</p>}
         </div>
 
         <div>
@@ -91,12 +87,9 @@ const Personal = props => {
         <button type='submit'>Submit!</button>
         {/*<button type='submit' disabled={isSubmitting}>Submit!</button>*/}
       </Form>
-
-      ))}
     </div>
   );
 };
-
 
 const FormikForm = withFormik({
   mapPropsToValues({ firstName, lastName, yearsXP, city, state, relocate }) {
@@ -106,7 +99,7 @@ const FormikForm = withFormik({
       yearsXp: yearsXP || '',
       city: city || '',
       state: state || '',
-      relocate: relocate || ''
+      relocate: relocate || boolean
     }
   },
 
@@ -126,6 +119,7 @@ const FormikForm = withFormik({
       .min(4, 'State must be 4 characters or longer')
       .required('State is required'),
     // relocate:
+
   }),
 
   handleSubmit: (values, { setSubmitting }) => {
@@ -134,8 +128,6 @@ const FormikForm = withFormik({
       setSubmitting(false);
     }, 1000);
   },
-
-
 
 })(Personal);
 
