@@ -4,6 +4,8 @@ import { getChefs } from '../../actions';
 import styled from 'styled-components';
 
 import ChefCard from './ChefCard';
+import RecipeCard from "./RecipeCard";
+// import mapStateToProps from "react-redux/es/connect/mapStateToProps";
 
 // styled components
 const Page = styled.div`
@@ -22,28 +24,27 @@ const Row = styled.div`
 `;
 
 
-const ChefList = ({ getChefs }) => {
-  const [chefs, setChefs] = useState([]);
+const ChefList = ( props ) => {
+  useEffect(() => {
+      props.getChefs();
+      console.log("UseEffect has run!",props.chefs)
+  }, []);
+
   return (
-    <Page>
-      <Row>
+    <div>
         <h1>Professional Chefs</h1>
         <div>search</div>
-      </Row>
-      <div className="chefList">
-        <CardGroup>
-          <ChefCard/>
-          <ChefCard/>
-          <ChefCard/>
-       </CardGroup>
-        <CardGroup>
-          <ChefCard/>
-          <ChefCard/>
-          <ChefCard/>
-        </CardGroup>
-      </div>
-    </Page>
+
+          {props.chefs.map(chef => <ChefCard chef={chef} />)}
+
+    </div>
   )
 };
 
-export default ChefList;
+const mapStateToProps = state => {
+  return {
+    chefs: state.chefs
+  }
+};
+
+export default connect(mapStateToProps, { getChefs })(ChefList);

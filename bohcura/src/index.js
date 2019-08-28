@@ -22,6 +22,7 @@ import Profile from "./components/Profile";
 import Recipe from "./components/Recipe";
 import RecipesList from './components/feed/RecipeList';
 import ChefList from "./components/feed/ChefList";
+import Contact from "./components/forms/onboarding/Contact";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -41,6 +42,7 @@ function App() {
       <Route path="/recipe/:id" component={Recipe} />
       <Signup />
       <Personal />
+      <Contact />
       <Confirmation />
       <RecipesList />
       <ChefList />
