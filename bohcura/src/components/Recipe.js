@@ -5,9 +5,6 @@ import { getRecipe } from "../actions";
 import styled from "styled-components";
 import PizzaImage from '../assets/mock-images/Pizza-Easy.jpeg';
 
-<<<<<<< HEAD
-function Recipe({ recipe, getRecipe, match: { params: { id } } }) {
-=======
 const devRecipe = {
     image: PizzaImage,
     RecipeName: 'Pizza',
@@ -68,15 +65,11 @@ const RecipeDiv = styled.div`
   }
 `;
 
-function Recipe ({ recipe, getRecipe, match: { params: { id }}}) {
->>>>>>> 022a681b60c9eadba7deb1e7c2d1d351b98ba7b4
+function Recipe({ recipe, getRecipe, match: { params: { id } } }) {
 
     useEffect(() => {
         getRecipe(id);
     }, []);
-<<<<<<< HEAD
-    if (!recipe.hasOwnProperty('name')) return <div>Loading...</div>;
-=======
 
     const convertCourse = course => {
         switch (course) {
@@ -95,9 +88,8 @@ function Recipe ({ recipe, getRecipe, match: { params: { id }}}) {
         }
     };
 
-    if(DEV_MODE) recipe = devRecipe;
-    else if(!recipe.hasOwnProperty('name')) return <div>Loading...</div>;
->>>>>>> 022a681b60c9eadba7deb1e7c2d1d351b98ba7b4
+    if (DEV_MODE) recipe = devRecipe;
+    else if (!recipe.hasOwnProperty('name')) return <div>Loading...</div>;
 
     return (
         <RecipeDiv className='recipe-page'>
