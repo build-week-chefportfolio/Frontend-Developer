@@ -32,11 +32,11 @@ export const getRecipes = () => {
     return dispatch => {
         dispatch({ type: FETCH_RECIPES_DATA_START });
         axios
-            .get('https://chefportfolioo.herokuapp.com/api/recipes') //Need to update this API call when I get the full path
+            .get('https://chefportfolioo.herokuapp.com/api/recipe') //Need to update this API call when I get the full path
             .then(res => {
                 // res.data.data
                 console.log(res);
-                dispatch({ type: FETCH_RECIPES_DATA_SUCCESS, payload: res.data.sets });
+                dispatch({ type: FETCH_RECIPES_DATA_SUCCESS, payload: res.data });
             })
             .catch(err => {
                 dispatch({ type: FETCH_RECIPES_DATA_FAILURE, payload: err.response });
