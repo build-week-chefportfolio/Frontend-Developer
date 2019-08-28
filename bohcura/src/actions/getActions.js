@@ -28,7 +28,6 @@ export const getChefs = () => {
 };
 
 export const getRecipes = () => {
-
     return dispatch => {
         dispatch({ type: FETCH_RECIPES_DATA_START });
         axios
