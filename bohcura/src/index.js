@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Link, Switch, withRouter } from 'react-
 import { reducer } from './reducers';
 import './App.css';
 
+
 import Confirmation from "./components/forms/onboarding/Confirmation";
 import Personal from "./components/forms/onboarding/Personal";
 import Signup from "./components/Signup";
@@ -42,8 +43,7 @@ function App() {
       <Route path="/profile/:id" component={Profile} />
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/recipe/:id" component={Recipe} />
-      <Recipe match={{params: {id: 1}}} />
-      <RecipeList />
+
     </div>
   )
 }

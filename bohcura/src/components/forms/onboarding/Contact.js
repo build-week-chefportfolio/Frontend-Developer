@@ -10,6 +10,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
+import { NavLink } from "react-router-dom"
 
 const Contact = ({ errors, touched, status }) => {
     const [contact, setContact] = useState([]);
@@ -69,5 +70,6 @@ const Contact = ({ errors, touched, status }) => {
         .catch(err => console.log(err.response));
     }
   })(Contact);
+
 
   export default contactPage;
