@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// import icons
 import avatar from '../../assets/icons/avatar.png';
 import chef from '../../assets/icons/chef.png';
 import location from '../../assets/icons/location.png';
@@ -44,13 +45,13 @@ const ChefCard = ( props ) => {
             <div className='leftCol'>
               <div className='chefRow'>
                   <img src={location} alt="map pin" />
-                    {props.city},{props.state}
+                    {props.city}City,{props.state} State
               </div>
               <div className='chefRow'>
-                  <img src={phone} alt="phone icon"/>{props.phone}
+                  <img src={phone} alt="phone icon"/>{props.phone}(555)999-9999
               </div>
               <div className='chefRow'>
-                  <img src={mail} alt="email icon"/>{props.email}
+                  <img src={mail} alt="email icon"/>{props.email}bill@microsoft.com
               </div>
             </div>
             <div>
