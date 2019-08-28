@@ -12,9 +12,7 @@ import Contact from "./Contact"
 import Success from "./Success"
 
 import { putChefs } from '../../../actions';
-import Personal from "./Personal";
-import Contact from "./Contact";
-import Success from "./Success";
+
 
 const Onboarding = (props) => {
     const [chef, setChef] = useState({ steps: 1 })
