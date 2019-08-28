@@ -1,51 +1,53 @@
 // Firstname, Lastname, Years of Experience, Location (City, State), Willing to travel (Select)
 // Lisa
 
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { connect } from 'react-redux';
+import React from 'react';
 import Select from 'react-select';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 import mapStateToProps from "react-redux/es/connect/mapStateToProps";
 import mapDispatchToProps from "react-redux/es/connect/mapDispatchToProps"
-
 import { postChefs } from '../../../actions';
+
 
 
 // set options for react-select
 const xpOptions = [
-  { value: '0 - 5', label: '0-5'},
-  { value: '6 - 10', label: '6-10'},
-  { value: '11 - 15', label: '11-15'},
-  { value: '16+', label: '16+'}
+  { value: '0 - 5', label: '0-5' },
+  { value: '6 - 10', label: '6-10' },
+  { value: '11 - 15', label: '11-15' },
+  { value: '16+', label: '16+' }
 ];
 
 const relocateOptions = [
-  { value: 'currently open', label: 'currently open' } ,
-  { value: 'not available',  label: 'not available' }
+  { value: 'currently open', label: 'currently open' },
+  { value: 'not available', label: 'not available' }
 ];
 
 
 const Personal = props => {
 
   const {
-    values,
+    // values,
     touched,
     errors,
-    handleChange,
-    handleBlur,
-    handleSubmit,
+    // handleChange,
+    // handleBlur,
+    // handleSubmit,
   } = props;
 
-  const [chef, postChef] = useState({
-    firstName: '',
-    lastName: '',
-    yearsXP: '',
-    city: '',
-    state: '',
-    relocate: ''
-  });
+  // const [{/*chef, postChef*/ }] = useState({
+  //   firstName: '',
+  //   lastName: '',
+  //   yearsXp: '',
+  //   city: '',
+  //   state: '',
+  //   relocate: ''
+  // });
+
+
+
+
 
   return (
     <div className="reg-form">
@@ -63,18 +65,22 @@ const Personal = props => {
         </div>
 
         <div>
-          <Field type="text" name="yearsXP" placeholder="years" />
-          {touched.yearsXP && errors.yearsXP && <p>{errors.yearsXP}</p>}
+          <label htmlFor="yearsXp" style={{ display: 'block' }}>
+            Years Experience
+          </label>
+
+          <Select options={xpOptions} />
+          {errors.yearsXP && touched.yearsXP && <p>{errors.yearsXp}</p>}
         </div>
 
         <div>
-          <Field type="text" name="city" placeholder="city" />
-          {touched.city && errors.city && <p>{errors.city}</p>}
+          <Field type="text" name="locationCity" placeholder="city" />
+          {touched.locationCity && errors.locationCity && <p>{errors.firstName}</p>}
         </div>
 
         <div>
-          <Field type="text" name="state" placeholder="state" />
-          {touched.state && errors.state && <p>{errors.state}</p>}
+          <Field type="text" name="locationState" placeholder="state" />
+          {touched.locationState && errors.locationState && <p>{errors.locationState}</p>}
         </div>
 
         <div>
@@ -87,18 +93,21 @@ const Personal = props => {
         <button type='submit'>Submit!</button>
         {/*<button type='submit' disabled={isSubmitting}>Submit!</button>*/}
       </Form>
+
+      ))}
     </div>
   );
 };
 
+
 const FormikForm = withFormik({
-  mapPropsToValues({ firstName, lastName, yearsXP, city, state, relocate }) {
+  mapPropsToValues({ firstName, lastName, yearsXp, locationCity, locationState, relocate }) {
     return {
       firstName: firstName || '',
       lastName: lastName || '',
-      yearsXp: yearsXP || '',
-      city: city || '',
-      state: state || '',
+      yearsXp: yearsXp || '',
+      locationCity: locationCity || '',
+      locationState: locationState || '',
       relocate: relocate || ''
     }
   },
@@ -112,14 +121,13 @@ const FormikForm = withFormik({
       .min(4, 'Last name must be 4 characters or longer')
       .required('Last name is required'),
     // yrsExperience: Yup.
-    city: Yup.string()
+    locationCity: Yup.string()
       .min(4, 'City name must be 4 characters or longer')
       .required('City is required'),
-    state: Yup.string()
+    locationState: Yup.string()
       .min(4, 'State must be 4 characters or longer')
       .required('State is required'),
     // relocate:
-
   }),
 
   handleSubmit: (values, { setSubmitting }) => {
@@ -128,6 +136,8 @@ const FormikForm = withFormik({
       setSubmitting(false);
     }, 1000);
   },
+
+
 
 })(Personal);
 
