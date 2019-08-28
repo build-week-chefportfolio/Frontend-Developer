@@ -4,11 +4,15 @@
 * Onboarding 4: Success
 * */
 
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
+import Personal from "./Personal"
+import Contact from "./Contact"
+import Success from "./Success"
 
-import { putChefs } from '../../../actions'
+import { putChefs } from '../../../actions';
+
 
 const Onboarding = (props) => {
     const [chef, setChef] = useState({ steps: 1 })
@@ -41,7 +45,7 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { putChefs }(Onboarding))
+export default connect(mapStateToProps, { putChefs })(Onboarding)
 
 
 

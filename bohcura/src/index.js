@@ -5,7 +5,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
-// import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch, withRouter } from 'react-router-dom';
 import { reducer } from './reducers';
 import './App.css';
 
@@ -21,12 +21,11 @@ import Dashboard from "./components/Dashboard";
 import Profile from "./components/Profile";
 import Recipe from "./components/Recipe";
 import RecipesList from './components/feed/RecipeList';
+import ChefList from "./components/feed/ChefList";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
-
-
 
 function App() {
   return (
@@ -46,16 +45,22 @@ function App() {
 
       <Confirmation />
       <RecipesList />
+      <ChefList />
       <Signup />
     </div>
   )
 }
 
+const AppWithRouter = withRouter(App);
+
 const rootElement = document.getElementById('root');
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <Router>
+    <Provider store={store}>
+      <AppWithRouter />
+    </Provider>
+  </Router>
+  ,
   rootElement
 );
