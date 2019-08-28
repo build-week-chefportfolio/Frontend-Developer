@@ -31,6 +31,7 @@ const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 function App() {
   return (
     <div className="App">
+
       <Nav />
       <Router>
         <Route exact path="/" component={HomePage} />
@@ -41,12 +42,13 @@ function App() {
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/recipe/:id" component={Recipe} />
       </Router>
+
       <Signup />
       <Personal />
+
       <Confirmation />
       <RecipesList />
       <Signup />
-      <Personal />
     </div>
   )
 }
@@ -54,10 +56,10 @@ function App() {
 const AppWithRouter = withRouter(App);
 
 const rootElement = document.getElementById('root');
+
 ReactDOM.render(
   <Provider store={store}>
     <AppWithRouter />
   </Provider>,
   rootElement
-
 );

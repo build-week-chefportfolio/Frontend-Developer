@@ -3,8 +3,7 @@
 // Signin ? Verify with UX
 // Ryan Does Signup
 //
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
 // import { connect } from "react-redux";
@@ -65,8 +64,8 @@ const formikHOC = withFormik({
             'password': values.password
         }
 
-        axios
-            .post('https://localhost:2300/api/auth/register', loginInfo)
+        axiosWithAuth()
+            .post('https://chefportfolioo.herokuapp.com/api/auth/register', loginInfo)
             .then(response => {
                 console.log(response.data);
             })

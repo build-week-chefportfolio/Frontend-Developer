@@ -1,4 +1,4 @@
-import { } from '../actions';
+// import { } from '../actions';
 
 const initialState = {
     recipe: {},
@@ -9,7 +9,6 @@ const initialState = {
         prepTime: '',
         description: '',
         chefName: '',
-        chefName: ''
     }],
     chefs: [{
         id: '',

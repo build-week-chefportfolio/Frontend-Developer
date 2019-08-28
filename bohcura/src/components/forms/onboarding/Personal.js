@@ -1,9 +1,7 @@
 // Firstname, Lastname, Years of Experience, Location (City, State), Willing to travel (Select)
 // Lisa
 
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { connect } from 'react-redux';
+import React from 'react';
 import Select from 'react-select';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
@@ -30,22 +28,22 @@ const relocateOptions = [
 const Personal = props => {
 
   const {
-    values,
+    // values,
     touched,
     errors,
-    handleChange,
-    handleBlur,
-    handleSubmit,
+    // handleChange,
+    // handleBlur,
+    // handleSubmit,
   } = props;
 
-  const [chef, postChef] = useState({
-    firstName: '',
-    lastName: '',
-    yearsXp: '',
-    city: '',
-    state: '',
-    relocate: ''
-  });
+  // const [{/*chef, postChef*/ }] = useState({
+  //   firstName: '',
+  //   lastName: '',
+  //   yearsXp: '',
+  //   city: '',
+  //   state: '',
+  //   relocate: ''
+  // });
 
 
 
