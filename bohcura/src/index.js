@@ -38,7 +38,6 @@ function App() {
       <Route path="/profile/:id" component={Profile} />
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/recipe/:id" component={Recipe} />
-
       <Signup />
       <Personal />
 
