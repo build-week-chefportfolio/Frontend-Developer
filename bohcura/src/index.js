@@ -21,7 +21,6 @@ import Dashboard from "./components/Dashboard";
 import Profile from "./components/Profile";
 import Recipe from "./components/Recipe";
 import RecipesList from './components/feed/RecipeList';
-import TestActions from './components/deleteAfterTest';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -42,7 +41,6 @@ function App() {
 
       <SignIn />
       <Personal />
-      <TestActions />
       <Confirmation />
       <RecipesList />
       <Signup />

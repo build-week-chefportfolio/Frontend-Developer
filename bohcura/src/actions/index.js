@@ -27,7 +27,7 @@ export {
 } from './deleteActions'
 // UPDATE
 export {
-    postChefs,
+    postChef,
     postRecipes,
     UPDATES_CURRENT_CHEF_DATA_START,
     UPDATES_CURRENT_CHEF_DATA_SUCCESS,
