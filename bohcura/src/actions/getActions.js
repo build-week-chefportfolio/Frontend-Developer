@@ -7,6 +7,10 @@ export const FETCH_CHEF_DATA_FAILURE = 'FETCH_CHEF_DATA_FAILURE';
 export const FETCH_RECIPE_DATA_START = 'FETCH_RECIPE_DATA_START';
 export const FETCH_RECIPE_DATA_SUCCESS = 'FETCH_RECIPE_DATA_SUCCESS';
 export const FETCH_RECIPE_DATA_FAILURE = 'FETCH_RECIPE_DATA_FAILURE';
+// Recipes (Plural) DATA
+export const FETCH_RECIPES_DATA_START = 'FETCH_RECIPES_DATA_START';
+export const FETCH_RECIPES_DATA_SUCCESS = 'FETCH_RECIPES_DATA_SUCCESS';
+export const FETCH_RECIPES_DATA_FAILURE = 'FETCH_RECIPES_DATA_FAILURE';
 
 export const getChefs = () => {
     return dispatch => {
@@ -26,16 +30,34 @@ export const getChefs = () => {
 
 export const getRecipes = () => {
     return dispatch => {
-        dispatch({ type: FETCH_RECIPE_DATA_START });
+        dispatch({ type: FETCH_RECIPES_DATA_START });
         axios
             .get('https://chefportfolioo.herokuapp.com/api/recipes') //Need to update this API call when I get the full path
             .then(res => {
                 // res.data.data
                 console.log(res);
-                dispatch({ type: FETCH_RECIPE_DATA_SUCCESS, payload: res.data.sets });
+                dispatch({ type: FETCH_RECIPES_DATA_SUCCESS, payload: res.data.sets });
             })
             .catch(err => {
-                dispatch({ type: FETCH_RECIPE_DATA_FAILURE, payload: err.response });
+                dispatch({ type: FETCH_RECIPES_DATA_FAILURE, payload: err.response });
             });
     };
 };
+
+export const getRecipe = (id) => {
+  return dispatch => {
+    dispatch({ type: FETCH_RECIPE_DATA_START });
+    axios
+      .get(`https://chefportfolioo.herokuapp.com/api/recipe/${id}`)
+      .then(res => {
+        console.log(res);
+        dispatch({ type: FETCH_RECIPE_DATA_SUCCESS, playload: res.data });
+      })
+      .catch(e => {
+        console.error(e);
+        dispatch({ type: FETCH_RECIPE_DATA_FAILURE, payload: e.response });
+      });
+  };
+};
+
+// api/auth/register api/auth/login api/auth/logout api/users

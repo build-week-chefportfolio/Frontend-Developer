@@ -6,22 +6,22 @@
 
 import React, { useState } from 'react';
 // we'll need context API to keep state between slides
-import {withFormik, Form, Field, ErrorMessage, setIn} from 'formik';
+import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import Select from 'react-select';
-import Nav from '../Nav';
+import Nav from '../../Nav';
 import styled from 'styled-components';
 
 const phoneValidation = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
 
 // We need an anonymous function instead of an arrow function so we keep our context
-Yup.addMethod(Yup.string, 'phone', function() {
+Yup.addMethod(Yup.string, 'phone', function () {
   return this.test('phone', 'Phone number is not valid', value => phoneValidation.test(value));
 });
 
 const relocateOptions = [
-  {value: 'Currently open', label: 'Currently open'},
-  {value: "Not available", label: "Not available"}
+  { value: 'Currently open', label: 'Currently open' },
+  { value: "Not available", label: "Not available" }
 ];
 
 const PageDiv = styled.div`
@@ -125,7 +125,7 @@ const Confirmation = () => {
   return (
     <div className='Confirmation'>
       {/* add Formik -> ProfileForm component */}
-      <FormikForm/>
+      <FormikForm />
     </div>
   );
 };
@@ -146,7 +146,7 @@ const ProfileForm = props => {
   });
 
   const selectChange = selectedOption => {
-    setInputs({...inputs, relocate: selectedOption});
+    setInputs({ ...inputs, relocate: selectedOption });
     console.log(selectedOption);
   };
 
@@ -157,7 +157,7 @@ const ProfileForm = props => {
 
   const handleChange = e => {
     e.preventDefault();
-    setInputs({...inputs, [e.target.name]: e.target.value});
+    setInputs({ ...inputs, [e.target.name]: e.target.value });
     setWidth(e);
   };
 
@@ -250,7 +250,7 @@ const ProfileForm = props => {
 };
 
 const FormikForm = withFormik({
-  mapPropsToValues({firstName, lastName, yearsXP, city, state, phone, email, relocate, contact}) {
+  mapPropsToValues({ firstName, lastName, yearsXP, city, state, phone, email, relocate, contact }) {
     return {
       firstName: firstName || '',
       lastName: lastName || '',
