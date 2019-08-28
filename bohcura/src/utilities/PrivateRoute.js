@@ -20,3 +20,5 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 };
 
 export default PrivateRoute;
+
+// Need to finish setting this up for this project
