@@ -54,6 +54,7 @@ const formikHOC = withFormik({
             .then(res => {
                 localStorage.setItem('token', res.data.message)
                 console.log(res.data);
+                //Need to find out if he can make the login return the user_ID attached so that we can render the proper Chef profile
             })
             .catch(err => {
                 console.log('SignUp Failed', err)

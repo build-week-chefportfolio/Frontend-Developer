@@ -61,10 +61,13 @@ const formikHOC = withFormik({
             .post('https://chefportfolioo.herokuapp.com/api/auth/register', loginInfo)
             .then(res => {
                 localStorage.setItem('token', res.data.password)
+                //Need to capture the user_ID and store into local storage to be referenced from when the the chef profile is pulled
             })
             .catch(err => {
                 console.log('SignUp Failed', err)
             })
+
+
     }
 })(SignUpMod);
 
