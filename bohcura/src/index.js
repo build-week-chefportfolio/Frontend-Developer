@@ -40,6 +40,7 @@ function App() {
       <Route path="/profile/:id" component={Profile} />
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/recipe/:id" component={Recipe} />
+<<<<<<< HEAD
 
       <TestPost />
       <SignIn />
@@ -47,9 +48,10 @@ function App() {
       <Signup />
       <Personal />
       <Confirmation />
+=======
+      <Recipe match={{params: {id: 0}}} />
+>>>>>>> 022a681b60c9eadba7deb1e7c2d1d351b98ba7b4
       <RecipesList />
-      <ChefList />
-      <Signup />
     </div>
   )
 }
