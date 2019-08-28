@@ -42,15 +42,16 @@ const Left = styled.div`
 `;
 
 const ChefCard = ( props ) => {
-  console.log(props);
+  console.log("chef card stuff here:",props);
+
   return(
     <Card>
        <img src={avatar} alt={'avatar'} />
         <Row>
           <img src={chef} alt='chef icon'/>
           <div>
-            <h5>{props.firstName}Salty{" "}{props.lastName}McSpud</h5>
-            Professional cook for {props.yearsXP} years
+            <h5>{props.chef.FirstNameLastName}</h5>
+            Professional cook for {props.chef.yearsexp} years
           </div>
         </Row>
         <hr style={{color:'#C0BEBE', margin:'14px'}}/>
@@ -58,17 +59,17 @@ const ChefCard = ( props ) => {
             <Left>
               <div className='chefRow'>
                   <img src={location} alt="map pin" />
-                    {props.city}City,{props.state} State
+                    {props.chef.location},{props.chef.state}
               </div>
               <div className='chefRow'>
-                  <img src={phone} alt="phone icon"/>{props.phone} (555)999-9999
+                  <img src={phone} alt="phone icon"/>{props.chef.telephone}
               </div>
               <div className='chefRow'>
-                  <img src={mail} alt="email icon"/>{props.email} salty@mail.com
+                  <img src={mail} alt="email icon"/>{props.chef.email}
               </div>
             </Left>
             <div>
-              <Row>{props.relocate} to relocate</Row>
+              <Row>{props.chef.relocate} to relocate</Row>
               <Row><Button>Hire Me</Button></Row>
             </div>
           </Row>

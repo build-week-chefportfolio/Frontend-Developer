@@ -71,4 +71,5 @@ const Contact = ({ errors, touched, status }) => {
     }
   })(Contact);
 
+
   export default contactPage;

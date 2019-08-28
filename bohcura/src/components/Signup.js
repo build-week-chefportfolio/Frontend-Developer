@@ -6,6 +6,8 @@
 import React from 'react';
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
+import { NavLink } from "react-router-dom";
+import axios from "axios";
 // import { connect } from "react-redux";
 import { NavLink } from 'react-router-dom'
 
@@ -59,16 +61,17 @@ const formikHOC = withFormik({
             .oneOf([yup.ref('password'), null], 'Passwords must match')
             .required("Password is required")
     }),
-    handleSubmit(values, { setStatus }) {
+    handleSubmit(values, { setStatus, props }) {
         const loginInfo = {
             'username': values.email,
             'password': values.password
         }
-
-        axiosWithAuth()
+        axios
             .post('https://chefportfolioo.herokuapp.com/api/auth/register', loginInfo)
             .then(response => {
                 console.log(response.data);
+                localStorage.setItem('token', response.data.password)
+                props.history.push("/onboarding")
             })
             .catch(err => {
                 console.log('SignUp Failed', err)

@@ -134,6 +134,9 @@
   width: 300px;
 }
 
+/* PUBLIC HOME COMPONENT */
+
+
 .homeContainer {
   position: relative;
   display: flex;
