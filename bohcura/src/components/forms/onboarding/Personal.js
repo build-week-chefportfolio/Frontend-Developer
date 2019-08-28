@@ -9,15 +9,99 @@ import mapStateToProps from "react-redux/es/connect/mapStateToProps";
 import mapDispatchToProps from "react-redux/es/connect/mapDispatchToProps"
 import { postChefs } from '../../../actions';
 
+import styled from 'styled-components';
+
+const Title = styled.div`
+    display: flex;
+ 
+`;
+
+const Div = styled.div`
+    display: block;
+    width: 80%;
+    margin-left: 10%;
+    text-align: left;
+    alignment-baseline: bottom;
+    padding: 5%;
+`;
+
+const Row = styled.div`
+    display: flex;
+    justify-content: space-between;
+    //margin: 1.6rem;
+    align-content: baseline;
+`;
+const H1 = styled.h1`
+    text-align: left;
+    //font-family: 'Raleway', sans-serif;
+    //font-weight: 600;
+    // color: #4d4d4d;
+    //font-size: 2.2em;
+`;
+const H2 = styled.h2`
+    font-size: 1.8rem;
+    padding-right: 2rem;
+    text-align: left;
+`;
+const H5 = styled.h5`
+    border-left: 2px solid gray;
+    line-height: 1.6rem;
+    padding-left: 1rem;
+    text-align: left;
+`;
+
+const Center = styled.div`
+    display: flex;
+    margin: auto;
+    text-align: center;
+`;
+
+const Input = styled.input`
+    width: 16%;
+    margin-right: 1rem;
+    height: 1rem;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid #c4c4c4;
+    text-align: center;
+`;
+
+const Paragraph = styled.div`
+    line-height: 3rem;
+    font-size: 1.2rem;
+`;
+
+const customSelect = styled.select`
+      &.Select.is-open > .Select-control .Select-arrow {
+    border-color: transparent transparent red;
+`;
+
+const customStyles = {
+  option: (provided, state) => ({
+    ...provided,
+    borderBottom: '1px dotted pink',
+    color: state.isSelected ? 'red' : 'blue',
+    padding: 20,
+    width: 200
+  }),
+  control: () => ({
+    // none of react-select's styles are passed to <Control />
+    width: 200,
+  }),
+  valueContainer: (provided) => ({
+    ...provided,
+    minHeight: '1px',
+    height: '40px',
+    paddingTop: '0',
+    paddingBottom: '0',
+    width: 300
+  }),
+};
+
 
 
 // set options for react-select
-const xpOptions = [
-  { value: '0 - 5', label: '0-5' },
-  { value: '6 - 10', label: '6-10' },
-  { value: '11 - 15', label: '11-15' },
-  { value: '16+', label: '16+' }
-];
 
 const relocateOptions = [
   { value: 'currently open', label: 'currently open' },
@@ -45,70 +129,57 @@ const Personal = props => {
   //   relocate: ''
   // });
 
-
-
-
-
   return (
-    <div className="reg-form">
-      <h1>Welcome to bohcura! Let's create your <br />professional profile real quick..</h1>
-      <h3>Tell us a little bit about y ou and how you'd like clients to reach you.</h3>
-      <Form>
-        <div>
-          <Field type="text" name="firstName" placeholder="first name" />
-          {touched.firstName && errors.firstName && <p>{errors.firstName}</p>}
-        </div>
+    <Div>
+      <div className="reg-form">
+        <H1>Welcome to bohcura! Let's create your <br/>professional profile real quick..</H1>
+        <h3>Tell us a little bit about you and how you'd like clients to reach you.</h3>
+        <Title>
+          <H2 className='rightBorder'>Step 1 of 2 <br /> About You</H2>
+          <H5>TIP: User your TAB key to move quickly<br />through the fields. SHIFT+TAB moves<br />you backwards.
+          </H5>
+        </Title>
+        <Paragraph>
+          <Form>
+            Hi. My name is {' '}
+            <Input type="text" name="firstName" placeholder="first name" style={{ marginRight: '1rem'}}/>
+            {touched.firstName && errors.firstName && <p>{errors.firstName}</p>} {' '}
+            <Input type="text" name="lastName" placeholder="last name"/>
+            {touched.lastName && errors.lastName && <p>{errors.lastName}</p>}, <br />
+            and I've been cooking professionally for
 
-        <div>
-          <Field type="text" name="lastName" placeholder="last name" />
-          {touched.lastName && errors.lastName && <p>{errors.lastName}</p>}
-        </div>
+            <Input type="number" name="yearsXP" placeholder="0" style={{ width: '4rem'}}/>
+            {errors.yearsXP && touched.yearsXP && <p>{errors.yearsXp}</p>} years(s). <br />
 
-        <div>
-          <label htmlFor="yearsXp" style={{ display: 'block' }}>
-            Years Experience
-          </label>
+            I'm located in <Input type="text" name="city" placeholder="city"/>
+            {touched.city && errors.city && <p>{errors.city}</p>}, <Input type="text" name="state" placeholder="state"/>
+            {touched.state && errors.state && <p>{errors.state}</p>}, and I'm <br />
 
-          <Select options={xpOptions} />
-          {errors.yearsXP && touched.yearsXP && <p>{errors.yearsXp}</p>}
-        </div>
 
-        <div>
-          <Field type="text" name="locationCity" placeholder="city" />
-          {touched.locationCity && errors.locationCity && <p>{errors.firstName}</p>}
-        </div>
+            <Select options={relocateOptions} styles={customStyles}/>
+            {errors.relocate && touched.relocate && <p>{errors.relocate}</p>} to considering to travel for culinary engagements.
+            <Center>
+              <button type='submit'>Submit!</button>
+            </Center>
 
-        <div>
-          <Field type="text" name="locationState" placeholder="state" />
-          {touched.locationState && errors.locationState && <p>{errors.locationState}</p>}
-        </div>
-
-        <div>
-          <label htmlFor="relocate" style={{ display: 'block' }}>
-            Willing to Relocate
-          </label>
-          <Select options={relocateOptions} />
-          {errors.relocate && touched.relocate && <p>{errors.relocate}</p>}
-        </div>
-        <button type='submit'>Submit!</button>
-        {/*<button type='submit' disabled={isSubmitting}>Submit!</button>*/}
-      </Form>
-
-      ))}
-    </div>
+            {/*<button type='submit' disabled={isSubmitting}>Submit!</button>*/}
+          </Form>
+        </Paragraph>
+      </div>
+    </Div>
   );
 };
 
 
 const FormikForm = withFormik({
-  mapPropsToValues({ firstName, lastName, yearsXp, locationCity, locationState, relocate }) {
+  mapPropsToValues({ firstName, lastName, yearsXP, city, state, relocate }) {
     return {
-      firstName: firstName || '',
-      lastName: lastName || '',
-      yearsXp: yearsXp || '',
-      locationCity: locationCity || '',
-      locationState: locationState || '',
-      relocate: relocate || ''
+      firstName: firstName || 'Jane',
+      lastName: lastName || 'Greatchef',
+      yearsXP: yearsXP || '10',
+      city: city || 'Sacramento',
+      state: state || 'California',
+      relocate: relocate || 'currently open'
     }
   },
 
