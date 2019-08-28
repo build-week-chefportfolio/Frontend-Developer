@@ -28,18 +28,21 @@ export const getChefs = () => {
 };
 
 export const getRecipes = () => {
-  return dispatch => {
-    dispatch({ type: FETCH_RECIPES_DATA_START });
-    axios
-      .get('https://chefportfolioo.herokuapp.com/api/recipe') //Need to update this API call when I get the full path
-      .then(res => {
-        console.log('Inside Action Recipes', res.data);
-        dispatch({ type: FETCH_RECIPES_DATA_SUCCESS, payload: res.data });
-      })
-      .catch(err => {
-        dispatch({ type: FETCH_RECIPES_DATA_FAILURE, payload: err.response });
-      });
-  };
+
+    return dispatch => {
+        dispatch({ type: FETCH_RECIPES_DATA_START });
+        axios
+            .get('https://chefportfolioo.herokuapp.com/api/recipe') //Need to update this API call when I get the full path
+            .then(res => {
+                // res.data.data
+                console.log(res);
+                dispatch({ type: FETCH_RECIPES_DATA_SUCCESS, payload: res.data });
+            })
+            .catch(err => {
+                dispatch({ type: FETCH_RECIPES_DATA_FAILURE, payload: err.response });
+            });
+    };
+
 };
 
 export const getRecipe = (id) => {
