@@ -13,18 +13,16 @@ import recipe from '../../assets/icons/recipe.png';
 const Card = styled.div`
     width: 344px;
     background-color: #f1f1f1;
-    margin: 2rem;
-`;
-
-const Column = styled.div`
-    
+    margin: 1.5rem 1.5rem 1.5rem 2.5rem;
+    padding-bottom: .1rem;
 `;
 
 const Row = styled.div`
     display: flex;
     justify-content: space-between;
+    margin: 1.6rem;
+    align-content: baseline;
 `;
-
 
 const ChefCard = ( props ) => {
   console.log(props);
@@ -55,20 +53,18 @@ const ChefCard = ( props ) => {
                   <img src={mail} alt="email icon"/>{props.email}
               </div>
             </div>
+            <div>
+              <Row>{props.relocate} to relocate</Row>
+              <Row><button>Hire Me</button></Row>
+            </div>
           </Row>
-
+      <hr style={{color:'#C0BEBE', margin:'14px'}}/>
         <Row>
-          <div className='leftCol'>
-            <a>
               <img src={recipe} alt="recipe book"/>
               Chef's Recipes
-            </a>
-          </div>
-          <div className='rightCol'>
+          {' '}
               <img src={profile} alt="profile icon"/>
               Chef's Profile
-              <br /><br />
-          </div>
         </Row>
     </Card>
 
