@@ -64,7 +64,6 @@ export const reducer = (state = initialState, action) => {
     }
 };
 
-
 /*
     recipes: [{
         id: '',

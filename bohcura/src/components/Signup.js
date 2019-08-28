@@ -6,19 +6,12 @@
 import React from 'react';
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
-// import { connect } from "react-redux";
 
 import { axiosWithAuth } from '../utilities/axiosWithAuth'
 
 import '../App.css';
 
 function SignUpMod({ errors, touched, status }) {
-    // const [user, setUser] = useState([]);
-    // useEffect(() => {
-    //     if (status) {
-    //         setUser([...user, status]);
-    //     }
-    // }, [status]);
 
     return (
         <div className="signUpContainer">
@@ -66,8 +59,8 @@ const formikHOC = withFormik({
 
         axiosWithAuth()
             .post('https://chefportfolioo.herokuapp.com/api/auth/register', loginInfo)
-            .then(response => {
-                console.log(response.data);
+            .then(res => {
+                localStorage.setItem('token', res.data.password)
             })
             .catch(err => {
                 console.log('SignUp Failed', err)

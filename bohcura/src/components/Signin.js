@@ -20,7 +20,7 @@ function SignIn({ errors, touched, status }) {
                     {touched.email && errors.email && <p>{errors.email}</p>}
                     <Field key="password" type="password" name="password" placeholder="    Password" className="signUpPassword"></Field>
                     {touched.password && errors.password && <p>{errors.password}</p>}
-                    
+
                     <button type="submit" className="signUpButton">Sign Up Now</button>
                 </Form>
             </div>
@@ -51,11 +51,13 @@ const formikHOC = withFormik({
 
         axiosWithAuth()
             .post('https://chefportfolioo.herokuapp.com/api/auth/login', loginInfo)
-            .then(response => {
-                console.log(response.data);
+            .then(res => {
+                localStorage.setItem('token', res.data.message)
+                console.log(res.data);
             })
             .catch(err => {
                 console.log('SignUp Failed', err)
+                localStorage.removeItem('token')
             })
     }
 })(SignIn);
