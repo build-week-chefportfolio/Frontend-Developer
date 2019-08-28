@@ -33,12 +33,7 @@ export const getRecipes = () => {
         axios
             .get('https://chefportfolioo.herokuapp.com/api/recipe') //Need to update this API call when I get the full path
             .then(res => {
-<<<<<<< HEAD
                 console.log('Inside Action Recipes', res.data);
-=======
-                // res.data.data
-                console.log(res);
->>>>>>> 022a681b60c9eadba7deb1e7c2d1d351b98ba7b4
                 dispatch({ type: FETCH_RECIPES_DATA_SUCCESS, payload: res.data });
             })
             .catch(err => {
