@@ -38,6 +38,3 @@ ReactDOM.render(
   rootElement
 
 );
-
-
-

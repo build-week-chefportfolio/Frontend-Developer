@@ -11,7 +11,7 @@ import axios from "axios";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 
-const Contact = ({ errors, touched, values, status }) => {
+const Contact = ({ errors, touched, status }) => {
     const [contact, setContact] = useState([]);
     console.log("testing touch", touched);
     useEffect(() => {
@@ -24,18 +24,21 @@ const Contact = ({ errors, touched, values, status }) => {
       <div className="personal-form">
         <h1>Contact</h1>
         <Form>
-          <Field type="text" name="name" placeholder="Name" />
-          {touched.name && errors.name && (
-            <p className="error">{errors.name}</p>
-          )}
 
-          <Field type="text" name="email" placeholder="Email" />
-          {touched.email && errors.email && <p className="error">{errors.email}</p>}
+            <div className="contactForm">
+                <Field className="contact-field" type="text" name="name" placeholder="Name" />
+                {touched.name && errors.name && (
+                    <p className="error">{errors.name}</p>
+                )}
 
-          <Field type="text" name="message" placeholder="Message" />
-          {touched.message && errors.message && <p className="error">{errors.Message}</p>}
+                <Field className="contact-field" type="text" name="email" placeholder="Email" />
+                {touched.email && errors.email && <p className="error">{errors.email}</p>}
 
-          <button type="submit">Submit</button>
+                <Field className="contact-field contact-message" type="text" name="message" placeholder="Message" />
+                {touched.message && errors.message && <p className="error">{errors.Message}</p>}
+
+                <button className="contact-field" type="submit">Submit</button>
+            </div>
 
         </Form>
       </div>

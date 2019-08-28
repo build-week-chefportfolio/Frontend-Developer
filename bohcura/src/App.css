@@ -114,3 +114,19 @@
   border: none;
   border-bottom: 2px solid grey;
 }
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-field {
+  margin: 10px 0;
+}
+
+.contact-message {
+  height: 100px;
+  width: 300px;
+}
