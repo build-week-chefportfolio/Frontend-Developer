@@ -9,8 +9,14 @@ import { BrowserRouter as Router, Route, Link, Switch, withRouter } from 'react-
 import { reducer } from './reducers';
 import './App.css';
 
+<<<<<<< HEAD
+import Contact from "./components/onboarding/Contact";
+import Confirmation from "./components/onboarding/Confirmation";
+import Personal from "./components/onboarding/Personal";
+=======
 import Confirmation from "./components/forms/onboarding/Confirmation";
 import Personal from "./components/forms/onboarding/Personal";
+>>>>>>> b4d379c355066578e41700cbd3ab7496beda68af
 import Signup from "./components/Signup";
 import SignIn from "./components/Signin";
 import HomePage from "./components/HomePage";
@@ -41,7 +47,11 @@ function App() {
       <Route path="/recipe/:id" component={Recipe} />
       <Signup />
       <Personal />
+<<<<<<< HEAD
+      <Contact />
+=======
 
+>>>>>>> b4d379c355066578e41700cbd3ab7496beda68af
       <Confirmation />
       <RecipesList />
       <ChefList />
@@ -62,4 +72,9 @@ ReactDOM.render(
   </Router>
   ,
   rootElement
+<<<<<<< HEAD
+
 );
+=======
+);
+>>>>>>> b4d379c355066578e41700cbd3ab7496beda68af
