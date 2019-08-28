@@ -43,13 +43,9 @@ const initialRecipes = [
   }
 ];
 
-const RecipeList = ({ storeRecipes, getRecipes }) => {
-  const [recipes, setRecipes] = useState([]);
-  console.log(recipes);
+const RecipeList = ({ storeRecipes: recipes, getRecipes }) => {
   useEffect(() => {
-    console.log('Effect run');
     getRecipes();
-    setRecipes(storeRecipes);
   }, []);
 
   return (
@@ -59,7 +55,7 @@ const RecipeList = ({ storeRecipes, getRecipes }) => {
       </div>
       <div className='right-content'>
         <ListDiv className='recipes-list'>
-          {recipes.map(recipe => <RecipeCard recipe={recipe} />)}
+          {recipes.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} />)}
         </ListDiv>
       </div>
     </RecipePage>
