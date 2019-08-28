@@ -7,6 +7,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
+import Personal from "./Personal"
+import Contact from "./Contact"
+import Success from "./Success"
 
 import { putChefs } from '../../../actions';
 import Personal from "./Personal";
@@ -44,7 +47,7 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { putChefs }(Onboarding))
+export default connect(mapStateToProps, { putChefs })(Onboarding)
 
 
 
