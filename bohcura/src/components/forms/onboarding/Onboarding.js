@@ -16,28 +16,29 @@ import { putChefs } from '../../../actions';
 
 
 const Onboarding = (props) => {
-    const [chef, setChef] = useState({ steps: 1 })
+    const [adjust, setAdjust] = useState({ steps: 1 })
+    const [chef, setChef] = useState({})
 
     switch (chef.steps) {
         case 1:
             console.log('Case One Activated', chef.steps)
             return (
-                <Personal state={chef} setState={setChef} />
+                <Personal state={adjust} setState={setAdjust} />
             );
         case 2:
             console.log('Case Two Activated', chef.steps)
             return (
-                <Contact state={chef} setState={setChef} />
+                <Contact state={adjust} setState={setAdjust} />
             )
         case 3:
             console.log('Case Three Activated', chef.steps)
             return (
-                <Confirmation state={chef} setState={setChef} />
+                <Confirmation state={adjust} setState={setAdjust} />
             )
         case 4:
             console.log('Case Four Activated', chef.steps)
             return (
-                <Confirmation state={chef} setState={setChef} />
+                <Confirmation state={adjust} setState={setAdjust} />
             )
         default:
             console.log('You are in Default and shouldnt be')

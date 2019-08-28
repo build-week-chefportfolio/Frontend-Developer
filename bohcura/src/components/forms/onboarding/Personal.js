@@ -109,25 +109,8 @@ const relocateOptions = [
 ];
 
 
-const Personal = props => {
+const Personal = ({ errors, touched, status }) => {
 
-  const {
-    // values,
-    touched,
-    errors,
-    // handleChange,
-    // handleBlur,
-    // handleSubmit,
-  } = props;
-
-  // const [{/*chef, postChef*/ }] = useState({
-  //   firstName: '',
-  //   lastName: '',
-  //   yearsXp: '',
-  //   city: '',
-  //   state: '',
-  //   relocate: ''
-  // });
 
   return (
     <Div>
@@ -142,19 +125,18 @@ const Personal = props => {
         <Paragraph>
           <Form>
             Hi. My name is {' '}
-            <Input type="text" name="firstName" placeholder="first name" style={{ marginRight: '1rem' }} />
+            <Field type="text" name="firstName" placeholder="first name" style={{ marginRight: '1rem' }} />
             {touched.firstName && errors.firstName && <p>{errors.firstName}</p>} {' '}
-            <Input type="text" name="lastName" placeholder="last name" />
+            <Field type="text" name="lastName" placeholder="last name" />
             {touched.lastName && errors.lastName && <p>{errors.lastName}</p>}, <br />
             and I've been cooking professionally for
 
-            <Input type="number" name="yearsXP" placeholder="0" style={{ width: '4rem' }} />
+            <Field type="number" name="yearsXP" placeholder="0" style={{ width: '4rem' }} />
             {errors.yearsXP && touched.yearsXP && <p>{errors.yearsXp}</p>} years(s). <br />
 
             I'm located in <Input type="text" name="city" placeholder="city" />
             {touched.city && errors.city && <p>{errors.city}</p>}, <Input type="text" name="state" placeholder="state" />
             {touched.state && errors.state && <p>{errors.state}</p>}, and I'm <br />
-
 
             <Select options={relocateOptions} styles={customStyles} />
             {errors.relocate && touched.relocate && <p>{errors.relocate}</p>} to considering to travel for culinary engagements.
@@ -174,44 +156,36 @@ const Personal = props => {
 const FormikForm = withFormik({
   mapPropsToValues({ firstName, lastName, yearsXP, city, state, relocate }) {
     return {
-      firstName: firstName || 'Jane',
-      lastName: lastName || 'Greatchef',
-      yearsXP: yearsXP || '10',
-      city: city || 'Sacramento',
-      state: state || 'California',
-      relocate: relocate || 'currently open'
+      firstName: firstName || '',
+      lastName: lastName || '',
+      yearsXP: yearsXP || '',
+      city: city || '',
+      state: state || '',
+      relocate: relocate || ''
     }
   },
 
-  validationSchema: Yup.object().shape({
+  // validationSchema: Yup.object().shape({
+  //   firstName: Yup.string()
+  //     .min(4, 'First name must be 4 characters or longer')
+  //     .required('First name is required'),
+  //   lastName: Yup.string()
+  //     .min(4, 'Last name must be 4 characters or longer')
+  //     .required('Last name is required'),
+  //   // yrsExperience: Yup.
+  //   locationCity: Yup.string()
+  //     .min(4, 'City name must be 4 characters or longer')
+  //     .required('City is required'),
+  //   locationState: Yup.string()
+  //     .min(4, 'State must be 4 characters or longer')
+  //     .required('State is required'),
+  //   // relocate:
+  // }),
 
-    firstName: Yup.string()
-      .min(4, 'First name must be 4 characters or longer')
-      .required('First name is required'),
-    lastName: Yup.string()
-      .min(4, 'Last name must be 4 characters or longer')
-      .required('Last name is required'),
-    // yrsExperience: Yup.
-    locationCity: Yup.string()
-      .min(4, 'City name must be 4 characters or longer')
-      .required('City is required'),
-    locationState: Yup.string()
-      .min(4, 'State must be 4 characters or longer')
-      .required('State is required'),
-    // relocate:
-  }),
-
-  handleSubmit: (values, { props, setSubmitting }) => {
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      setSubmitting(false);
-      props.setState(2)
-      console.log('Checks to see if the state was updated to 2', props.state)
-    }, 1000);
-  },
-
-
-
+  handleSubmit(values, { props, setSubmitting }) {
+    props.setState({ steps: 2 })
+    console.log('Checks to see if the state was updated to 2', props.state)
+  }
 })(Personal);
 
 export default FormikForm;

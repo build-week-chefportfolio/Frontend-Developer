@@ -12,13 +12,7 @@ import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 
 const Contact = ({ errors, touched, status }) => {
-  const [contact, setContact] = useState([]);
-  console.log("testing touch", touched);
-  useEffect(() => {
-    if (status) {
-      setContact([...contact, status]);
-    }
-  }, [status]);
+
 
   return (
     <div className="personal-form">
@@ -60,13 +54,9 @@ const contactPage = withFormik({
     message: Yup.string().required("Please type your message")
   }),
 
-  handleSubmit(values, { setStatus }) {
-    axios
-      .post("https://#", values)
-      .then(res => {
-        setStatus(res.data);
-      })
-      .catch(err => console.log(err.response));
+  handleSubmit(values, { props, setStatus }) {
+    props.setState({ steps: 3 })
+    console.log('Checks to see if the state was updated to 2', props.state)
   }
 })(Contact);
 
