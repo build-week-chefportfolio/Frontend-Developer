@@ -20,7 +20,6 @@ import Feed from "./components/feed/Feed";
 import Dashboard from "./components/Dashboard";
 import Profile from "./components/Profile";
 import Recipe from "./components/Recipe";
-import Personal from "./components/forms/onboarding/Personal";
 import RecipesList from './components/feed/RecipeList';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
