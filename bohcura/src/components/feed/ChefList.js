@@ -1,12 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getChefs } from '../../actions';
-import { Card, Icon, Divider } from 'semantic-ui-react'
+import styled from 'styled-components';
 
 import ChefCard from './ChefCard';
 
-const ChefList = ({ props }) => {
+const Page = styled.div`
+    padding: 5rem;
+`;
 
+const CardGroup = styled.div`
+    display: flex;
+    margin: auto;
+    justify-content: space-evenly;
+`;
+
+const Row = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
+const ChefList = ({ getChefs }) => {
+  const [chefs, setChefs] = useState([]);
 
   return (
     // {chefs.map(f => <div className="chef" key={props.id}>
@@ -15,17 +30,24 @@ const ChefList = ({ props }) => {
     //     <span className="email">{props.email}</span>
     //
     //   </div>)}
-    <div>
+    <Page>
+      <Row>
     <h1>Professional Chefs</h1>
       <div>search</div>
+      </Row>
     <div className="chefList">
-      <Card.Group>
+      <CardGroup>
         <ChefCard/>
         <ChefCard/>
         <ChefCard/>
-     </Card.Group>
+     </CardGroup>
+      <CardGroup>
+        <ChefCard/>
+        <ChefCard/>
+        <ChefCard/>
+      </CardGroup>
     </div>
-    </div>
+    </Page>
   )
 };
 

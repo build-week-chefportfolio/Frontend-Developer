@@ -25,6 +25,17 @@ const Row = styled.div`
     align-content: baseline;
 `;
 
+const Button = styled.button`
+    background: #C4C4C4;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 21px;
+    width: 7rem;
+    padding: .75rem 0;
+    color: black;
+    border: none;
+`;
+
 const ChefCard = ( props ) => {
   console.log(props);
   return(
@@ -56,7 +67,7 @@ const ChefCard = ( props ) => {
             </div>
             <div>
               <Row>{props.relocate} to relocate</Row>
-              <Row><button>Hire Me</button></Row>
+              <Row><Button>Hire Me</Button></Row>
             </div>
           </Row>
       <hr style={{color:'#C0BEBE', margin:'14px'}}/>

@@ -22,6 +22,7 @@ const Div = styled.div`
     margin-left: 10%;
     text-align: left;
     alignment-baseline: bottom;
+    padding: 5%;
 `;
 
 const Row = styled.div`
@@ -56,7 +57,7 @@ const Center = styled.div`
 `;
 
 const Input = styled.input`
-    width: auto;
+    width: 16%;
     margin-right: 1rem;
     height: 1rem;
     border: 0;
@@ -66,13 +67,41 @@ const Input = styled.input`
     text-align: center;
 `;
 
+const Paragraph = styled.div`
+    line-height: 3rem;
+    font-size: 1.2rem;
+`;
+
+const customSelect = styled.select`
+      &.Select.is-open > .Select-control .Select-arrow {
+    border-color: transparent transparent red;
+`;
+
+const customStyles = {
+  option: (provided, state) => ({
+    ...provided,
+    borderBottom: '1px dotted pink',
+    color: state.isSelected ? 'red' : 'blue',
+    padding: 20,
+    width: 200
+  }),
+  control: () => ({
+    // none of react-select's styles are passed to <Control />
+    width: 200,
+  }),
+  valueContainer: (provided) => ({
+    ...provided,
+    minHeight: '1px',
+    height: '40px',
+    paddingTop: '0',
+    paddingBottom: '0',
+    width: 300
+  }),
+};
+
+
+
 // set options for react-select
-const xpOptions = [
-  { value: '0 - 5', label: '0-5' },
-  { value: '6 - 10', label: '6-10' },
-  { value: '11 - 15', label: '11-15' },
-  { value: '16+', label: '16+' }
-];
 
 const relocateOptions = [
   { value: 'currently open', label: 'currently open' },
@@ -110,30 +139,32 @@ const Personal = props => {
           <H5>TIP: User your TAB key to move quickly<br />through the fields. SHIFT+TAB moves<br />you backwards.
           </H5>
         </Title>
-        <Form>
-          Hi. My name is {' '}
-          <Input type="text" name="firstName" placeholder="first name" style={{ marginRight: '1rem'}}/>
-          {touched.firstName && errors.firstName && <p>{errors.firstName}</p>} {' '}
-          <Input type="text" name="lastName" placeholder="last name"/>
-          {touched.lastName && errors.lastName && <p>{errors.lastName}</p>}, <br />
-          and I've been cooking professionally for
+        <Paragraph>
+          <Form>
+            Hi. My name is {' '}
+            <Input type="text" name="firstName" placeholder="first name" style={{ marginRight: '1rem'}}/>
+            {touched.firstName && errors.firstName && <p>{errors.firstName}</p>} {' '}
+            <Input type="text" name="lastName" placeholder="last name"/>
+            {touched.lastName && errors.lastName && <p>{errors.lastName}</p>}, <br />
+            and I've been cooking professionally for
 
-          {/*update XP */}
-          <Select options={xpOptions}/>
-          {errors.yearsXP && touched.yearsXP && <p>{errors.yearsXp}</p>} years(s). <br />
+            <Input type="number" name="yearsXP" placeholder="0" style={{ width: '4rem'}}/>
+            {errors.yearsXP && touched.yearsXP && <p>{errors.yearsXp}</p>} years(s). <br />
 
-          I'm located in <Input type="text" name="city" placeholder="city"/>
-          {touched.city && errors.city && <p>{errors.city}</p>}, <Input type="text" name="state" placeholder="state"/>
-          {touched.state && errors.state && <p>{errors.state}</p>}, and I'm <br />
-          <Select options={relocateOptions}/>
-          {errors.relocate && touched.relocate && <p>{errors.relocate}</p>} to considering to travel for culinary engagements.
-          <Center>
-            <button type='submit'>Submit!</button>
-          </Center>
+            I'm located in <Input type="text" name="city" placeholder="city"/>
+            {touched.city && errors.city && <p>{errors.city}</p>}, <Input type="text" name="state" placeholder="state"/>
+            {touched.state && errors.state && <p>{errors.state}</p>}, and I'm <br />
 
 
-          {/*<button type='submit' disabled={isSubmitting}>Submit!</button>*/}
-        </Form>
+            <Select options={relocateOptions} styles={customStyles}/>
+            {errors.relocate && touched.relocate && <p>{errors.relocate}</p>} to considering to travel for culinary engagements.
+            <Center>
+              <button type='submit'>Submit!</button>
+            </Center>
+
+            {/*<button type='submit' disabled={isSubmitting}>Submit!</button>*/}
+          </Form>
+        </Paragraph>
       </div>
     </Div>
   );
