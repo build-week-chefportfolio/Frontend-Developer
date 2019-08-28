@@ -5,11 +5,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
-<<<<<<< HEAD
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-=======
 import { BrowserRouter as Router, Route, Link, Switch, withRouter } from 'react-router-dom';
->>>>>>> 942237bb3667cc85bdf6ab48a1a7179db9b73652
 import { reducer } from './reducers';
 import './App.css';
 
