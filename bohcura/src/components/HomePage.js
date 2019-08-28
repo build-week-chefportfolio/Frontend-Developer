@@ -2,11 +2,12 @@ import React from 'react';
 import chefIMG from "../assets/zahir-namane-YTsEZrHqDq0-unsplash.jpg"
 import recipeIMG from "../assets/christine-siracusa-vzX2rgUbQXM-unsplash.jpg"
 import '../App.css';
-
+//get navlinks on the imgs
 export default function HomePage() {
     return (
         <div className="homeContainer">
             <div className="homeChefContainer">
+
                 <img src={chefIMG} alt="chef" />
                 <p>Ricksum Hipsum Ricksum Hipsum Ricksum Hipsum Ricksum Hipsum Ricksum Hipsum Ricksum Hipsum Ricksum Hipsum Ricksum Hipsum Ricksum Hipsum Ricksum Hipsum Ricksum Hipsum Ricksum Hipsum</p>
                 <div className="chefButtons">
