@@ -5,7 +5,11 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
+<<<<<<< HEAD
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+=======
+import { BrowserRouter as Router, Route, Link, Switch, withRouter } from 'react-router-dom';
+>>>>>>> 942237bb3667cc85bdf6ab48a1a7179db9b73652
 import { reducer } from './reducers';
 import './App.css';
 
@@ -31,13 +35,15 @@ function App() {
     <div className="App">
 
       <Nav />
-      <Route exact path="/" component={HomePage} />
-      <Route path="/signup" component={Onboarding} />
-      <Route path="/signin" component={SignIn} />
-      <Route path="/feed" component={Feed} />
-      <Route path="/profile/:id" component={Profile} />
-      <Route path="/dashboard" component={Dashboard} />
-      <Route path="/recipe/:id" component={Recipe} />
+      <Router>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/signup" component={Onboarding} />
+        <Route path="/signin" component={SignIn} />
+        <Route path="/feed" component={Feed} />
+        <Route path="/profile/:id" component={Profile} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/recipe/:id" component={Recipe} />
+      </Router>
 
       <Signup />
       <Personal />
@@ -49,13 +55,13 @@ function App() {
   )
 }
 
+const AppWithRouter = withRouter(App);
+
 const rootElement = document.getElementById('root');
 
 ReactDOM.render(
-  <Router>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </Router>,
+  <Provider store={store}>
+    <AppWithRouter />
+  </Provider>,
   rootElement
 );
