@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Link, Switch, withRouter } from 'react-
 import { reducer } from './reducers';
 import './App.css';
 
+
 import Confirmation from "./components/forms/onboarding/Confirmation";
 import Personal from "./components/forms/onboarding/Personal";
 import Signup from "./components/Signup";
@@ -22,6 +23,7 @@ import Profile from "./components/Profile";
 import Recipe from "./components/Recipe";
 import RecipesList from './components/feed/RecipeList';
 import ChefList from "./components/feed/ChefList";
+import Contact from "./components/forms/onboarding/Contact";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -33,18 +35,19 @@ function App() {
 
       <Nav />
       <Route exact path="/" component={HomePage} />
-      <Route path="/signup" component={Onboarding} />
+      <Route path="/signup" component={Signup} />
       <Route path="/signin" component={SignIn} />
       <Route path="/feed" component={Feed} />
       <Route path="/profile/:id" component={Profile} />
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/recipe/:id" component={Recipe} />
-      <Signup />
+      {/* <Signup />
       <Personal />
+      <Contact />
       <Confirmation />
       <RecipesList />
       <ChefList />
-      <Signup />
+      <Signup /> */}
     </div>
   )
 }
