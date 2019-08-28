@@ -4,11 +4,13 @@ import { getChefs } from '../../actions';
 import styled from 'styled-components';
 
 import ChefCard from './ChefCard';
+import RecipeCard from "./RecipeCard";
+// import mapStateToProps from "react-redux/es/connect/mapStateToProps";
 
 // styled components
 
 
-const Chef = (props) => {
+const ChefList = (props) => {
   useEffect(() => {
     props.getChefs();
     console.log("UseEffect has run!", props.chefs)
@@ -31,4 +33,4 @@ const mapStateToProps = state => {
   }
 };
 
-export default connect(mapStateToProps, { getChefs })(Chef);
+export default connect(mapStateToProps, { getChefs })(ChefList);

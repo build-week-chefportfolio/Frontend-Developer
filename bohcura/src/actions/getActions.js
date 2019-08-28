@@ -28,6 +28,7 @@ export const getChefs = () => {
 };
 
 export const getRecipes = () => {
+
     return dispatch => {
         dispatch({ type: FETCH_RECIPES_DATA_START });
         axios
@@ -40,6 +41,7 @@ export const getRecipes = () => {
                 dispatch({ type: FETCH_RECIPES_DATA_FAILURE, payload: err.response });
             });
     };
+
 };
 
 export const getRecipe = (id) => {
