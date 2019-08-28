@@ -10,6 +10,7 @@ import phone from '../../assets/icons/phone.png';
 import profile from '../../assets/icons/profile.png';
 import recipe from '../../assets/icons/recipe.png';
 
+// styled components
 
 const Card = styled.div`
     width: 344px;
@@ -21,8 +22,8 @@ const Card = styled.div`
 const Row = styled.div`
     display: flex;
     justify-content: space-between;
-    margin: 1.6rem;
-    align-content: baseline;
+    margin: .6rem;
+    align-items: center;
 `;
 
 const Button = styled.button`
@@ -36,35 +37,36 @@ const Button = styled.button`
     border: none;
 `;
 
+const Left = styled.div`
+    text-align: left;
+`;
+
 const ChefCard = ( props ) => {
   console.log(props);
   return(
     <Card>
        <img src={avatar} alt={'avatar'} />
         <Row>
+          <img src={chef} alt='chef icon'/>
           <div>
-            <img src={chef} alt='chef icon'/>
-          </div>
-          <div>
-            {props.name}<br/>Professional cook for {props.yearsXP} years
+            <h5>{props.firstName}Salty{" "}{props.lastName}McSpud</h5>
+            Professional cook for {props.yearsXP} years
           </div>
         </Row>
-
         <hr style={{color:'#C0BEBE', margin:'14px'}}/>
-
           <Row>
-            <div className='leftCol'>
+            <Left>
               <div className='chefRow'>
                   <img src={location} alt="map pin" />
                     {props.city}City,{props.state} State
               </div>
               <div className='chefRow'>
-                  <img src={phone} alt="phone icon"/>{props.phone}(555)999-9999
+                  <img src={phone} alt="phone icon"/>{props.phone} (555)999-9999
               </div>
               <div className='chefRow'>
-                  <img src={mail} alt="email icon"/>{props.email}bill@microsoft.com
+                  <img src={mail} alt="email icon"/>{props.email} salty@mail.com
               </div>
-            </div>
+            </Left>
             <div>
               <Row>{props.relocate} to relocate</Row>
               <Row><Button>Hire Me</Button></Row>
