@@ -31,15 +31,13 @@ function App() {
     <div className="App">
 
       <Nav />
-      <Router>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/signup" component={Onboarding} />
-        <Route path="/signin" component={SignIn} />
-        <Route path="/feed" component={Feed} />
-        <Route path="/profile/:id" component={Profile} />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/recipe/:id" component={Recipe} />
-      </Router>
+      <Route exact path="/" component={HomePage} />
+      <Route path="/signup" component={Onboarding} />
+      <Route path="/signin" component={SignIn} />
+      <Route path="/feed" component={Feed} />
+      <Route path="/profile/:id" component={Profile} />
+      <Route path="/dashboard" component={Dashboard} />
+      <Route path="/recipe/:id" component={Recipe} />
 
       <Signup />
       <Personal />
@@ -56,8 +54,11 @@ const AppWithRouter = withRouter(App);
 const rootElement = document.getElementById('root');
 
 ReactDOM.render(
-  <Provider store={store}>
-    <AppWithRouter />
-  </Provider>,
+  <Router>
+    <Provider store={store}>
+      <AppWithRouter />
+    </Provider>
+  </Router>
+  ,
   rootElement
 );
