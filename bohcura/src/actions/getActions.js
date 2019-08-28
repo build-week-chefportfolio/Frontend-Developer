@@ -13,22 +13,22 @@ export const FETCH_RECIPES_DATA_SUCCESS = 'FETCH_RECIPES_DATA_SUCCESS';
 export const FETCH_RECIPES_DATA_FAILURE = 'FETCH_RECIPES_DATA_FAILURE';
 
 export const getChefs = () => {
-    return dispatch => {
-        dispatch({ type: FETCH_CHEF_DATA_START });
-        axios
-            .get('https://chefportfolioo.herokuapp.com/api/chefs') //Need to update this API call when I get the full path
-            .then(res => {
-                // res.data.data
-                console.log(res);
-                dispatch({ type: FETCH_CHEF_DATA_SUCCESS, payload: res.data.sets });
-            })
-            .catch(err => {
-                dispatch({ type: FETCH_CHEF_DATA_FAILURE, payload: err.response });
-            });
-    };
+  return dispatch => {
+    dispatch({ type: FETCH_CHEF_DATA_START });
+    axios
+      .get('https://chefportfolioo.herokuapp.com/api/chefs') //Need to update this API call when I get the full path
+      .then(res => {
+        console.log('Inside Action Chef', res.data);
+        dispatch({ type: FETCH_CHEF_DATA_SUCCESS, payload: res.data });
+      })
+      .catch(err => {
+        dispatch({ type: FETCH_CHEF_DATA_FAILURE, payload: err.response });
+      });
+  };
 };
 
 export const getRecipes = () => {
+
     return dispatch => {
         dispatch({ type: FETCH_RECIPES_DATA_START });
         axios
@@ -42,6 +42,7 @@ export const getRecipes = () => {
                 dispatch({ type: FETCH_RECIPES_DATA_FAILURE, payload: err.response });
             });
     };
+
 };
 
 export const getRecipe = (id) => {
