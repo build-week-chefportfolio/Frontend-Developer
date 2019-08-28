@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import Personal from "./Personal"
 import Contact from "./Contact"
 import Success from "./Success"
+import Confirmation from "./Confirmation"
 
 import { putChefs } from '../../../actions';
 
@@ -31,7 +32,7 @@ const Onboarding = (props) => {
         case 3:
             console.log('Case Three Activated', chef.steps)
             return (
-                <Success state={chef} setState={setChef} />
+                <Confirmation state={chef} setState={setChef} />
             )
         default:
             console.log('You are in Default and shouldnt be')
@@ -41,7 +42,7 @@ const Onboarding = (props) => {
 
 const mapStateToProps = state => {
     return {
-
+        chef: state.chef
     }
 }
 

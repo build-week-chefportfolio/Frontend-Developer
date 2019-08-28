@@ -66,8 +66,6 @@ const formikHOC = withFormik({
             .catch(err => {
                 console.log('SignUp Failed', err)
             })
-
-
     }
 })(SignUpMod);
 

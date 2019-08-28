@@ -22,7 +22,8 @@ import Profile from "./components/Profile";
 import Recipe from "./components/Recipe";
 import RecipesList from './components/feed/RecipeList';
 import TestPost from './components/TestPost';
-
+import ChefList from "./components/feed/ChefList";
+import Contact from "./components/forms/onboarding/Contact";
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
@@ -42,9 +43,12 @@ function App() {
 
       <TestPost />
       <SignIn />
+      <Contact />
+      <Signup />
       <Personal />
       <Confirmation />
       <RecipesList />
+      <ChefList />
       <Signup />
     </div>
   )
