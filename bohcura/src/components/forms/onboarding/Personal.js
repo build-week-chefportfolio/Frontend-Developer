@@ -52,7 +52,7 @@ const Personal = props => {
   return (
     <div className="reg-form">
       <h1>Welcome to bohcura! Let's create your <br />professional profile real quick..</h1>
-      <h3>Tell us a little bit about y ou and how you'd like clients to reach you.</h3>
+      <h3>Tell us a little bit about you and how you'd like clients to reach you.</h3>
       <Form>
         <div>
           <Field type="text" name="firstName" placeholder="first name" />
@@ -65,7 +65,7 @@ const Personal = props => {
         </div>
 
         <div>
-          <label htmlFor="yearsXp" style={{ display: 'block' }}>
+          <label htmlFor="yearsXP" style={{ display: 'block' }}>
             Years Experience
           </label>
 
@@ -74,13 +74,13 @@ const Personal = props => {
         </div>
 
         <div>
-          <Field type="text" name="locationCity" placeholder="city" />
-          {touched.locationCity && errors.locationCity && <p>{errors.firstName}</p>}
+          <Field type="text" name="city" placeholder="city" />
+          {touched.city && errors.city && <p>{errors.city}</p>}
         </div>
 
         <div>
-          <Field type="text" name="locationState" placeholder="state" />
-          {touched.locationState && errors.locationState && <p>{errors.locationState}</p>}
+          <Field type="text" name="state" placeholder="state" />
+          {touched.state && errors.state && <p>{errors.state}</p>}
         </div>
 
         <div>
@@ -93,21 +93,19 @@ const Personal = props => {
         <button type='submit'>Submit!</button>
         {/*<button type='submit' disabled={isSubmitting}>Submit!</button>*/}
       </Form>
-
-      ))}
     </div>
   );
 };
 
 
 const FormikForm = withFormik({
-  mapPropsToValues({ firstName, lastName, yearsXp, locationCity, locationState, relocate }) {
+  mapPropsToValues({ firstName, lastName, yearsXP, city, state, relocate }) {
     return {
       firstName: firstName || '',
       lastName: lastName || '',
-      yearsXp: yearsXp || '',
-      locationCity: locationCity || '',
-      locationState: locationState || '',
+      yearsXP: yearsXP || '',
+      city: city || '',
+      state: state || '',
       relocate: relocate || ''
     }
   },
