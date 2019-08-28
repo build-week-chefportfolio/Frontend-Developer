@@ -50,7 +50,7 @@ export const getRecipe = (id) => {
             .get(`https://chefportfolioo.herokuapp.com/api/recipe/${id}`)
             .then(res => {
                 console.log(res);
-                dispatch({ type: FETCH_RECIPE_DATA_SUCCESS, playload: res.data });
+                dispatch({ type: FETCH_RECIPE_DATA_SUCCESS, payload: res.data });
             })
             .catch(e => {
                 console.error(e);

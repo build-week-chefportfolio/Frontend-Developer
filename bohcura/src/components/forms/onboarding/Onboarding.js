@@ -34,6 +34,11 @@ const Onboarding = (props) => {
             return (
                 <Confirmation state={chef} setState={setChef} />
             )
+        case 4:
+            console.log('Case Four Activated', chef.steps)
+            return (
+                <Confirmation state={chef} setState={setChef} />
+            )
         default:
             console.log('You are in Default and shouldnt be')
             return (<div>SOMETHING IS WRONG</div>);

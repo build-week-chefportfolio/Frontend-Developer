@@ -20,7 +20,7 @@ const devRecipe = {
     preparation: ['Roll Dough', 'Place on Pizza Pan', 'Add Tomato Sauce', 'Add Cheese', 'Add Pepperoni', 'Bake on 350 for 20 Min.']
 };
 
-const DEV_MODE = 1;
+const DEV_MODE = 0;
 
 const RecipeDiv = styled.div`
   display: flex;
@@ -66,30 +66,23 @@ const RecipeDiv = styled.div`
 `;
 
 function Recipe({ recipe, getRecipe, match: { params: { id } } }) {
-
+    console.log('Recipe: ', recipe);
     useEffect(() => {
         getRecipe(id);
     }, []);
 
     const convertCourse = course => {
         switch (course) {
-            case 1:
-                return 'First Course';
-            case 2:
-                return 'Second Course';
-            case 3:
-                return 'Third Course';
-            case 4:
-                return 'Fourth Course';
-            case 5:
-                return 'Fifth Course';
-            default:
-                return 'First Course';
+            case 1: return 'First Course';
+            case 2: return 'Second Course';
+            case 3: return 'Third Course';
+            case 4: return 'Fourth Course';
+            case 5: return 'Fifth Course';
+            default: return 'First Course';
         }
     };
 
-    if (DEV_MODE) recipe = devRecipe;
-    else if (!recipe.hasOwnProperty('name')) return <div>Loading...</div>;
+    if (!recipe || !recipe.hasOwnProperty('RecipeName')) return <div>Loading...</div>;
 
     return (
         <RecipeDiv className='recipe-page'>
@@ -131,13 +124,13 @@ function Recipe({ recipe, getRecipe, match: { params: { id } } }) {
                     <div className='ingredients'>
                         <h2 className='table-head'>Ingredients</h2>
                         <ul>
-                            {recipe.ingredients.map(i => <li>{i}</li>)}
+                            {recipe.ingredients && recipe.ingredients.map(i => <li>{i}</li>)}
                         </ul>
                     </div>
                     <div className='preparation'>
                         <h2 className='table-head'>Preparation</h2>
                         <ul>
-                            {recipe.preparation.map(p => <li>{p}</li>)}
+                            {recipe.preparation && recipe.preparation.map(p => <li>{p}</li>)}
                         </ul>
                     </div>
                 </div>
@@ -147,8 +140,9 @@ function Recipe({ recipe, getRecipe, match: { params: { id } } }) {
 }
 
 const mapStateToProps = state => {
+    let recipeObject = DEV_MODE ? devRecipe : state.recipe;
     return {
-        recipe: state.recipe
+        recipe: recipeObject
     };
 };
 
