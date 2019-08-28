@@ -43,7 +43,7 @@ function App() {
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/recipe/:id" component={Recipe} />
       <Recipe match={{params: {id: 1}}} />
-      <RecipesList />
+      <RecipeList />
     </div>
   )
 }
