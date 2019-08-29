@@ -105,7 +105,8 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                error: ''
+                error: '',
+                recipes: [...state.recipes, action.payload]
             };
         case actions.UPDATES_CURRENT_RECIPE_DATA_FAILURE:
             return {

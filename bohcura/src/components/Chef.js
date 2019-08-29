@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getChef } from '../actions';
 import { Header, Image, Table } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import RecipeAdd from "./forms/RecipeAdd";
 
 import styled from 'styled-components';
 
@@ -13,10 +14,18 @@ import styled from 'styled-components';
 
 const Chef = ( { chef, getChef, match: { params: { id } } } ) => {
   console.log(chef);
+  const [isAdding, setIsAdding] = useState(false);
   useEffect(() => {
     getChef(id);
     console.log("Chef data has been received!", chef)
   }, []);
+
+  const toggleIsAdding = () => setIsAdding(!isAdding);
+
+  const addRecipe = e => {
+    e.preventDefault();
+    toggleIsAdding();
+  };
 
   const convertCourse = course => {
     switch(course) {
@@ -58,8 +67,10 @@ const Chef = ( { chef, getChef, match: { params: { id } } } ) => {
         <h2>My Recipes</h2>
       </div>
 
-      <div className='recipes-container'>
-        <Table basic='very' celled collapsing>
+      {!isAdding ? (
+        <div className='recipes-container'>
+          <button onClick={addRecipe}>Add Recipe</button>
+          <Table basic='very' celled collapsing>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>Recipe</Table.HeaderCell>
@@ -86,7 +97,10 @@ const Chef = ( { chef, getChef, match: { params: { id } } } ) => {
             })}
           </Table.Body>
         </Table>
-      </div>
+        </div>
+      ) : (
+          <RecipeAdd toggle={toggleIsAdding} />
+      )}
 
     </div>
   )

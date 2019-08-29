@@ -102,10 +102,10 @@ function Recipe({ recipe, getRecipe, match: { params: { id } } }) {
                             {/* Chef Icon goes here */}
                         </div>
                         <div className='name-title'>
-                            <Link to={`/chefs/${recipe.chefs[0].id}`}>
+                            {recipe.chefs && recipe.chefs.length ? (<Link to={`/chefs/${recipe.chefs[0].id}`}>
                                 <h3>{}</h3>
                                 <h3>{recipe.chefLastName}</h3>
-                            </Link>
+                            </Link>) : null}
                         </div>
                     </div>
                 </div>
