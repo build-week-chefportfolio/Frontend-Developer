@@ -7,26 +7,14 @@ import '../App.css';
 export default function HomePage() {
     return (
         <div className="homeContainer">
+            <h1>Welcome to Bohcura, where professional chefs connect with culinary enthusiasts.</h1>
             <div className="homeChefContainer">
-
                 <img src={chefIMG} alt="chef" />
-                <p>Ricksum Hipsum Ricksum Hipsum Ricksum Hipsum Ricksum Hipsum Ricksum Hipsum Ricksum Hipsum Ricksum Hipsum Ricksum Hipsum Ricksum Hipsum Ricksum Hipsum Ricksum Hipsum Ricksum Hipsum</p>
-                <div className="chefButtons">
-                    <NavLink to="/signup"><button>Sign Up</button></NavLink>
-                    <NavLink to="/chefs"><button>View Chefs</button></NavLink>
-                </div>
-            </div>
-            <div className="homeCRText">
-                <h1>{"chefs"}</h1>
-                <h1>{"&"}</h1>
-                <h1>{"recipes"}</h1>
+                <h2>Chefs</h2>
             </div>
             <div className="homeRecipeContainer">
                 <img src={recipeIMG} alt="chef" />
-                <p>Lickity Splitsum Lickity Splitsum Lickity Splitsum Lickity Splitsum Lickity Splitsum Lickity Splitsum Lickity Splitsum Lickity Splitsum Lickity Splitsum Lickity Splitsum Lickity Splitsum Lickity Splitsum</p>
-                <div className="recipeButtons">
-                <NavLink to="/recipes"><button>View Recipes</button></NavLink>
-                </div>
+                <h2>Recipes</h2>
             </div>
         </div>
     )
