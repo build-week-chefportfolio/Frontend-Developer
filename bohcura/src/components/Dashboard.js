@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getChef } from '../actions';
+import { getChef, deleteRecipe } from '../actions';
 import { Header, Image, Table } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import RecipeAdd from "./forms/RecipeAdd";
@@ -10,7 +10,7 @@ import styled from 'styled-components';
 // How are we routing to the page?  Just filtering by id?  Or using an action?
 
 
-const Chef = ({ chef, getChef, match: { params: { id } } }) => {
+const Chef = ({ chef, getChef, deleteRecipe, match: { params: { id } } }) => {
     console.log(chef);
     const [isAdding, setIsAdding] = useState(false);
     useEffect(() => {
@@ -19,6 +19,12 @@ const Chef = ({ chef, getChef, match: { params: { id } } }) => {
         getChef(id);
         console.log("Chef data has been received!", chef)
     }, []);
+
+
+    const deleteItem = (id) => {
+        console.log('THIS IS INSIDE deleteItem', id)
+        deleteRecipe(id)
+    }
 
     const toggleIsAdding = () => setIsAdding(!isAdding);
 
@@ -92,6 +98,9 @@ const Chef = ({ chef, getChef, match: { params: { id } } }) => {
                                         <Table.Cell>
                                             {convertCourse(recipe.course)}
                                         </Table.Cell>
+                                        <Table.Cell>
+                                            <button onClick={() => deleteItem(recipe.id)}>DELETE</button>
+                                        </Table.Cell>
                                     </Table.Row>
                                 );
                             })}
@@ -112,4 +121,4 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps, { getChef })(Chef);
+export default connect(mapStateToProps, { getChef, deleteRecipe })(Chef);
