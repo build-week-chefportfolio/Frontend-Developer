@@ -5,7 +5,7 @@ import Personal from "./Personal"
 import Contact from "./Contact"
 import Confirmation from "./Confirmation"
 
-import { putChefs } from '../../../actions';
+import { putChefs, postChef } from '../../../actions';
 
 
 const Onboarding = (props) => {
@@ -25,11 +25,15 @@ const Onboarding = (props) => {
                 <Contact setState={setAdjust} setChef={setChef} chef={chef} />
             )
         case 3:
-            console.log('Case Four Activated', adjust.steps)
-            console.log('Object inside of Contact:', props.chef)
+            console.log('Case Three Activated', adjust.steps)
             return (
-                <Confirmation setState={setAdjust} setChef={setChef} chef={chef} />
+                <Confirmation setState={setAdjust} chef={chef} setChef={setChef} />
             )
+        case 4:
+            // post the chef
+          console.log('Case Four Activated', adjust.steps);
+            props.postChef(chef);
+            return  (<div>Redirecting...</div>);
         default:
             console.log('You are in Default and shouldnt be')
             return (<div>SOMETHING IS WRONG</div>);
@@ -42,7 +46,7 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { putChefs })(Onboarding)
+export default connect(mapStateToProps, { putChefs, postChef })(Onboarding)
 
 
 

@@ -5,14 +5,13 @@
 // Chris York
 
 import React, { useState } from 'react';
-// we'll need context API to keep state between slides
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import Select from 'react-select';
 import Nav from '../../Nav';
 import styled from 'styled-components';
 
-import { NavLink } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 const phoneValidation = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
 
@@ -123,9 +122,10 @@ const PageDiv = styled.div`
 `;
 
 
-const ProfileForm = props => {
+const ProfileForm = ({ values, isDisabled, errors, touched, toggle, chef }) => {
+  console.log("IS THIS CHEF STILL", chef)
+
   // Get values from store for previous values
-  let values = props.values; // The previous values passed through store
   const [inputs, setInputs] = useState({
     firstName: values.firstName || chef.firstName || '',
     lastName: values.lastName || chef.lastName || '',
@@ -137,6 +137,7 @@ const ProfileForm = props => {
     relocate: values.relocate || chef.relocate || 'Currently open',
     contact: values.contact || chef.contact || 'both'
   });
+
 
   const selectChange = selectedOption => {
     setInputs({ ...inputs, relocate: selectedOption });
@@ -162,7 +163,7 @@ const ProfileForm = props => {
             <div className='dialogue'>
               <div className='dialogue-headers'>
                 <h1 className='success-header'>
-                  Awesome, Chef {inputs.firstName}!<br />
+                  Awesome, Chef {'inputs.firstName'}!<br />
                   Here's how things look..
                 </h1>
                 <h4 className='success-subheader'>
@@ -178,9 +179,9 @@ const ProfileForm = props => {
                 </div>
               </div>
             </div>
-            <NavLink to="/"><button type='submit' disabled={props.isSubmitting} className='profile-submit'>
+            <button type='submit' className='profile-submit'>
               Looks good Ship it!
-            </button></NavLink>
+            </button>
           </div>
           <div className='right-page'>
             <h5 className='preview-note'>Your Chef Card on the page of Chefs will look like this:</h5>
@@ -195,13 +196,13 @@ const ProfileForm = props => {
                 <div className='title-container'>
                   <div className='title-name'>
                     <span className='title'>Chef</span>
-                    <Field type='text' name='firstName' placeholder={props.chef.firstName} onChange={handleChange} value={inputs.firstName} onLoad={setWidth} />
-                    <Field type='text' name='lastName' placeholder='Lastname' onChange={handleChange} value={inputs.lastName} onLoad={setWidth} />
+                    <Field type='text' name='firstName' placeholder={chef.firstName} />
+                    <Field type='text' name='lastName' placeholder={chef.lastName} />
                   </div>
                   <div className='experience'>
                     <span className='experience-phrase'>
                       Professional cook for
-                      <Field type='number' name='yearsXP' placeholder={0} onChange={handleChange} value={inputs.yearsXP} />
+                      <Field type='number' name='yearsexp' placeholder={chef.yearsexp} />
                       years
                     </span>
                   </div>
@@ -213,24 +214,29 @@ const ProfileForm = props => {
                   <div className='info-location'>
                     {/* Location Image */}
                     <div className='info-location-container'>
-                      <Field type='text' name='city' placeholder='City' onChange={handleChange} value={inputs.city} />
-                      <Field type='text' name='state' placeholder='State' onChange={handleChange} value={inputs.state} />
+                      <Field type='text' name='city' placeholder={values.city} />
+                      <Field type='text' name='state' placeholder={chef.state} />
                     </div>
                   </div>
                   <div className='info-phone'>
                     {/* Phone Image */}
-                    <Field type='text' name='phone' placeholder='888-888-8888' onChange={handleChange} value={inputs.phone} />
+                    <Field type='text' name='telephone' placeholder={chef.telephone} />
                   </div>
                   <div className='info-email'>
-                    <Field type='email' name='email' placeholder='example@domain.com' onChange={handleChange} value={inputs.email} />
+                    <Field type='email' name='email' placeholder={chef.email} />
                   </div>
                 </div>
                 <div className='info-right'>
                   <div className='relocate-container'>
-                    <Select name='relocate' value={inputs.relocate} options={relocateOptions} onChange={selectChange} />
+                    {/*<Select name='relocate' value={inputs.relocate} options={relocateOptions} onChange={selectChange} />*/}
+                    <select name="relocate" value={chef.relocate} >
+                      <option value={chef.relocate} label={chef.relocate} />
+                      {(chef.relocate === "currently open") ? <option value="not available" label="not available" /> :
+                        <option value="currently open" label="currently open" />}
+                    </select>
                     <span className='relocate-phrase'>
                       to travel for culinary projects.
-                    </span>
+                    </span>Select
                   </div>
                 </div>
               </div>
@@ -243,56 +249,61 @@ const ProfileForm = props => {
 };
 
 const FormikForm = withFormik({
-  mapPropsToValues({ firstName, lastName, yearsXP, city, state, phone, email, relocate, contact }) {
+  mapPropsToValues({ firstName, lastName, yearsexp, city, state, telephone, email, relocate, contact, chef }) {
     return {
-      firstName: firstName || '',
-      lastName: lastName || '',
-      yearsXP: yearsXP || '',
-      city: city || '',
-      state: state || '',
-      phone: phone || '',
-      email: email || '',
-      relocate: relocate || '',
-      contact: contact || 'both'
+      firstName: firstName || chef.firstName,
+      lastName: lastName || chef.lastName,
+      yearsexp: yearsexp || chef.yearsexp,
+      city: city || chef.city,
+      state: state || chef.state,
+      telephone: telephone || chef.telephone,
+      email: email || chef.email,
+      relocate: relocate || chef.relocate,
+      contact: contact || chef.contact
     };
   },
-  validationSchema: Yup.object().shape({
-    firstName: Yup.string()
-      .min(2, 'Name must be at least two characters in length')
-      .required('You must enter a first name'),
-    lastName: Yup.string()
-      .min(2, 'Name must be at least two characters in length')
-      .required('You must enter a last name'),
-    yearsXP: Yup.string(),
-    city: Yup.string()
-      .required('You must enter a city'),
-    state: Yup.string()
-      .required('You must enter a state'),
-    phone: Yup.string().phone()
-      .required('You must enter a phone number'),
-    email: Yup.string().email()
-      .required('You must enter an email'),
-    relocate: Yup.string(),
-    contact: Yup.string(),
-  }),
+  // validationSchema: Yup.object().shape({
+  //   firstName: Yup.string()
+  //     .min(2, 'Name must be at least two characters in length')
+  //     .required('You must enter a first name'),
+  //   lastName: Yup.string()
+  //     .min(2, 'Name must be at least two characters in length')
+  //     .required('You must enter a last name'),
+  //   yearsXP: Yup.string(),
+  //   city: Yup.string()
+  //     .required('You must enter a city'),
+  //   state: Yup.string()
+  //     .required('You must enter a state'),
+  //   phone: Yup.string().phone()
+  //     .required('You must enter a phone number'),
+  //   email: Yup.string().email()
+  //     .required('You must enter an email'),
+  //   relocate: Yup.string(),
+  //   contact: Yup.string(),
+  // }),
   handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus, props }) {
-    console.log(values);
+    console.log('HANDLESUBMIT IS BEING ACTIVATED', values);
+    console.log(props);
     let contact = values.hasOwnProperty('contact') ? values.contact : 'both';
     const profile = {
-      firstName: values.firstName,
-      lastName: values.lastName,
-      yearsXP: values.yearsXP,
-      city: values.city,
+      FirstNameLastName: values.firstName + ' ' + values.lastName,
+      yearsexp: values.yearsexp,
+      location: values.city,
       state: values.state,
-      phone: values.phone,
+      telephone: values.telephone,
       email: values.email,
       relocate: values.relocate,
       contact: contact,
     };
-    console.log(profile);
+    console.log('AKJSHDAKSHDAKSLJDHJ', profile);
+    props.setChef(profile);
+    props.setState({ steps: 4 });
+    setSubmitting(false)
   }
 })(ProfileForm);
 
-export default FormikForm;
+
+
+export default withRouter(FormikForm);
 
 

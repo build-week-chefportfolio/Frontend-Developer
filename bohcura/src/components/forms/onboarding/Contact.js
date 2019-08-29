@@ -181,7 +181,7 @@ const FormikForm = withFormik({
     props.setChef({
       ...props.chef,
       email: values.email,
-      contactpref: values.contactpref,
+      contact: values.contactpref,
       phone: values.phone,
       public: values.public
     })
