@@ -124,52 +124,37 @@ const PageDiv = styled.div`
 
 const ProfileForm = ({ values, isDisabled, errors, touched, toggle, chef }) => {
   console.log("IS THIS CHEF STILL", chef)
-  // const {
-  //   touched,
-  //   errors,
-  //   dirty,
-  //   isSubmitting,
-  //   handleBlur,
-  //   handleSubmit,
-  //   handleChange,
-  //   handleReset,
-  //   values
-  // } = props;
-
-
 
   // Get values from store for previous values
-  // let values = props.values; // The previous values passed through store
-  // const [inputs, setInputs] = useState({
-  //   firstName: props.chef.firstName,
-  //   lastName: props.chef.lastName,
-  //   yearsXP: props.chef.yearsXP,
-  //   city: props.chef.city,
-  //   state: props.chef.state,
-  //   phone: props.chef.phone,
-  //   email: props.chef.email,
-  //   relocate: props.chef.relocate,
-  //   contact: props.chef.contactpref
-  // });
-  // console.log('This is inputs initial state', inputs)
+  const [inputs, setInputs] = useState({
+    firstName: values.firstName || chef.firstName || '',
+    lastName: values.lastName || chef.lastName || '',
+    yearsexp: values.yearsexp || chef.yearsexp || 0,
+    city: values.city || chef.city || '',
+    state: values.state || chef.state || '',
+    telephone: values.telephone || chef.telephone || '',
+    email: values.email || chef.telephone || '',
+    relocate: values.relocate || chef.relocate || 'Currently open',
+    contactpref: values.contactpref || chef.contactpref || 'both',
+    public: chef.public
+  });
 
 
+  const selectChange = selectedOption => {
+    setInputs({ ...inputs, relocate: selectedOption });
+    console.log(selectedOption);
+  };
 
-  // const selectChange = selectedOption => {
-  //   setInputs({ ...inputs, relocate: selectedOption });
-  //   console.log(selectedOption);
-  // };
+  const setWidth = e => {
+    let padding = e.target.type === 'number' ? 8 : 0;
+    e.target.style.width = ((e.target.value.length + 1) * 8 + padding) + 'px';
+  };
 
-  // const setWidth = e => {
-  //   let padding = e.target.type === 'number' ? 8 : 0;
-  //   e.target.style.width = ((e.target.value.length + 1) * 8 + padding) + 'px';
-  // };
-
-  // const handleChange = e => {
-  //   e.preventDefault();
-  //   setInputs({ ...inputs, [e.target.name]: e.target.value });
-  //   setWidth(e);
-  // };
+  const handleChange = e => {
+    e.preventDefault();
+    setInputs({ ...inputs, [e.target.name]: e.target.value });
+    setWidth(e);
+  };
 
   return (
     <div className='ProfileForm'>
@@ -218,7 +203,7 @@ const ProfileForm = ({ values, isDisabled, errors, touched, toggle, chef }) => {
                   <div className='experience'>
                     <span className='experience-phrase'>
                       Professional cook for
-                      <Field type='text' name='yearsXP' placeholder={chef.yearsXP} />
+                      <Field type='number' name='yearsexp' placeholder={chef.yearsexp} />
                       years
                     </span>
                   </div>
@@ -236,7 +221,7 @@ const ProfileForm = ({ values, isDisabled, errors, touched, toggle, chef }) => {
                   </div>
                   <div className='info-phone'>
                     {/* Phone Image */}
-                    <Field type='text' name='phone' placeholder={chef.phone} />
+                    <Field type='text' name='telephone' placeholder={chef.telephone} />
                   </div>
                   <div className='info-email'>
                     <Field type='email' name='email' placeholder={chef.email} />
@@ -244,8 +229,7 @@ const ProfileForm = ({ values, isDisabled, errors, touched, toggle, chef }) => {
                 </div>
                 <div className='info-right'>
                   <div className='relocate-container'>
-                    {/*<Select name='relocate' value={inputs.relocate} options={relocateOptions} onChange={selectChange} />*/}
-                    <select name="relocate" value={chef.relocate} >
+                    <select name="relocate" value={chef.relocate} onChange={selectChange}>
                       <option value={chef.relocate} label={chef.relocate} />
                       {(chef.relocate === "currently open") ? <option value="not available" label="not available" /> :
                         <option value="currently open" label="currently open" />}
@@ -265,17 +249,18 @@ const ProfileForm = ({ values, isDisabled, errors, touched, toggle, chef }) => {
 };
 
 const FormikForm = withFormik({
-  mapPropsToValues({ firstName, lastName, yearsXP, city, state, phone, email, relocate, contact, chef }) {
+  mapPropsToValues({ firstName, lastName, yearsexp, city, state, telephone, email, relocate, contactpref, chef }) {
     return {
       firstName: firstName || chef.firstName,
       lastName: lastName || chef.lastName,
-      yearsXP: yearsXP || chef.yearsXP,
+      yearsexp: yearsexp || chef.yearsexp,
       city: city || chef.city,
       state: state || chef.state,
-      phone: phone || chef.phone,
+      telephone: telephone || chef.telephone,
       email: email || chef.email,
       relocate: relocate || chef.relocate,
-      contact: contact || chef.contact
+      contactpref: contactpref || chef.contactpref,
+      public: chef.public
     };
   },
   // validationSchema: Yup.object().shape({
@@ -299,22 +284,32 @@ const FormikForm = withFormik({
   // }),
   handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus, props }) {
     console.log('HANDLESUBMIT IS BEING ACTIVATED', values);
-    // let contact = values.hasOwnProperty('contact') ? values.contact : 'both';
+    console.log(props);
+    let contact = values.hasOwnProperty('contact') ? values.contact : 'both';
+    const relocate = (r => {
+      switch(r) {
+        case 'not available': return 0;
+        case 'currently open': return 1;
+        default: return 0;
+      }
+    })(values.relocate);
+
     const profile = {
-      firstName: values.firstName,
-      lastName: values.lastName,
-      yearsXP: values.yearsXP,
-      city: values.city,
+      FirstNameLastName: values.firstName + ' ' + values.lastName,
+      yearsexp: values.yearsexp,
+      location: values.city,
       state: values.state,
-      phone: values.phone,
+      telephone: values.telephone,
       email: values.email,
-      relocate: values.relocate,
-      contact: values.contact,
+      relocate: relocate,
+      contactpref: contact,
+      public: values.public || 1,
+      users_id: 1
     };
     console.log('AKJSHDAKSHDAKSLJDHJ', profile);
-    // props.postChef(profile)
+    props.setChef(profile);
+    props.setState({ steps: 4 });
     setSubmitting(false)
-    // props.history.push("/")
   }
 })(ProfileForm);
 
