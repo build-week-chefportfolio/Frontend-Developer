@@ -143,7 +143,7 @@ const Contact = props => {
             </select>
             . My email address is
             <Field type="text" name="email" placeholder="you@there.com" /><br />
-            , and my phone number is I'm located in <Field type="text" name="phone" placeholder="(555) 555-555" />.<br />
+            , and my phone number is I'm located in <Field type="text" name="telephone" placeholder="(555) 555-555" />.<br />
             <select name="publicBool" value={values.publicBool} onChange={handleChange} >
               <option value="Please display" label="Please display" />
               <option value="Don't display" label="Don't display" />
@@ -161,11 +161,11 @@ const Contact = props => {
 
 
 const FormikForm = withFormik({
-  mapPropsToValues({ contactpref, email, phone, publicBool }) {
+  mapPropsToValues({ contactpref, email, telephone, publicBool }) {
     return {
       contactpref: contactpref || '',
       email: email || '',
-      phone: phone || '',
+      telephone: telephone || '',
       public: publicBool || ''
     }
   },
@@ -181,8 +181,8 @@ const FormikForm = withFormik({
     props.setChef({
       ...props.chef,
       email: values.email,
-      contact: values.contactpref,
-      phone: values.phone,
+      contactpref: values.contactpref,
+      telephone: values.telephone,
       public: values.public
     })
     props.setState({ steps: 3 })
