@@ -9,14 +9,13 @@ import styled from 'styled-components';
 
 // How are we routing to the page?  Just filtering by id?  Or using an action?
 
-// styled components
-
 
 const Chef = ({ chef, getChef, match: { params: { id } } }) => {
     console.log(chef);
     const [isAdding, setIsAdding] = useState(false);
     useEffect(() => {
-        id = localStorage.getItem(chef)
+        id = localStorage.getItem('chef')
+        console.log('WHAT IS THIS', id)
         getChef(id);
         console.log("Chef data has been received!", chef)
     }, []);
