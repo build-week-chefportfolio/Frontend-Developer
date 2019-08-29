@@ -26,13 +26,14 @@ const Onboarding = (props) => {
             )
         case 3:
             console.log('Case Three Activated', adjust.steps)
-            {
-                (chef.email) ? props.postChef(chef) :
-                console.log("POST NOT SENT")
-            }
             return (
-                <Confirmation setState={setAdjust} chef={chef} postChef={postChef} />
+                <Confirmation setState={setAdjust} chef={chef} setChef={setChef} />
             )
+        case 4:
+            // post the chef
+          console.log('Case Four Activated', adjust.steps);
+            props.postChef(chef);
+            return  (<div>Redirecting...</div>);
         default:
             console.log('You are in Default and shouldnt be')
             return (<div>SOMETHING IS WRONG</div>);

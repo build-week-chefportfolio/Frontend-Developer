@@ -9,6 +9,7 @@ export const UPDATES_CURRENT_RECIPE_DATA_SUCCESS = 'UPDATES_CURRENT_RECIPE_DATA_
 export const UPDATES_CURRENT_RECIPE_DATA_FAILURE = 'UPDATES_CURRENT_RECIPE_DATA_FAILURE';
 
 export const postChef = (info) => {
+    console.log('postChef body');
     return dispatch => {
         console.log('Action Reached');
         dispatch({ type: UPDATES_CURRENT_CHEF_DATA_START });
@@ -28,7 +29,6 @@ export const postChef = (info) => {
 };
 
 export const postRecipes = (info) => {
-    console.log('Fuck');
     return dispatch => {
         dispatch({ type: UPDATES_CURRENT_RECIPE_DATA_START });
         console.log('Posting Recipe...');
