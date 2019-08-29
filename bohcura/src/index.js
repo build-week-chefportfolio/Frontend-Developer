@@ -15,12 +15,10 @@ import SignIn from "./components/Signin";
 import HomePage from "./components/HomePage";
 import Nav from "./components/Nav";
 import Onboarding from "./components/forms/onboarding/Onboarding";
-import Dashboard from "./components/Dashboard";
 import Profile from "./components/Profile";
 import Recipe from "./components/Recipe";
 import RecipeList from './components/feed/RecipeList';
 import ChefList from "./components/feed/ChefList";
-import RecipeAdd from './components/forms/RecipeAdd';
 import Chef from './components/Chef';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
