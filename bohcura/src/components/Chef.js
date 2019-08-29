@@ -10,10 +10,10 @@ import styled from 'styled-components';
 // styled components
 
 
-const Chef = ( { chef, getChef } ) => {
-
+const Chef = ( { chef, getChef, match: { params: { id } } } ) => {
+  console.log(chef);
   useEffect(() => {
-    getChef();
+    getChef(id);
     console.log("Chef data has been received!", chef)
   }, []);
 
@@ -28,6 +28,7 @@ const Chef = ( { chef, getChef } ) => {
     }
   };
 
+  if(!chef || !chef.hasOwnProperty('FirstNameLastName')) return <div>Loading...</div>;
 
   return (
     <div>
@@ -60,12 +61,12 @@ const Chef = ( { chef, getChef } ) => {
         <Table basic='very' celled collapsing>
           <Table.Header>
             <Table.Row>
-              <Table.Headercell>Recipe</Table.Headercell>
-              <Table.Headercell>Course</Table.Headercell>
+              <Table.HeaderCell>Recipe</Table.HeaderCell>
+              <Table.HeaderCell>Course</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            {chef.recipes.map(recipe => {
+            {chef.recipe.map(recipe => {
               return (
                 <Table.Row>
                   <Table.Cell>
@@ -90,7 +91,7 @@ const Chef = ( { chef, getChef } ) => {
 
 const mapStateToProps = state => {
   return {
-    chefs: state.chefs
+    chef: state.chef
   }
 };
 

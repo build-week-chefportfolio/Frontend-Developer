@@ -23,7 +23,7 @@ export const getChef = (id) => {
       .get(`https://chefportfolioo.herokuapp.com/api/chefs/${id}`)
       .then(res => {
         console.log('Single Chef', res.data);
-        dispatch({ type: FETCH_CHEF_DATA_SUCCESS });
+        dispatch({ type: FETCH_CHEF_DATA_SUCCESS, payload: res.data });
       })
       .catch(e => {
         console.error(e, e.response);
