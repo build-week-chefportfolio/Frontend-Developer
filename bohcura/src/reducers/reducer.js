@@ -104,13 +104,31 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 error: '',
-                recipes: [...state.recipes, action.payload]
+                recipes: [...state.recipes, action.payload],
+                chef: { ...state.chef, recipe: [ ...state.chef.recipe, action.payload ] }
             };
         case actions.UPDATES_CURRENT_RECIPE_DATA_FAILURE:
             return {
                 ...state,
                 isLoading: false,
                 error: action.payload
+            };
+
+        case actions.DELETE_RECIPE_DATA_START:
+            return {
+                ...state,
+                isLoading: true,
+                error: '',
+            };
+        case actions.DELETE_RECIPE_DATA_SUCCESS:
+            console.log('Deleted ID: ', action.deleted);
+            let newRecipes = state.chef.recipe.filter(r => r.id !== action.deleted);
+            console.log('New Recipes: ', newRecipes);
+            return {
+                ...state,
+                isLoading: false,
+                error: '',
+                chef: { ...state.chef, recipe: [ ...newRecipes ] }
             };
         default:
             return state;

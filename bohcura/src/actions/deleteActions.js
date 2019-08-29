@@ -32,7 +32,7 @@ export const deleteRecipe = (id) => {
             .then(res => {
                 // res.data.data
                 console.log(res);
-                dispatch({ type: DELETE_RECIPE_DATA_SUCCESS, payload: res.data });
+                dispatch({ type: DELETE_RECIPE_DATA_SUCCESS, payload: res.data, deleted: id });
             })
             .catch(err => {
                 dispatch({ type: DELETE_RECIPE_DATA_FAILURE, payload: err.response });
