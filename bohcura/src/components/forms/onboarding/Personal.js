@@ -110,29 +110,22 @@ const relocateOptions = [
 
 
 const Personal = props => {
-
   const {
-    // values,
+    values,
     touched,
     errors,
-    // handleChange,
-    // handleBlur,
-    // handleSubmit,
+    dirty,
+    isSubmitting,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    handleReset,
   } = props;
-
-  // const [{/*chef, postChef*/ }] = useState({
-  //   firstName: '',
-  //   lastName: '',
-  //   yearsXp: '',
-  //   city: '',
-  //   state: '',
-  //   relocate: ''
-  // });
 
   return (
     <Div>
       <div className="reg-form">
-        <H1>Welcome to bohcura! Let's create your <br/>professional profile real quick..</H1>
+        <H1>Welcome to bohcura! Let's create your <br />professional profile real quick..</H1>
         <h3>Tell us a little bit about you and how you'd like clients to reach you.</h3>
         <Title>
           <H2 className='rightBorder'>Step 1 of 2 <br /> About You</H2>
@@ -142,21 +135,26 @@ const Personal = props => {
         <Paragraph>
           <Form>
             Hi. My name is {' '}
-            <Input type="text" name="firstName" placeholder="first name" style={{ marginRight: '1rem'}}/>
+            <Field type="text" name="firstName" placeholder="first name" style={{ marginRight: '1rem' }} />
             {touched.firstName && errors.firstName && <p>{errors.firstName}</p>} {' '}
-            <Input type="text" name="lastName" placeholder="last name"/>
+            <Field type="text" name="lastName" placeholder="last name" />
             {touched.lastName && errors.lastName && <p>{errors.lastName}</p>}, <br />
             and I've been cooking professionally for
 
-            <Input type="number" name="yearsXP" placeholder="0" style={{ width: '4rem'}}/>
+            <Field type="number" name="yearsXP" placeholder="0" style={{ width: '4rem' }} />
             {errors.yearsXP && touched.yearsXP && <p>{errors.yearsXp}</p>} years(s). <br />
 
-            I'm located in <Input type="text" name="city" placeholder="city"/>
-            {touched.city && errors.city && <p>{errors.city}</p>}, <Input type="text" name="state" placeholder="state"/>
+            I'm located in <Field type="text" name="city" placeholder="city" />
+            {touched.city && errors.city && <p>{errors.city}</p>}, <Field type="text" name="state" placeholder="state" />
             {touched.state && errors.state && <p>{errors.state}</p>}, and I'm <br />
 
+            <select name="relocate" value={values.relocate} onChange={handleChange} >
+              <option value="Pick A Field" label="Pick A Field" />
+              <option value="not available" label="not available" />
+              <option value="currently open" label="currently open" />
+            </select>
 
-            <Select options={relocateOptions} styles={customStyles}/>
+
             {errors.relocate && touched.relocate && <p>{errors.relocate}</p>} to considering to travel for culinary engagements.
             <Center>
               <button type='submit'>Submit!</button>
@@ -174,17 +172,16 @@ const Personal = props => {
 const FormikForm = withFormik({
   mapPropsToValues({ firstName, lastName, yearsXP, city, state, relocate }) {
     return {
-      firstName: firstName || 'Jane',
-      lastName: lastName || 'Greatchef',
-      yearsXP: yearsXP || '10',
-      city: city || 'Sacramento',
-      state: state || 'California',
-      relocate: relocate || 'currently open'
+      firstName: firstName || '',
+      lastName: lastName || '',
+      yearsXP: yearsXP || '',
+      city: city || '',
+      state: state || '',
+      relocate: relocate || ''
     }
   },
 
   validationSchema: Yup.object().shape({
-
     firstName: Yup.string()
       .min(4, 'First name must be 4 characters or longer')
       .required('First name is required'),
@@ -192,24 +189,20 @@ const FormikForm = withFormik({
       .min(4, 'Last name must be 4 characters or longer')
       .required('Last name is required'),
     // yrsExperience: Yup.
-    locationCity: Yup.string()
+    city: Yup.string()
       .min(4, 'City name must be 4 characters or longer')
       .required('City is required'),
-    locationState: Yup.string()
-      .min(4, 'State must be 4 characters or longer')
+    state: Yup.string()
+      .min(1, 'State must be 4 characters or longer')
       .required('State is required'),
     // relocate:
   }),
 
-  handleSubmit: (values, { setSubmitting }) => {
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      setSubmitting(false);
-    }, 1000);
-  },
-
-
-
+  handleSubmit(values, { props, setSubmitting }) {
+    console.log("this is values", values)
+    props.setChef(values)
+    props.setState({ steps: 2 })
+  }
 })(Personal);
 
 export default FormikForm;

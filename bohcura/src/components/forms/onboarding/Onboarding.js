@@ -16,28 +16,26 @@ import { putChefs } from '../../../actions';
 
 
 const Onboarding = (props) => {
-    const [chef, setChef] = useState({ steps: 1 })
+    const [adjust, setAdjust] = useState({ steps: 1 })
+    const [chef, setChef] = useState({})
 
-    switch (chef.steps) {
+    switch (adjust.steps) {
         case 1:
-            console.log('Case One Activated', chef.steps)
+            console.log('Case One Activated', adjust.steps)
             return (
-                <Personal state={chef} setState={setChef} />
+                <Personal setState={setAdjust} setChef={setChef} chef={chef} />
             );
         case 2:
-            console.log('Case Two Activated', chef.steps)
+            console.log('Case Two Activated', adjust.steps)
+            console.log('Object from Personal', chef)
             return (
-                <Contact state={chef} setState={setChef} />
+                <Contact setState={setAdjust} setChef={setChef} chef={chef} />
             )
         case 3:
-            console.log('Case Three Activated', chef.steps)
+            console.log('Case Four Activated', adjust.steps)
+            console.log('Object inside of Contact:', props.chef)
             return (
-                <Success state={chef} setState={setChef} />
-            )
-        case 4:
-            console.log('Case Four Activated', chef.steps)
-            return (
-                <Confirmation state={chef} setState={setChef} />
+                <Confirmation setState={setAdjust} setChef={setChef} chef={chef} />
             )
         default:
             console.log('You are in Default and shouldnt be')
@@ -47,7 +45,7 @@ const Onboarding = (props) => {
 
 const mapStateToProps = state => {
     return {
-
+        chef: state.chef
     }
 }
 

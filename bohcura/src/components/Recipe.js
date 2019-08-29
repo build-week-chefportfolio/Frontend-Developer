@@ -65,7 +65,7 @@ const RecipeDiv = styled.div`
   }
 `;
 
-function Recipe ({ recipe, getRecipe, match: { params: { id }}}) {
+function Recipe({ recipe, getRecipe, match: { params: { id } } }) {
     console.log('Recipe: ', recipe);
     useEffect(() => {
         getRecipe(id);
@@ -82,7 +82,7 @@ function Recipe ({ recipe, getRecipe, match: { params: { id }}}) {
         }
     };
 
-    if(!recipe || !recipe.hasOwnProperty('RecipeName')) return <div>Loading...</div>;
+    if (!recipe || !recipe.hasOwnProperty('RecipeName')) return <div>Loading...</div>;
 
     return (
         <RecipeDiv className='recipe-page'>
