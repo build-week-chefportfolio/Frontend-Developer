@@ -102,6 +102,7 @@ const FormikRecipe = withFormik({
 
   }),
   handleSubmit(values, { props, isSubmitting, setErrors }) {
+    let chefID = localStorage.getItem('chef');
     console.log('Values: ', values);
     let recipeFinal = {
       RecipeName: values.RecipeName,
@@ -110,9 +111,11 @@ const FormikRecipe = withFormik({
       prepTime: values.prepTime,
       cookTime: values.cookTime,
       serves: +values.serves,
+
     };
     if (values.hasOwnProperty('ingredients')) recipeFinal.ingredients = values.ingredients;
     if (values.hasOwnProperty('preparation')) recipeFinal.preparation = values.preparation;
+    console.log('Recipe Final: ', recipeFinal);
     props.postRecipes(recipeFinal);
   }
 })(RecipeAdd);
