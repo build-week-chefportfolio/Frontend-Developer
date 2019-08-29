@@ -121,8 +121,8 @@ const Personal = props => {
             {touched.lastName && errors.lastName && <p>{errors.lastName}</p>}, <br />
             and I've been cooking professionally for
 
-            <Field type="number" className="styledInput" name="yearsXP" placeholder="0" style={{ width: '4rem' }} />
-            {errors.yearsXP && touched.yearsXP && <p>{errors.yearsXp}</p>} years(s). <br />
+            <Field type="number" className="styledInput" name="yearsexp" placeholder="0" style={{ width: '4rem' }} />
+            {errors.yearsexp && touched.yearsexp && <p>{errors.yearsexp}</p>} years(s). <br />
 
             I'm located in <Field type="text" className="styledInput" name="city" placeholder="city" />
             {touched.city && errors.city && <p>{errors.city}</p>}, <Field type="text" className="styledInput" name="state" placeholder="state" />
@@ -150,11 +150,11 @@ const Personal = props => {
 
 
 const FormikForm = withFormik({
-  mapPropsToValues({ firstName, lastName, yearsXP, city, state, relocate }) {
+  mapPropsToValues({ firstName, lastName, yearsexp, city, state, relocate }) {
     return {
       firstName: firstName || '',
       lastName: lastName || '',
-      yearsXP: yearsXP || '',
+      yearsexp: yearsexp || '',
       city: city || '',
       state: state || '',
       relocate: relocate || ''
