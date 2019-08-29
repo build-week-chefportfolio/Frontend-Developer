@@ -26,6 +26,7 @@ export const postChef = (info) => {
 };
 
 export const postRecipes = (info) => {
+    console.log('Fuck');
     return dispatch => {
         dispatch({ type: UPDATES_CURRENT_RECIPE_DATA_START });
         console.log('Posting Recipe');
@@ -38,6 +39,7 @@ export const postRecipes = (info) => {
             })
             .catch(err => {
                 dispatch({ type: UPDATES_CURRENT_RECIPE_DATA_FAILURE, payload: err.response });
+                console.log(err, err.response);
             });
     };
 };

@@ -3,6 +3,7 @@ import { postRecipes } from "../../actions";
 import { withFormik, Form, Field, FieldArray, ErrorMessage } from "formik";
 import * as Yup from 'yup';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 const RecipeDiv = styled.div`
   width: 80%;
@@ -22,7 +23,7 @@ const RecipeDiv = styled.div`
   }
 `;
 
-const RecipeAdd = ({ values, isDisabled, errors, touched }) => {
+const RecipeAdd = ({ values, isDisabled, errors, touched, toggle }) => {
   console.log(errors);
   const [inputs, setInputs] = useState({
     RecipeName: values.RecipeName || '',
@@ -61,7 +62,8 @@ const RecipeAdd = ({ values, isDisabled, errors, touched }) => {
             {/* Ingredients and Preparation will use FieldArrays */}
           </div>
         </div>
-        <button type='button' onClick={() => console.log('Clicked')}>Add Recipe</button>
+        <button type='submit' onClick={() => console.log('Clicked')}>Add Recipe</button>
+        <button onClick={toggle}>Cancel</button>
       </Form>
     </div>
   );
@@ -109,10 +111,12 @@ const FormikRecipe = withFormik({
       cookTime: values.cookTime,
       serves: +values.serves,
     };
-    if (values.hasOwnProperty('ingredients')) recipeFinal.ingredients = values.ingredients;
-    if (values.hasOwnProperty('preparation')) recipeFinal.preparation = values.preparation;
-    postRecipes(recipeFinal);
+    if(values.hasOwnProperty('ingredients')) recipeFinal.ingredients = values.ingredients;
+    if(values.hasOwnProperty('preparation')) recipeFinal.preparation = values.preparation;
+    props.postRecipes(recipeFinal);
   }
 })(RecipeAdd);
 
-export default FormikRecipe;
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps, { postRecipes })(FormikRecipe);
