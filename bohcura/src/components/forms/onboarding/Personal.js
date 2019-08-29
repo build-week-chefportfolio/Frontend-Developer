@@ -81,6 +81,8 @@ const Paragraph = styled.div`
     font-family: 'Libre Franklin', sans-serif;
 `;
 
+
+
 const Personal = props => {
   const {
     values,
