@@ -28,7 +28,7 @@ export const deleteRecipe = (id) => {
     return dispatch => {
         dispatch({ type: DELETE_RECIPE_DATA_START });
         axios
-            .delete(`https://chefportfolioo.herokuapp.com/api/recipe/delete${id}`) //Need to update this API call when I get the full path
+            .delete(`https://chefportfolioo.herokuapp.com/api/recipe/delete/${id}`) //Need to update this API call when I get the full path
             .then(res => {
                 // res.data.data
                 console.log(res);
