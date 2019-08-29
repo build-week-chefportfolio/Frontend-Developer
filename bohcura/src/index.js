@@ -30,7 +30,6 @@ const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 function App() {
   return (
     <div className="App">
-
       <Nav />
       <Route exact path="/" component={HomePage} />
       <Route path="/signup" component={Signup} />
