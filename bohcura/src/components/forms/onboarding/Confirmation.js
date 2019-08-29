@@ -294,6 +294,8 @@ const FormikForm = withFormik({
       }
     })(values.relocate);
 
+    const chefID = localStorage.getItem('chef');
+
     const profile = {
       FirstNameLastName: values.firstName + ' ' + values.lastName,
       yearsexp: values.yearsexp,
@@ -304,7 +306,7 @@ const FormikForm = withFormik({
       relocate: relocate,
       contactpref: contact,
       public: values.public || 1,
-      users_id: 1
+      users_id: chefID
     };
     console.log('AKJSHDAKSHDAKSLJDHJ', profile);
     props.setChef(profile);
