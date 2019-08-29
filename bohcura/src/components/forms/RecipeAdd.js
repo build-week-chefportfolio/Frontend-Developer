@@ -22,22 +22,22 @@ const RecipeDiv = styled.div`
   }
 `;
 
-const RecipeAdd = ({ values, isDisabled, errors, touched, handleChange }) => {
+const RecipeAdd = ({ values, isDisabled, errors, touched }) => {
   console.log(errors);
-  // const [inputs, setInputs] = useState({
-  //   RecipeName: values.RecipeName || '',
-  //   course: values.course || 0,
-  //   prepTime: values.prepTime || '',
-  //   cookTime: values.cookTime || '',
-  //   serves: values.serves || 0,
-  //   description: values.description || '',
-  //   ingredients: values.ingredients || [],
-  //   preparation: values.preparation || []
-  // });
+  const [inputs, setInputs] = useState({
+    RecipeName: values.RecipeName || '',
+    course: values.course || 0,
+    prepTime: values.prepTime || '',
+    cookTime: values.cookTime || '',
+    serves: values.serves || 0,
+    description: values.description || '',
+    ingredients: values.ingredients || [],
+    preparation: values.preparation || []
+  });
 
-  // const handleChange = e => {
-  //   setInputs({ ...inputs, [e.target.name]: e.target.value });
-  // };
+  const handleChange = e => {
+    setInputs({ ...inputs, [e.target.name]: e.target.value });
+  };
 
   return (
     <div className='form-add-recipe'>
@@ -80,25 +80,25 @@ const FormikRecipe = withFormik({
       preparation: preparation || []
     };
   },
-  // validationSchema: Yup.object().shape({
-  //   RecipeName: Yup.string()
-  //     .min(4, 'Name must be at least 4 characters in length.')
-  //     .required('You must enter a Recipe name.'),
-  //   course: Yup.number()
-  //     .required('You must enter a course number.'),
-  //   prepTime: Yup.string()
-  //     .min(2, 'Preparation time must be at least 2 characters in length.')
-  //     .required('You must enter a preparation time.'),
-  //   cookTime: Yup.string()
-  //     .min(2, 'Cook time must be at least 2 characters in length.')
-  //     .required('You must enter a cook time.'),
-  //   serves: Yup.number()
-  //     .required('You must specify how many people the dish serves.'),
-  //   description: Yup.string()
-  //     .min(10, 'You must enter at least 10 characters for the description.')
-  //     .required('You must enter a description.'),
-  //
-  // }),
+  validationSchema: Yup.object().shape({
+    RecipeName: Yup.string()
+      .min(4, 'Name must be at least 4 characters in length.')
+      .required('You must enter a Recipe name.'),
+    course: Yup.number()
+      .required('You must enter a course number.'),
+    prepTime: Yup.string()
+      .min(2, 'Preparation time must be at least 2 characters in length.')
+      .required('You must enter a preparation time.'),
+    cookTime: Yup.string()
+      .min(2, 'Cook time must be at least 2 characters in length.')
+      .required('You must enter a cook time.'),
+    serves: Yup.number()
+      .required('You must specify how many people the dish serves.'),
+    description: Yup.string()
+      .min(10, 'You must enter at least 10 characters for the description.')
+      .required('You must enter a description.'),
+
+  }),
   handleSubmit(values, { props, isSubmitting, setErrors }) {
     console.log('Values: ', values);
     let recipeFinal = {
@@ -109,8 +109,8 @@ const FormikRecipe = withFormik({
       cookTime: values.cookTime,
       serves: +values.serves,
     };
-    if(values.hasOwnProperty('ingredients')) recipeFinal.ingredients = values.ingredients;
-    if(values.hasOwnProperty('preparation')) recipeFinal.preparation = values.preparation;
+    if (values.hasOwnProperty('ingredients')) recipeFinal.ingredients = values.ingredients;
+    if (values.hasOwnProperty('preparation')) recipeFinal.preparation = values.preparation;
     postRecipes(recipeFinal);
   }
 })(RecipeAdd);
