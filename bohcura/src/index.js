@@ -41,10 +41,6 @@ function App() {
       <Route path="/profile/:id" component={Profile} />
       <PrivateRoute exact path="/dashboard" component={Dashboard} />
       <Route path="/recipe/:id" component={Recipe} />
-<<<<<<< HEAD
-
-=======
->>>>>>> 7204ee02eb9c31024ee1421f15993068acb1f077
     </div>
   )
 }
