@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import recipeIcon from '../../assets/icons/recipe.png';
 import chefIcon from '../../assets/icons/chef.png';
+import avatar from '../../assets/icons/avatar.png';
 
 const DESC_LIMIT = 200; // the amount of characters a card will show before slicing the description
 
@@ -15,6 +16,11 @@ const RecipeDiv = styled.div`
     width: 100%;
     height: 150px;
     background: #e0e0e0;
+    overflow-y: hidden;
+    
+    img {
+      max-width: 100%;
+    }
   }
   
   div.recipe-body {
@@ -22,7 +28,7 @@ const RecipeDiv = styled.div`
     flex-direction: column;
     width: 100%;
     background: #f1f1f1;
-    padding: 5 20px;
+    padding: 10px 20px;
     box-sizing: border-box;
     
     div.recipe-title {
@@ -75,6 +81,9 @@ const RecipeDiv = styled.div`
           }
           div.chef-names {
             width: 69%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             
             a {
               text-decoration: none;
@@ -124,10 +133,9 @@ const RecipeCard = ({ recipe }) => {
 
   return (
     <RecipeDiv className='recipe-card'>
-      {/* What parts do a recipe have? */}
       <Link to={`/recipes/${recipe.id}`}>
         <div className='recipe-image'>
-          {/* A picture of the recipe goes here */}
+          <img src={avatar} alt='Recipe' />
         </div>
       </Link>
       <div className='recipe-body'>
@@ -136,7 +144,7 @@ const RecipeCard = ({ recipe }) => {
             <img src={recipeIcon} alt={'recipe'} />
           </div>
           <div className='recipe-title-text'>
-            <p className='recipe-name'>{recipe.name}</p>
+            <p className='recipe-name'>{recipe.RecipeName}</p>
             <p className='recipe-course'>{convertCourse(recipe.course)}</p>
           </div>
         </div>
