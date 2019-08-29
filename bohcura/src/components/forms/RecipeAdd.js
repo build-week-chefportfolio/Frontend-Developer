@@ -111,8 +111,8 @@ const FormikRecipe = withFormik({
       cookTime: values.cookTime,
       serves: +values.serves,
     };
-    if(values.hasOwnProperty('ingredients')) recipeFinal.ingredients = values.ingredients;
-    if(values.hasOwnProperty('preparation')) recipeFinal.preparation = values.preparation;
+    if (values.hasOwnProperty('ingredients')) recipeFinal.ingredients = values.ingredients;
+    if (values.hasOwnProperty('preparation')) recipeFinal.preparation = values.preparation;
     props.postRecipes(recipeFinal);
   }
 })(RecipeAdd);

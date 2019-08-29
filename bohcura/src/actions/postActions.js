@@ -10,9 +10,11 @@ export const UPDATES_CURRENT_RECIPE_DATA_FAILURE = 'UPDATES_CURRENT_RECIPE_DATA_
 
 export const postChef = (info) => {
     return dispatch => {
+        console.log('Action Reached');
         dispatch({ type: UPDATES_CURRENT_CHEF_DATA_START });
+        console.log('Posting Chef...');
         axios
-            .post('https://chefportfolioo.herokuapp.com/api/chefs', info) //Need to update this API call when I get the full path
+            .post('https://chefportfolioo.herokuapp.com/api/chefs/add', info) //Need to update this API call when I get the full path
             .then(res => {
                 // res.data.data
                 console.log(res);
@@ -29,7 +31,7 @@ export const postRecipes = (info) => {
     console.log('Fuck');
     return dispatch => {
         dispatch({ type: UPDATES_CURRENT_RECIPE_DATA_START });
-        console.log('Posting Recipe');
+        console.log('Posting Recipe...');
         axios
             .post('https://chefportfolioo.herokuapp.com/api/recipe/add', info) //Need to update this API call when I get the full path
             .then(res => {
