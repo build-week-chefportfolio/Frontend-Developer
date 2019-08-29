@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
+import recipeIcon from '../../assets/icons/recipe.png';
+import chefIcon from '../../assets/icons/chef.png';
 
 const DESC_LIMIT = 200; // the amount of characters a card will show before slicing the description
 
 const RecipeDiv = styled.div`
-  width: 20%;
+  width: 26%;
+  margin-bottom: 50px;
   
   div.recipe-image {
     max-width: 100%;
@@ -19,7 +22,7 @@ const RecipeDiv = styled.div`
     flex-direction: column;
     width: 100%;
     background: #f1f1f1;
-    padding: 0 20px;
+    padding: 5 20px;
     box-sizing: border-box;
     
     div.recipe-title {
@@ -57,12 +60,16 @@ const RecipeDiv = styled.div`
         }
       }
       p.description-text {
-        
+        min-height: 75px;
+        padding: 5px 0;
+        text-align: left; 
       }
       div.details {
         display: flex;
         div.details-chef {
           width: 50%;
+          display: flex;
+          justify-content: space-evenly;
           div.chef-icon {
             width: 30%;
           }
@@ -87,6 +94,7 @@ const RecipeDiv = styled.div`
             box-sizing: border-box;
             border-radius: 5px;
             background: #c4c4c4;
+            width: 100%;
           }
         }
         
@@ -125,7 +133,7 @@ const RecipeCard = ({ recipe }) => {
       <div className='recipe-body'>
         <div className='recipe-title'>
           <div className='recipe-icon'>
-            {/* Insert SVG for recipe icon */}
+            <img src={recipeIcon} alt={'recipe'} />
           </div>
           <div className='recipe-title-text'>
             <p className='recipe-name'>{recipe.name}</p>
@@ -146,12 +154,12 @@ const RecipeCard = ({ recipe }) => {
           <div className='details'>
             <div className='details-chef'>
               <div className='chef-icon'>
-                {/* Icon next to chef name */}
+                <img src={chefIcon} alt='chef' />
               </div>
               <div className='chef-names'>
                 <Link to={`/chefs/${recipe.chefID}`}>
-                  <p className='first-name'>{recipe.chefFirstName}</p>
-                  <p className='last-name'>{recipe.chefLastName}</p>
+                  <p className='first-name'>{recipe.chefFirstName || 'John'}</p>
+                  <p className='last-name'>{recipe.chefLastName || 'Doe'}</p>
                 </Link>
               </div>
             </div>

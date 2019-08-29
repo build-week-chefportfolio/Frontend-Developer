@@ -6,12 +6,20 @@ import styled from 'styled-components';
 
 const RecipePage = styled.div`
   padding: 20px 0;
+  box-sizing: border-box;
+  
+  div.right-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 const ListDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  width: 70%;
 `;
 
 // Use Redux Store action to make request
@@ -50,9 +58,6 @@ const RecipeList = ({ storeRecipes: recipes, getRecipes }) => {
 
   return (
     <RecipePage className='recipe-page'>
-      <div className='left-sidebar'>
-        {/* Add filtering options if we get ingredients lists (Stretch) */}
-      </div>
       <div className='right-content'>
         <ListDiv className='recipes-list'>
           {recipes.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} />)}
