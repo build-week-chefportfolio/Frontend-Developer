@@ -130,66 +130,67 @@ const Chef = ({ chef, getChef, match: { params: { id } } }) => {
   if (!chef || !chef.hasOwnProperty('FirstNameLastName')) return <div>Loading...</div>;
 
   return (
-    <Div>
-      <Title>
-        <div><H1>Chef {chef.FirstNameLastName}</H1>
-          <H2>Professional Chef for {chef.yearsexp}</H2></div>
-        <div><button>Hire Me</button></div>
-      </Title>
-      <br/>
-      <hr />
+      <Div>
+        <Title>
+          <div><H1>Chef {chef.FirstNameLastName}</H1>
+            <H2>Professional Chef for {chef.yearsexp}</H2></div>
+          <div><button>Hire Me</button></div>
+        </Title>
+        <br/>
+        <hr />
 
-      <ContactInfo>
-        <div>{chef.email}</div>
-        <div>{chef.telephone}</div>
-        <div>{chef.relocate}</div>
-      </ContactInfo>
+        <ContactInfo>
+          <div>{chef.email}</div>
+          <div>{chef.telephone}</div>
+          <div>{chef.relocate}</div>
+        </ContactInfo>
 
-      <hr />
-    <br />
-      <Description>
-        <h2>About Me</h2><br />
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A arcu cursus vitae
-          congue. Et malesuada fames ac turpis egestas integer eget aliquet. Scelerisque eu ultrices vitae auctor eu augue ut lectus arcu. Semper risus in
-          hendrerit gravida rutrum quisque non tellus. Volutpat consequat mauris nunc congue nisi vitae. Integer vitae justo eget magna fermentum iaculis
-          eu non diam. Aliquet enim tortor at auctor urna nunc. Nullam non nisi est sit amet facilisis magna. Velit laoreet id donec ultrices tincidunt arcu non
-          sodales neque. Placerat in egestas erat imperdiet sed euismod nisi porta. Est lorem ipsum dolor sit. Ultricies lacus sed turpis tincidunt id aliquet
-          risus feugiat in. Ultrices in iaculis nunc sed augue lacus viverra vitae congue. Sed lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt.</p>
-      </Description>
+        <hr />
       <br />
-      <MyRecipes>
-        <h2>My Recipes</h2>
-      </MyRecipes>
-      <div className='recipes-container'>
-        <Table basic='very' celled collapsing>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>Recipe</Table.HeaderCell>
-              <Table.HeaderCell>Course</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {chef.recipe.map(recipe => {
-              return (
-                <Table.Row>
-                  <Table.Cell>
-                    <Header as='h4' image>
-                      <Link to={`/recipe/${recipe.id}`}>
-                        <Image src={null} rounded size='mini' />
-                        <Header.Content>{recipe.RecipeName}</Header.Content>
-                      </Link>
-                    </Header>
-                  </Table.Cell>
-                  <Table.Cell>
-                    {convertCourse(recipe.course)}
-                  </Table.Cell>
-                </Table.Row>
-              );
-            })}
-          </Table.Body>
-        </Table>
-      </div>
-    </Div>
+        <Description>
+          <h2>About Me</h2><br />
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A arcu cursus vitae
+            congue. Et malesuada fames ac turpis egestas integer eget aliquet. Scelerisque eu ultrices vitae auctor eu augue ut lectus arcu. Semper risus in
+            hendrerit gravida rutrum quisque non tellus. Volutpat consequat mauris nunc congue nisi vitae. Integer vitae justo eget magna fermentum iaculis
+            eu non diam. Aliquet enim tortor at auctor urna nunc. Nullam non nisi est sit amet facilisis magna. Velit laoreet id donec ultrices tincidunt arcu non
+            sodales neque. Placerat in egestas erat imperdiet sed euismod nisi porta. Est lorem ipsum dolor sit. Ultricies lacus sed turpis tincidunt id aliquet
+            risus feugiat in. Ultrices in iaculis nunc sed augue lacus viverra vitae congue. Sed lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt.</p>
+        </Description>
+        <br />
+        <MyRecipes>
+          <h2>My Recipes</h2>
+        </MyRecipes>
+        <div className='recipes-container'>
+          <Table basic='very' celled collapsing>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Recipe</Table.HeaderCell>
+                <Table.HeaderCell>Course</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {chef.recipe.map(recipe => {
+                return (
+                  <Table.Row>
+                    <Table.Cell>
+                      <Header as='h4' image>
+                        <Link to={`/recipe/${recipe.id}`}>
+                          <Image src={null} rounded size='mini' />
+                          <Header.Content>{recipe.RecipeName}</Header.Content>
+                        </Link>
+                      </Header>
+                    </Table.Cell>
+                    <Table.Cell>
+                      {convertCourse(recipe.course)}
+                    </Table.Cell>
+                  </Table.Row>
+                );
+              })}
+            </Table.Body>
+          </Table>
+        </div>
+      </Div>
+  
   )
 };
 

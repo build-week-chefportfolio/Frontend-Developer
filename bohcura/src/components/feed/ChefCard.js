@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
+import { NavLink } from "react-router-dom";
 
 // import icons
 import avatar from '../../assets/icons/avatar.png';
@@ -65,44 +66,45 @@ class ChefCard extends Component {
  render() {
     console.log("ChefCard with Class", this.props.chefs);
   return(
-
-    <Card>
-      <img src={avatar}  alt={'avatar'} style={{width:'100%'}}/>
-      <Row>
-        <img src={chef} alt='chef icon'/>
-        <Right>
-          <H5>{this.props.chef.FirstNameLastName}</H5>
-          Professional cook for {this.props.chef.yearsexp} years
-        </Right>
-      </Row>
-      <hr style={{color: '#C0BEBE', margin: '14px'}}/>
-      <Row>
-        <Left>
-          <div className='chefRow'>
-            <img src={location} className='styledIcon' alt="map pin" />
-            {this.props.chef.location},{this.props.chef.state}
+    <NavLink to={`/chef/${this.props.chef.id}`} className="chefCardLink">
+      <Card>
+        <img src={avatar}  alt={'avatar'} style={{width:'100%'}}/>
+        <Row>
+          <img src={chef} alt='chef icon'/>
+          <Right>
+            <H5>{this.props.chef.FirstNameLastName}</H5>
+            Professional cook for {this.props.chef.yearsexp} years
+          </Right>
+        </Row>
+        <hr style={{color: '#C0BEBE', margin: '14px'}}/>
+        <Row>
+          <Left>
+            <div className='chefRow'>
+              <img src={location} className='styledIcon' alt="map pin" />
+              {this.props.chef.location},{this.props.chef.state}
+            </div>
+            <div className='chefRow'>
+              <img src={phone} className='styledIcon' alt="phone icon"/>{this.props.chef.telephone}
+            </div>
+            <div className='chefRow'>
+              <img src={mail} className='styledIcon' alt="email icon"/>{this.props.chef.email}
+            </div>
+          </Left>
+          <div>
+            <Row>{this.props.chef.relocate} to relocate</Row>
+            <Row><Button>Hire Me</Button></Row>
           </div>
-          <div className='chefRow'>
-            <img src={phone} className='styledIcon' alt="phone icon"/>{this.props.chef.telephone}
-          </div>
-          <div className='chefRow'>
-            <img src={mail} className='styledIcon' alt="email icon"/>{this.props.chef.email}
-          </div>
-        </Left>
-        <div>
-          <Row>{this.props.chef.relocate} to relocate</Row>
-          <Row><Button>Hire Me</Button></Row>
-        </div>
-      </Row>
-      <hr style={{color: '#C0BEBE', margin: '14px'}}/>
-      <Row>
-        <img src={recipe} alt="recipe book"/>
-        Chef's Recipes
-        {' '}
-        <img src={profile} alt="profile icon"/>
-        Chef's Profile
-      </Row>
-    </Card>
+        </Row>
+        <hr style={{color: '#C0BEBE', margin: '14px'}}/>
+        <Row>
+          <img src={recipe} alt="recipe book"/>
+          Chef's Recipes
+          {' '}
+          <img src={profile} alt="profile icon"/>
+          Chef's Profile
+        </Row>
+      </Card>
+    </NavLink>
 
 
 
