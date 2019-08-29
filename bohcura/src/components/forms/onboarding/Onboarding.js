@@ -1,15 +1,8 @@
-/* Onboarding 1: Personal Info
-* Onboarding 2: Contact Settings
-* Onboarding 3: Confirmation & Review
-* Onboarding 4: Success
-* */
-
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import Personal from "./Personal"
 import Contact from "./Contact"
-import Success from "./Success"
 import Confirmation from "./Confirmation"
 
 import { putChefs } from '../../../actions';

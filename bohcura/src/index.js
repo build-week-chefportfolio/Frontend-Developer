@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Route, Link, Switch, withRouter } from 'react-
 import { reducer } from './reducers';
 import './App.css';
 
-
+import PrivateRoute from './utilities/PrivateRoute'
 import Signup from "./components/Signup";
 import SignIn from "./components/Signin";
 import HomePage from "./components/HomePage";
@@ -38,9 +38,8 @@ function App() {
       <Route path="/chefs" component={ChefList} />
       <Route path="/recipes" component={RecipeList} />
       <Route path="/profile/:id" component={Profile} />
-      <Route path="/dashboard" component={Dashboard} />
+      <PrivateRoute exact path="/dashboard" component={Dashboard} />
       <Route path="/recipe/:id" component={Recipe} />
-      <RecipeAdd/>
     </div>
   )
 }

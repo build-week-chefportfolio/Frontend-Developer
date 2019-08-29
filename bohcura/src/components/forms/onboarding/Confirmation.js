@@ -122,15 +122,6 @@ const PageDiv = styled.div`
   }
 `;
 
-const Confirmation = () => {
-
-  return (
-    <div className='Confirmation'>
-      {/* add Formik -> ProfileForm component */}
-      <FormikForm />
-    </div>
-  );
-};
 
 const ProfileForm = props => {
   // Get values from store for previous values
@@ -204,7 +195,7 @@ const ProfileForm = props => {
                 <div className='title-container'>
                   <div className='title-name'>
                     <span className='title'>Chef</span>
-                    <Field type='text' name='firstName' placeholder='Firstname' onChange={handleChange} value={inputs.firstName} onLoad={setWidth} />
+                    <Field type='text' name='firstName' placeholder={props.chef.firstName} onChange={handleChange} value={inputs.firstName} onLoad={setWidth} />
                     <Field type='text' name='lastName' placeholder='Lastname' onChange={handleChange} value={inputs.lastName} onLoad={setWidth} />
                   </div>
                   <div className='experience'>
@@ -302,6 +293,6 @@ const FormikForm = withFormik({
   }
 })(ProfileForm);
 
-export default Confirmation;
+export default FormikForm;
 
 
