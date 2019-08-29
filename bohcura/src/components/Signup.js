@@ -63,6 +63,7 @@ const formikHOC = withFormik({
             .then(response => {
                 console.log(response.data);
                 localStorage.setItem('token', response.data.password)
+                localStorage.setItem('chef', response.data.id)
                 props.history.push("/onboarding")
             })
             .catch(err => {
