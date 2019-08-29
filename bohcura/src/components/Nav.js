@@ -21,6 +21,23 @@ const NavContainer = styled.div`
 `;
 
 
+const NavigationBar = styled.div`
+    width: 70vw;
+    height: 75px;
+    line-height: 50px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    z-index: 1000;
+        @media (max-width: 768px) {
+        flex-flow: column wrap;
+        height: auto;
+
+    }
+`;
+
 const LogoText = styled.text`
     margin-left: 1rem;
     font-weight: bold;
@@ -51,22 +68,23 @@ const Links = styled.div`
 `
 
 
-export default function Nav() {
+export default function Nav () {
     return (
-        <>
-            <NavContainer>
-                <LogoText>
-                    bohcura.
-        </LogoText>
+      <>
+      <NavContainer>
+        <a href="https://bohcura.netlify.com/index.html" className="logo">
+            <LogoText>bohcura.</LogoText>  
+        </a>
 
-                <Links>
-                    <NavLink to="/">Home</NavLink>
-                    <NavLink to="/chefs">Chefs</NavLink>
-                    <NavLink to="/recipes">Recipes</NavLink>
-                    <NavLink to="/about">About</NavLink>
-                    <NavLink to="/dashboard">My Bohcura</NavLink>
-                </Links>
-            </NavContainer>
-        </>
+
+        <Links>
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/chefs">Chefs</NavLink>
+            <NavLink to="/recipes">Recipes</NavLink>
+            <NavLink to="/about">About</NavLink>
+            <NavLink to="/dashboard">My Bohcura</NavLink>
+        </Links>
+      </NavContainer>
+      </>
     )
 }
