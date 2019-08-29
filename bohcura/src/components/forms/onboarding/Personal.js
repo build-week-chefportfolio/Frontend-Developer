@@ -200,9 +200,8 @@ const FormikForm = withFormik({
 
   handleSubmit(values, { props, setSubmitting }) {
     console.log("this is values", values)
-    props.setChef({ values })
+    props.setChef(values)
     props.setState({ steps: 2 })
-    console.log('Checks to see if the state was updated to 2', props.state)
   }
 })(Personal);
 

@@ -11,16 +11,6 @@ const Page = styled.div`
     padding: 5rem;
 `;
 
-const CardGroup = styled.div`
-    display: flex;
-    margin: auto;
-    justify-content: space-evenly;
-`;
-
-const Row = styled.div`
-    display: flex;
-    justify-content: space-between;
-`;
 
 const ChefList = (props) => {
   useEffect(() => {

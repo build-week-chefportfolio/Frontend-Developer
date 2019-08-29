@@ -23,15 +23,17 @@ const Onboarding = (props) => {
         case 1:
             console.log('Case One Activated', adjust.steps)
             return (
-                <Personal setState={setAdjust} setChef={setChef} />
+                <Personal setState={setAdjust} setChef={setChef} chef={chef} />
             );
         case 2:
             console.log('Case Two Activated', adjust.steps)
+            console.log('Object from Personal', chef)
             return (
-                <Contact setState={setAdjust} setChef={setChef} />
+                <Contact setState={setAdjust} setChef={setChef} chef={chef} />
             )
         case 3:
             console.log('Case Four Activated', adjust.steps)
+            console.log('Object inside of Contact:', props.chef)
             return (
                 <Confirmation setState={setAdjust} setChef={setChef} chef={chef} />
             )
