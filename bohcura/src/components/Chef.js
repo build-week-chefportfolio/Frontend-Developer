@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getChefs } from '../actions';
+import { getChef } from '../actions';
+import { Header, Image, Table } from 'semantic-ui-react';
 
 import styled from 'styled-components';
 
@@ -9,31 +10,37 @@ import styled from 'styled-components';
 // styled components
 
 
-const Chef = ( props ) => {
+const Chef = ( { chef } ) => {
 
   useEffect(() => {
-    props.getChefs();
-    console.log("Chef data has been received!", props.chefs)
+    props.getChef();
+    console.log("Chef data has been received!", chef)
   }, []);
+
+  const convertCourse = course => {
+    switch(course) {
+      case 1: return 'First Course';
+      case 2: return 'Second Course';
+      case 3: return 'Third Course';
+      case 4: return 'Fourth Course';
+      case 5: return 'Fifth Course';
+      default: return 'First Course';
+    }
+  };
 
 
   return (
     <div>
-      <h1>Chef First Name Last Name</h1>
-        <h2>Professional Chef for {props.chefs.yearsexp}</h2>
-        <button>Hire Me</button>
-        {props.chefs.map(chef => {
-        return <div
-          key={chef.id}
-          />
-        })}
+      <h1>Chef {chef.FirstNameLastName}</h1>
+      <h2>Professional Chef for {chef.yearsexp}</h2>
+      <button>Hire Me</button>
 
       <hr />
 
       <div>
-        {props.chefs.email}
-        {props.chefs.telephone}
-        {props.chefs.relocate}
+        {chef.email}
+        {chef.telephone}
+        {chef.relocate}
       </div>
 
       <div>
@@ -49,12 +56,32 @@ const Chef = ( props ) => {
         <h2>My Recipes</h2>
       </div>
 
-      <div>
-        {/*Recipe Headers Here*/}
-      </div>
-
-      <div>
-        {/*Recipes Go Here*/}
+      <div className='recipes-container'>
+        <Table basic='very' celled collapsing>
+          <Table.Header>
+            <Table.Row>
+              <Table.Headercell>Recipe</Table.Headercell>
+              <Table.Headercell>Course</Table.Headercell>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            {chef.recipes.map(recipe => {
+              return (
+                <Table.Row>
+                  <Table.Cell>
+                    <Header as='h4' image>
+                      <Image src={null} rounded size='mini' />
+                      <Header.Content>{recipe.RecipeName}</Header.Content>
+                    </Header>
+                  </Table.Cell>
+                  <Table.Cell>
+                    {convertCourse(recipe.course)}
+                  </Table.Cell>
+                </Table.Row>
+              );
+            })}
+          </Table.Body>
+        </Table>
       </div>
 
     </div>

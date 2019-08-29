@@ -156,7 +156,7 @@ const RecipeCard = ({ recipe }) => {
               </div>
             </div>
             <div className='recipe-link'>
-              <Link to={`/recipes/${recipe.id}`}>
+              <Link to={`/recipe/${recipe.id}`}>
                 <button type='button'>Get Recipe</button>
               </Link>
             </div>
