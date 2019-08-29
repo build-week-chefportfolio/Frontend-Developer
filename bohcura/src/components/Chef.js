@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getChef } from '../actions';
-import { Header, Image, Table } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import RecipeAdd from "./forms/RecipeAdd";
+import RecipeListGrid from './RecipeListGrid';
 
 import styled from 'styled-components';
 
@@ -108,27 +108,19 @@ const MyRecipes = styled.div`
     padding-top: 3rem;
 `;
 
-const Chef = ({ chef, getChef, match: { params: { id } } }) => {
+const Chef = ( props ) => {
+  let { chef, getChef, deleteRecipe } = props;
   console.log(chef);
+  let id = props.match && props.match.params && props.match.params.id ? props.match.params.id : null;
   const [isAdding, setIsAdding] = useState(false);
   useEffect(() => {
-    getChef(id);
+    let localID = localStorage.getItem('chef');
+    getChef(id || localID);
     console.log("Chef data has been received!", chef)
   }, []);
 
   const toggleIsAdding = () => setIsAdding(!isAdding);
 
-
-  const convertCourse = course => {
-    switch (course) {
-      case 1: return 'First Course';
-      case 2: return 'Second Course';
-      case 3: return 'Third Course';
-      case 4: return 'Fourth Course';
-      case 5: return 'Fifth Course';
-      default: return 'First Course';
-    }
-  };
 
   if (!chef || !chef.hasOwnProperty('FirstNameLastName')) return <div>Loading...</div>;
 
@@ -163,35 +155,7 @@ const Chef = ({ chef, getChef, match: { params: { id } } }) => {
       <MyRecipes>
         <H2>My Recipes</H2>
       </MyRecipes>
-      <div className='recipes-container'>
-        <Table basic='very' celled collapsing>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>Recipe</Table.HeaderCell>
-              <Table.HeaderCell>Course</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {chef.recipe.map(recipe => {
-              return (
-                <Table.Row>
-                  <Table.Cell>
-                    <Header as='h4' image>
-                      <Link to={`/recipe/${recipe.id}`}>
-                        <Image src={null} rounded size='mini' />
-                        <Header.Content>{recipe.RecipeName}</Header.Content>
-                      </Link>
-                    </Header>
-                  </Table.Cell>
-                  <Table.Cell>
-                    {convertCourse(recipe.course)}
-                  </Table.Cell>
-                </Table.Row>
-              );
-            })}
-          </Table.Body>
-        </Table>
-      </div>
+      <RecipeListGrid chef={chef} isAdding={isAdding} toggle={toggleIsAdding} canAdd={!id} />
     </Div>
   )
 };

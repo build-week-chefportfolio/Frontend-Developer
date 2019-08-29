@@ -15,12 +15,10 @@ import SignIn from "./components/Signin";
 import HomePage from "./components/HomePage";
 import Nav from "./components/Nav";
 import Onboarding from "./components/forms/onboarding/Onboarding";
-import Dashboard from "./components/Dashboard";
 import Profile from "./components/Profile";
 import Recipe from "./components/Recipe";
 import RecipeList from './components/feed/RecipeList';
 import ChefList from "./components/feed/ChefList";
-import RecipeAdd from './components/forms/RecipeAdd';
 import Chef from './components/Chef';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -39,7 +37,7 @@ function App() {
       <Route path='/chef/:id' component={Chef} />
       <Route path="/recipes" component={RecipeList} />
       <Route path="/profile/:id" component={Profile} />
-      <PrivateRoute exact path="/dashboard" component={Dashboard} />
+      <PrivateRoute exact path="/dashboard" component={Chef} />
       <Route path="/recipe/:id" component={Recipe} />
       <Nav />
     </div>
