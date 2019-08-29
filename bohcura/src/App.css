@@ -3,6 +3,10 @@
 }
 .App {
   text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -127,7 +131,7 @@
   flex-wrap: wrap;
   width: 80%;
   height: 500px;
-  margin: 100px auto 0;
+  margin: 0 auto;
 }
 .homeContainer h1{
   margin-bottom: 50px;
