@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getChefs } from '../actions';
-import styled from 'styled-components';
-import ChefCard from "./feed/ChefCard";
 
+import styled from 'styled-components';
+
+// How are we routing to the page?  Just filtering by id?  Or using an action?
 
 // styled components
 
@@ -21,7 +22,7 @@ const Chef = ( props ) => {
       <h1>Chef First Name Last Name</h1>
         <h2>Professional Chef for {props.chefs.yearsexp}</h2>
         <button>Hire Me</button>
-      {props.chefs.map(chef => {
+        {props.chefs.map(chef => {
         return <div
           key={chef.id}
           />
