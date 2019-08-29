@@ -99,12 +99,12 @@ const RecipeDiv = styled.div`
 const RecipeCard = ({ recipe }) => {
 
   const sliceDesc = d => {
-    if(typeof d === 'string' && d.length > DESC_LIMIT) return d.slice(0, DESC_LIMIT) + '...';
+    if (typeof d === 'string' && d.length > DESC_LIMIT) return d.slice(0, DESC_LIMIT) + '...';
     return d;
   };
 
   const convertCourse = course => {
-    switch(course) {
+    switch (course) {
       case 1: return 'First Course';
       case 2: return 'Second Course';
       case 3: return 'Third Course';
@@ -156,7 +156,7 @@ const RecipeCard = ({ recipe }) => {
               </div>
             </div>
             <div className='recipe-link'>
-              <Link to={`/recipes/${recipe.id}`}>
+              <Link to={`/recipe/${recipe.id}`}>
                 <button type='button'>Get Recipe</button>
               </Link>
             </div>

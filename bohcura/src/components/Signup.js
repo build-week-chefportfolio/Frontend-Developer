@@ -6,7 +6,6 @@
 import React from 'react';
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
-import { NavLink } from "react-router-dom";
 import axios from "axios";
 // import { connect } from "react-redux";
 
@@ -15,12 +14,6 @@ import { axiosWithAuth } from '../utilities/axiosWithAuth'
 import '../App.css';
 
 function SignUpMod({ errors, touched, status }) {
-    // const [user, setUser] = useState([]);
-    // useEffect(() => {
-    //     if (status) {
-    //         setUser([...user, status]);
-    //     }
-    // }, [status]);
 
     return (
         <div className="signUpContainer">

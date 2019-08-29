@@ -10,20 +10,16 @@ import { reducer } from './reducers';
 import './App.css';
 
 
-import Confirmation from "./components/forms/onboarding/Confirmation";
-import Personal from "./components/forms/onboarding/Personal";
 import Signup from "./components/Signup";
 import SignIn from "./components/Signin";
 import HomePage from "./components/HomePage";
 import Nav from "./components/Nav";
 import Onboarding from "./components/forms/onboarding/Onboarding";
-import Feed from "./components/feed/Feed";
 import Dashboard from "./components/Dashboard";
 import Profile from "./components/Profile";
 import Recipe from "./components/Recipe";
 import RecipeList from './components/feed/RecipeList';
 import ChefList from "./components/feed/ChefList";
-import Contact from "./components/forms/onboarding/Contact";
 import RecipeAdd from './components/forms/RecipeAdd';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
