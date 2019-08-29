@@ -102,8 +102,8 @@ function Recipe({ recipe, getRecipe, match: { params: { id } } }) {
                             {/* Chef Icon goes here */}
                         </div>
                         <div className='name-title'>
-                            <Link to={`/chefs/${recipe.chefID}`}>
-                                <h3>{recipe.chefFirstName}</h3>
+                            <Link to={`/chefs/${recipe.chefs[0].id}`}>
+                                <h3>{}</h3>
                                 <h3>{recipe.chefLastName}</h3>
                             </Link>
                         </div>

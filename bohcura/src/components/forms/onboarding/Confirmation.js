@@ -299,7 +299,6 @@ const FormikForm = withFormik({
       contact: contact,
     };
     console.log(profile);
-    // Redux reducer for axios put
   }
 })(ProfileForm);
 

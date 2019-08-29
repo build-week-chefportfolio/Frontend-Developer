@@ -33,7 +33,7 @@ export const postRecipes = (info) => {
             .then(res => {
                 // res.data.data
                 console.log(res);
-                dispatch({ type: UPDATES_CURRENT_RECIPE_DATA_SUCCESS, payload: res.data.sets });
+                dispatch({ type: UPDATES_CURRENT_RECIPE_DATA_SUCCESS, payload: res.data });
             })
             .catch(err => {
                 dispatch({ type: UPDATES_CURRENT_RECIPE_DATA_FAILURE, payload: err.response });

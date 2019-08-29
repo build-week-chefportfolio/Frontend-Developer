@@ -20,6 +20,9 @@ import Profile from "./components/Profile";
 import Recipe from "./components/Recipe";
 import RecipeList from './components/feed/RecipeList';
 import ChefList from "./components/feed/ChefList";
+import Contact from "./components/forms/onboarding/Contact";
+import RecipeAdd from './components/forms/RecipeAdd';
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
@@ -38,6 +41,7 @@ function App() {
       <Route path="/profile/:id" component={Profile} />
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/recipe/:id" component={Recipe} />
+      <RecipeAdd/>
     </div>
   )
 }
