@@ -8,7 +8,7 @@ export const UPDATES_CURRENT_RECIPE_DATA_START = 'UPDATES_CURRENT_RECIPE_DATA_ST
 export const UPDATES_CURRENT_RECIPE_DATA_SUCCESS = 'UPDATES_CURRENT_RECIPE_DATA_SUCCESS';
 export const UPDATES_CURRENT_RECIPE_DATA_FAILURE = 'UPDATES_CURRENT_RECIPE_DATA_FAILURE';
 
-export const postChefs = (info) => {
+export const postChef = (info) => {
     return dispatch => {
         dispatch({ type: UPDATES_CURRENT_CHEF_DATA_START });
         axios
@@ -19,6 +19,7 @@ export const postChefs = (info) => {
                 dispatch({ type: UPDATES_CURRENT_CHEF_DATA_SUCCESS, payload: res.data });
             })
             .catch(err => {
+                console.log(err.response);
                 dispatch({ type: UPDATES_CURRENT_CHEF_DATA_FAILURE, payload: err.response });
             });
     };

@@ -50,7 +50,6 @@ export const getChefs = () => {
 
 
 export const getRecipes = () => {
-
     return dispatch => {
         dispatch({ type: FETCH_RECIPES_DATA_START });
         axios
@@ -67,19 +66,19 @@ export const getRecipes = () => {
 };
 
 export const getRecipe = (id) => {
-  return dispatch => {
-    dispatch({ type: FETCH_RECIPE_DATA_START });
-    axios
-      .get(`https://chefportfolioo.herokuapp.com/api/recipe/${id}`)
-      .then(res => {
-        console.log(res);
-        dispatch({ type: FETCH_RECIPE_DATA_SUCCESS, payload: res.data });
-      })
-      .catch(e => {
-        console.error(e);
-        dispatch({ type: FETCH_RECIPE_DATA_FAILURE, payload: e.response });
-      });
-  };
+    return dispatch => {
+        dispatch({ type: FETCH_RECIPE_DATA_START });
+        axios
+            .get(`https://chefportfolioo.herokuapp.com/api/recipe/${id}`)
+            .then(res => {
+                console.log(res);
+                dispatch({ type: FETCH_RECIPE_DATA_SUCCESS, payload: res.data });
+            })
+            .catch(e => {
+                console.error(e);
+                dispatch({ type: FETCH_RECIPE_DATA_FAILURE, payload: e.response });
+            });
+    };
 };
 
 // api/auth/register api/auth/login api/auth/logout api/users

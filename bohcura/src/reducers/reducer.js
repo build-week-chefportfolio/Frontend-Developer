@@ -13,7 +13,7 @@ const initialState = {
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
 
-      // This grabs the Chef Data
+        // This grabs the Chef Data
         case actions.FETCH_CHEF_DATA_START:
 
             return {
