@@ -9,13 +9,18 @@ export default function HomePage() {
         <div className="homeContainer">
             <h1>Welcome to Bohcura, where professional chefs connect with culinary enthusiasts.</h1>
             <div className="homeChefContainer">
-                <img src={chefIMG} alt="chef" />
-                <h2>Chefs</h2>
-            </div>
+                <NavLink to="/chefs" className="chefNavLink">
+                    <img src={chefIMG} alt="chef" />
+                    <h2>Chefs</h2>
+                </NavLink>
+            </div>  
             <div className="homeRecipeContainer">
-                <img src={recipeIMG} alt="chef" />
-                <h2>Recipes</h2>
+                <NavLink to="recipes" className="recipeNavLink">
+                    <img src={recipeIMG} alt="recipie" className="recipeNavLink"/>
+                    <h2>Recipes</h2>
+                </NavLink>
             </div>
+            
         </div>
     )
 }
