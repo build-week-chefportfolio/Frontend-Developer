@@ -136,28 +136,26 @@
 
 /* PUBLIC HOME COMPONENT */
 
+
 .homeContainer {
   position: relative;
   display: flex;
   justify-content: space-around;
-  flex-wrap: wrap;
-  width: 80%;
-  margin: 100px auto 0;
-}
-
-.homeContainer h1{
-  margin-bottom: 75px;
+  height: 75vh;
+  align-items: stretch;
+  margin-top: 250px;
 }
 
 .homeChefContainer {
-  width: 40%;
+  width: 30%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .homeChefContainer img{
-  height: 40%;
+  height: 30%;
   width: 100%;
   object-fit: cover;
   object-position: 0% 80%;
@@ -170,14 +168,15 @@
 }
 
 .homeRecipeContainer {
-  width: 40%;
+  width: 30%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .homeRecipeContainer img{
-  height: 40%;
+  height: 30%;
   width: 100%;
   object-fit: cover;
   object-position: 0% 80%;
@@ -187,6 +186,14 @@
   text-align: left;
   font-size: 120%;
   font-weight: 600;
+}
+
+.homeCRText {
+  top: 7%;
+  width: 27%;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
 }
 
 .chefButtons {
@@ -214,25 +221,8 @@ button{
 
 }
 
-/* Nav Bar */
-
-.navBar {
-  position: absolute;
-  top: 0;
-  width: 100vw;
-  height: 50px;
-  background: #282c34;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.navItem {
-  text-decoration: none;
-  color: #D9D9D9;
-  margin: 0 50px;
-  font-weight: 600;
-}
-
-.logo {
+.styledInput {
+  border: none;
+  border-bottom: 1px solid #c3c3c3;
+  text-align: center;
 }
