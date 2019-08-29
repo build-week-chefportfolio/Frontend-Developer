@@ -9,8 +9,8 @@ import ChefCard from './ChefCard';
 // styled components
 const Div = styled.div`
     display: block;
-    //width: 90%;
-    margin: 10%;
+    width: 80%;
+
     text-align: left;
     alignment-baseline: bottom;
     padding: 5%;
@@ -28,6 +28,7 @@ const Title = styled.div`
     display: flex;
     text-align: left;
     justify-content: space-between;
+    margin: 1.7%;
 `;
 
 
@@ -41,13 +42,10 @@ const ChefList = (props) => {
     <Div>
       <Title>
         <h1>Professional Chefs</h1>
-        <div>search</div>
       </Title>
-
       <Cards>
         {props.chefs.map(chef => <ChefCard chef={chef}/>)}
       </Cards>
-
     </Div>
   )
 };
