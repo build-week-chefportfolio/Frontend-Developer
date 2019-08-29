@@ -14,7 +14,6 @@ import ChefCard from '../../feed/ChefCard';
 
 const Title = styled.div`
     display: flex;
- 
 `;
 
 const Div = styled.div`
@@ -34,21 +33,41 @@ const Row = styled.div`
 `;
 const H1 = styled.h1`
     text-align: left;
-    //font-family: 'Raleway', sans-serif;
-    //font-weight: 600;
-    // color: #4d4d4d;
-    //font-size: 2.2em;
+    font-family: 'Fahkwang', sans-serif;
+    font-weight: bolder;
+    font-size: 36px;
 `;
 const H2 = styled.h2`
     font-size: 1.8rem;
     padding-right: 2rem;
     text-align: left;
+    font-family: 'Fahkwang', sans-serif;
+    
+    
 `;
+
+const H3 = styled.h3`
+    font-family: 'Lato', sans-serif;
+    font-size: 1.3rem;
+   
+`;
+
+const H4 = styled.h4`
+    font-family: 'Lato', sans-serif
+`;
+
 const H5 = styled.h5`
     border-left: 2px solid gray;
     line-height: 1.6rem;
     padding-left: 1rem;
     text-align: left;
+    font-family: 'Libre Franklin', sans-serif;
+`;
+
+const H6 = styled.div`
+    line-height: 3rem;
+    font-size: 1.2rem;
+    font-family: 'Libre Franklin', sans-serif;
 `;
 
 const Center = styled.div`
@@ -57,57 +76,13 @@ const Center = styled.div`
     text-align: center;
 `;
 
-const Input = styled.input`
-    width: 16%;
-    margin-right: 1rem;
-    height: 1rem;
-    border: 0;
-    outline: 0;
-    background: transparent;
-    border-bottom: 1px solid #c4c4c4;
-    text-align: center;
-`;
 
 const Paragraph = styled.div`
     line-height: 3rem;
     font-size: 1.2rem;
+    font-family: 'Libre Franklin', sans-serif;
 `;
 
-const customSelect = styled.select`
-      &.Select.is-open > .Select-control .Select-arrow {
-    border-color: transparent transparent red;
-`;
-
-const customStyles = {
-  option: (provided, state) => ({
-    ...provided,
-    borderBottom: '1px dotted pink',
-    color: state.isSelected ? 'red' : 'blue',
-    padding: 20,
-    width: 200
-  }),
-  control: () => ({
-    // none of react-select's styles are passed to <Control />
-    width: 200,
-  }),
-  valueContainer: (provided) => ({
-    ...provided,
-    minHeight: '1px',
-    height: '40px',
-    paddingTop: '0',
-    paddingBottom: '0',
-    width: 300
-  }),
-};
-
-
-
-// set options for react-select
-
-const relocateOptions = [
-  { value: 'currently open', label: 'currently open' },
-  { value: 'not available', label: 'not available' }
-];
 
 
 const Contact = props => {
@@ -126,11 +101,11 @@ const Contact = props => {
   return (
     <Div>
       <div className="reg-form">
-        <H1>Welcome to bohcura! Let's create your <br />professional profile real quick..</H1>
-        <h3>Tell us a little bit about you and how you'd like clients to reach you.</h3>
+        <H1>Great, Chef Jane! <br /> Now, clients can reach you.. </H1>
+        <H3>You can choose whether or not to publicly share this info.</H3>
         <Title>
-          <H2 className='rightBorder'>Step 2 of 2 <br /> About You</H2>
-          <H5>TIP: User your TAB key to move quickly<br />through the fields. SHIFT+TAB moves<br />you backwards.
+          <H2 className='rightBorder'>Step 2 of 2 <br /> Contact Info</H2>
+          <H5>TIP: If you choose not to publicly display this info, we'll<br />only use it to send you important info. Clients can use<br />your personal contact for to connect with you.
           </H5>
         </Title>
         <Paragraph>
@@ -141,16 +116,16 @@ const Contact = props => {
               <option value="email" label="email" />
               <option value="phone" label="phone" />
             </select>
-            . My email address is
-            <Field type="text" name="email" placeholder="you@there.com" /><br />
-            , and my phone number is I'm located in <Field type="text" name="telephone" placeholder="(555) 555-555" />.<br />
+            .{" "} My email address is
+            <Field type="text" className="styledInput" name="email" placeholder="you@there.com" />,<br />
+            {" "} and my phone number is <Field type="text" className="styledInput" name="phone" placeholder="(555) 555-555" />.<br />
             <select name="publicBool" value={values.publicBool} onChange={handleChange} >
               <option value="Please display" label="Please display" />
               <option value="Don't display" label="Don't display" />
             </select>
             {errors.relocate && touched.relocate && <p>{errors.relocate}</p>} this info publicly.
             <Center>
-              <button type='submit'>Submit!</button>
+              <button type='submit'>Review my info</button>
             </Center>
           </Form>
         </Paragraph>
@@ -161,11 +136,11 @@ const Contact = props => {
 
 
 const FormikForm = withFormik({
-  mapPropsToValues({ contactpref, email, telephone, publicBool }) {
+  mapPropsToValues({ contactpref, email, phone, publicBool }) {
     return {
       contactpref: contactpref || '',
       email: email || '',
-      telephone: telephone || '',
+      phone: phone || '',
       public: publicBool || ''
     }
   },
@@ -182,7 +157,7 @@ const FormikForm = withFormik({
       ...props.chef,
       email: values.email,
       contactpref: values.contactpref,
-      telephone: values.telephone,
+      phone: values.phone,
       public: values.public
     })
     props.setState({ steps: 3 })

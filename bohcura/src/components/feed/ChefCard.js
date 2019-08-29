@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
 
 // import icons
@@ -41,49 +41,103 @@ const Left = styled.div`
     text-align: left;
 `;
 
-const ChefCard = ( props ) => {
-  console.log("chef card stuff here:",props);
+class ChefCard extends Component {
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      chefs: props.chefs
+    };
+ }
+// }
+//
+// const ChefCard = ( props ) => {
+//   console.log("chef card stuff here:",props);
+
+ render() {
+    console.log("ChefCard with Class", this.props.chefs);
   return(
+
     <Card>
-       <img src={avatar} alt={'avatar'} />
-        <Row>
-          <img src={chef} alt='chef icon'/>
-          <div>
-            <h5>{props.chef.FirstNameLastName}</h5>
-            Professional cook for {props.chef.yearsexp} years
+      <img src={avatar} alt={'avatar'} />
+      <Row>
+        <img src={chef} alt='chef icon'/>
+        <div>
+          <h5>{this.props.chef.FirstNameLastName}</h5>
+          Professional cook for {this.props.chef.yearsexp} years
+        </div>
+      </Row>
+      <hr style={{color: '#C0BEBE', margin: '14px'}}/>
+      <Row>
+        <Left>
+          <div className='chefRow'>
+            <img src={location} alt="map pin" />
+            {this.props.chef.location},{this.props.chef.state}
           </div>
-        </Row>
-        <hr style={{color:'#C0BEBE', margin:'14px'}}/>
-          <Row>
-            <Left>
-              <div className='chefRow'>
-                  <img src={location} alt="map pin" />
-                    {props.chef.location},{props.chef.state}
-              </div>
-              <div className='chefRow'>
-                  <img src={phone} alt="phone icon"/>{props.chef.telephone}
-              </div>
-              <div className='chefRow'>
-                  <img src={mail} alt="email icon"/>{props.chef.email}
-              </div>
-            </Left>
-            <div>
-              <Row>{props.chef.relocate} to relocate</Row>
-              <Row><Button>Hire Me</Button></Row>
-            </div>
-          </Row>
-      <hr style={{color:'#C0BEBE', margin:'14px'}}/>
-        <Row>
-              <img src={recipe} alt="recipe book"/>
-              Chef's Recipes
-          {' '}
-              <img src={profile} alt="profile icon"/>
-              Chef's Profile
-        </Row>
+          <div className='chefRow'>
+            <img src={phone} alt="phone icon"/>{this.props.chef.telephone}
+          </div>
+          <div className='chefRow'>
+            <img src={mail} alt="email icon"/>{this.props.chef.email}
+          </div>
+        </Left>
+        <div>
+          <Row>{this.props.chef.relocate} to relocate</Row>
+          <Row><Button>Hire Me</Button></Row>
+        </div>
+      </Row>
+      <hr style={{color: '#C0BEBE', margin: '14px'}}/>
+      <Row>
+        <img src={recipe} alt="recipe book"/>
+        Chef's Recipes
+        {' '}
+        <img src={profile} alt="profile icon"/>
+        Chef's Profile
+      </Row>
     </Card>
 
-  )
+
+
+)
+}
 };
 
 export default ChefCard;
+
+{/*<Card>*/}
+{/*<img src={avatar} alt={'avatar'} />*/}
+{/*<Row>*/}
+{/*<img src={chef} alt='chef icon'/>*/}
+{/*<div>*/}
+{/*<h5>{props.chef.FirstNameLastName}</h5>*/}
+{/*Professional cook for {props.chef.yearsexp} years*/}
+{/*</div>*/}
+{/*</Row>*/}
+{/*<hr style={{color: '#C0BEBE', margin: '14px'}}/>*/}
+{/*<Row>*/}
+{/*<Left>*/}
+{/*<div className='chefRow'>*/}
+{/*<img src={location} alt="map pin" />*/}
+{/*{props.chef.location},{props.chef.state}*/}
+{/*</div>*/}
+{/*<div className='chefRow'>*/}
+{/*<img src={phone} alt="phone icon"/>{props.chef.telephone}*/}
+{/*</div>*/}
+{/*<div className='chefRow'>*/}
+{/*<img src={mail} alt="email icon"/>{props.chef.email}*/}
+{/*</div>*/}
+{/*</Left>*/}
+{/*<div>*/}
+{/*<Row>{props.chef.relocate} to relocate</Row>*/}
+{/*<Row><Button>Hire Me</Button></Row>*/}
+{/*</div>*/}
+{/*</Row>*/}
+{/*<hr style={{color: '#C0BEBE', margin: '14px'}}/>*/}
+{/*<Row>*/}
+{/*<img src={recipe} alt="recipe book"/>*/}
+{/*Chef's Recipes*/}
+{/*{' '}*/}
+{/*<img src={profile} alt="profile icon"/>*/}
+{/*Chef's Profile*/}
+{/*</Row>*/}
+{/*</Card>*/}
