@@ -10,10 +10,10 @@ import styled from 'styled-components';
 // styled components
 
 
-const Chef = ( { chef } ) => {
+const Chef = ( { chef, getChef } ) => {
 
   useEffect(() => {
-    props.getChef();
+    getChef();
     console.log("Chef data has been received!", chef)
   }, []);
 
@@ -94,4 +94,4 @@ const mapStateToProps = state => {
   }
 };
 
-export default connect(mapStateToProps, { getChefs })(Chef);
+export default connect(mapStateToProps, { getChef })(Chef);
