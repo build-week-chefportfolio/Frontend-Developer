@@ -120,6 +120,8 @@ const RecipeCard = ({ recipe }) => {
     return d;
   };
 
+  const splitName = (name, part = 'first') => name && part === 'first' ? name.split(' ')[0] : name.split(' ')[1];
+
   const convertCourse = course => {
     switch (course) {
       case 1: return 'First Course';
@@ -166,8 +168,8 @@ const RecipeCard = ({ recipe }) => {
               </div>
               <div className='chef-names'>
                 <Link to={`/chefs/${recipe.chefID}`}>
-                  <p className='first-name'>{recipe.chefFirstName || 'John'}</p>
-                  <p className='last-name'>{recipe.chefLastName || 'Doe'}</p>
+                  <p className='first-name'>{(Array.isArray(recipe.chefs) && recipe.chefs[0] && splitName(recipe.chefs[0].FirstNameLastName, 'first')) || 'John'}</p>
+                  <p className='last-name'>{(Array.isArray(recipe.chefs) && recipe.chefs[0] && splitName(recipe.chefs[0].FirstNameLastName, 'last'))  || 'Doe'}</p>
                 </Link>
               </div>
             </div>
