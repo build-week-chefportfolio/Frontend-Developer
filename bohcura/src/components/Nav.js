@@ -21,23 +21,6 @@ const NavContainer = styled.div`
 `;
 
 
-const NavigationBar = styled.div`
-    width: 70vw;
-    height: 75px;
-    line-height: 50px;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto;
-    z-index: 1000;
-        @media (max-width: 768px) {
-        flex-flow: column wrap;
-        height: auto;
-
-    }
-`;
-
 const LogoText = styled.text`
     margin-left: 1rem;
     font-weight: bold;
