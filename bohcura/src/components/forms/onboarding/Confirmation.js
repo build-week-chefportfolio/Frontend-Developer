@@ -12,6 +12,8 @@ import Select from 'react-select';
 import Nav from '../../Nav';
 import styled from 'styled-components';
 
+import { NavLink } from "react-router-dom";
+
 const phoneValidation = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
 
 // We need an anonymous function instead of an arrow function so we keep our context
@@ -185,9 +187,9 @@ const ProfileForm = props => {
                 </div>
               </div>
             </div>
-            <button type='button' disabled={props.isSubmitting} className='profile-submit'>
+            <NavLink to="/"><button type='button' disabled={props.isSubmitting} className='profile-submit'>
               Looks good Ship it!
-            </button>
+            </button></NavLink>
           </div>
           <div className='right-page'>
             <h5 className='preview-note'>Your Chef Card on the page of Chefs will look like this:</h5>
