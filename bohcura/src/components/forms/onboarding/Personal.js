@@ -206,4 +206,3 @@ const FormikForm = withFormik({
 })(Personal);
 
 export default FormikForm;
-
