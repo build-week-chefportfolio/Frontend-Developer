@@ -4,8 +4,7 @@ import { getChefs } from '../../actions';
 import styled from 'styled-components';
 
 import ChefCard from './ChefCard';
-import RecipeCard from "./RecipeCard";
-// import mapStateToProps from "react-redux/es/connect/mapStateToProps";
+
 
 // styled components
 
@@ -17,13 +16,19 @@ const ChefList = (props) => {
   }, []);
 
   return (
+<<<<<<< HEAD
     <div>
       <h1>Professional Chefs</h1>
       <div>search</div>
+=======
+    <Page>
+        <h1>Professional Chefs</h1>
+        <div>search</div>
+>>>>>>> 340e06d4e1e9283d912f12222e3a8275dcf047f9
 
       {props.chefs.map(chef => <ChefCard chef={chef} />)}
 
-    </div>
+    </Page>
   )
 };
 
