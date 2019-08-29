@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from "react-router-dom";
 
 import Personal from "./Personal"
 import Contact from "./Contact"
@@ -31,9 +32,9 @@ const Onboarding = (props) => {
             )
         case 4:
             // post the chef
-          console.log('Case Four Activated', adjust.steps);
+            console.log('Case Four Activated', adjust.steps);
             props.postChef(chef);
-            return  (<div>Redirecting...</div>);
+            return (<div>{(!adjust.steps === 4) ? <div>Redirecting...</div> : props.history.push("/dashboard")}</div>)
         default:
             console.log('You are in Default and shouldnt be')
             return (<div>SOMETHING IS WRONG</div>);
@@ -46,7 +47,7 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { putChefs, postChef })(Onboarding)
+export default withRouter(connect(mapStateToProps, { putChefs, postChef })(Onboarding))
 
 
 
