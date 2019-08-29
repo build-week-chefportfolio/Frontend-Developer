@@ -11,6 +11,8 @@ import styled from 'styled-components';
 
 
 const Chef = ({ chef, getChef, deleteRecipe, match: { params: { id } } }) => {
+    const [change, setChange] = useState(false)
+
     console.log(chef);
     const [isAdding, setIsAdding] = useState(false);
     useEffect(() => {
@@ -18,12 +20,14 @@ const Chef = ({ chef, getChef, deleteRecipe, match: { params: { id } } }) => {
         console.log('WHAT IS THIS', id)
         getChef(id);
         console.log("Chef data has been received!", chef)
-    }, []);
+    }, [change]);
+
 
 
     const deleteItem = (id) => {
         console.log('THIS IS INSIDE deleteItem', id)
         deleteRecipe(id)
+        setChange(true)
     }
 
     const toggleIsAdding = () => setIsAdding(!isAdding);

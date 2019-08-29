@@ -12,8 +12,10 @@ import { postChefs } from '../../../actions';
 import styled from 'styled-components';
 import ChefCard from '../../feed/ChefCard';
 
+
 const Title = styled.div`
     display: flex;
+    padding: 1.6rem 0;
 `;
 
 const Div = styled.div`
@@ -32,10 +34,11 @@ const Row = styled.div`
     align-content: baseline;
 `;
 const H1 = styled.h1`
+    line-height: 3rem;
     text-align: left;
     font-family: 'Fahkwang', sans-serif;
     font-weight: bolder;
-    font-size: 36px;
+    font-size: 2.6rem;
 `;
 const H2 = styled.h2`
     font-size: 1.8rem;
@@ -74,14 +77,18 @@ const Center = styled.div`
     display: flex;
     margin: auto;
     text-align: center;
+    padding: 1rem;
 `;
-
 
 const Paragraph = styled.div`
     line-height: 3rem;
     font-size: 1.2rem;
     font-family: 'Libre Franklin', sans-serif;
+    padding: 2rem 0;
 `;
+
+
+
 
 
 
@@ -102,7 +109,9 @@ const Contact = props => {
     <Div>
       <div className="reg-form">
         <H1>Great, Chef Jane! <br /> Now, clients can reach you.. </H1>
+        <br />
         <H3>You can choose whether or not to publicly share this info.</H3>
+      <br />
         <Title>
           <H2 className='rightBorder'>Step 2 of 2 <br /> Contact Info</H2>
           <H5>TIP: If you choose not to publicly display this info, we'll<br />only use it to send you important info. Clients can use<br />your personal contact for to connect with you.
@@ -118,12 +127,13 @@ const Contact = props => {
             </select>
             .{" "} My email address is
             <Field type="text" className="styledInput" name="email" placeholder="you@there.com" />,<br />
-            {" "} and my phone number is <Field type="text" className="styledInput" name="phone" placeholder="(555) 555-555" />.<br />
+            {" "} and my phone number is <Field type="text" className="styledInput" name="telephone" placeholder="(555) 555-555" />.<br />
             <select name="publicBool" value={values.publicBool} onChange={handleChange} >
               <option value="Please display" label="Please display" />
               <option value="Don't display" label="Don't display" />
             </select>
             {errors.relocate && touched.relocate && <p>{errors.relocate}</p>} this info publicly.
+
             <Center>
               <button type='submit'>Review my info</button>
             </Center>
@@ -136,11 +146,11 @@ const Contact = props => {
 
 
 const FormikForm = withFormik({
-  mapPropsToValues({ contactpref, email, phone, publicBool }) {
+  mapPropsToValues({ contactpref, email, telephone, publicBool }) {
     return {
       contactpref: contactpref || '',
       email: email || '',
-      phone: phone || '',
+      telephone: telephone || '',
       public: publicBool || ''
     }
   },
@@ -157,7 +167,7 @@ const FormikForm = withFormik({
       ...props.chef,
       email: values.email,
       contactpref: values.contactpref,
-      phone: values.phone,
+      telephone: values.telephone,
       public: values.public
     })
     props.setState({ steps: 3 })
