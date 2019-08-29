@@ -39,7 +39,7 @@ function App() {
       <Route path='/chef/:id' component={Chef} />
       <Route path="/recipes" component={RecipeList} />
       <Route path="/profile/:id" component={Profile} />
-      <PrivateRoute exact path="/dashboard" component={Dashboard} />
+      <PrivateRoute exact path="/dashboard" component={Chef} />
       <Route path="/recipe/:id" component={Recipe} />
       <Nav />
     </div>
