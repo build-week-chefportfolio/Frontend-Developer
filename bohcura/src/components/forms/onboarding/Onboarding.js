@@ -33,7 +33,7 @@ const Onboarding = (props) => {
         case 4:
             // post the chef
             console.log('Case Four Activated', adjust.steps);
-            props.postChef(chef);
+            (async (postChef, chef) => await postChef(chef))(props.postChef, chef);
             return (<div>{(!adjust.steps === 4) ? <div>Redirecting...</div> : props.history.push("/dashboard")}</div>)
         default:
             console.log('You are in Default and shouldnt be')
