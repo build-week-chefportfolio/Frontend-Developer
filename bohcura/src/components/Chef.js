@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getChef } from '../actions';
 import { Header, Image, Table } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
@@ -71,8 +72,10 @@ const Chef = ( { chef, getChef, match: { params: { id } } } ) => {
                 <Table.Row>
                   <Table.Cell>
                     <Header as='h4' image>
-                      <Image src={null} rounded size='mini' />
-                      <Header.Content>{recipe.RecipeName}</Header.Content>
+                      <Link to={`/recipe/${recipe.id}`}>
+                        <Image src={null} rounded size='mini' />
+                        <Header.Content>{recipe.RecipeName}</Header.Content>
+                      </Link>
                     </Header>
                   </Table.Cell>
                   <Table.Cell>

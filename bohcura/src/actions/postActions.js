@@ -28,8 +28,9 @@ export const postChef = (info) => {
 export const postRecipes = (info) => {
     return dispatch => {
         dispatch({ type: UPDATES_CURRENT_RECIPE_DATA_START });
+        console.log('Posting Recipe');
         axios
-            .post('https://chefportfolioo.herokuapp.com/api/recipes', info) //Need to update this API call when I get the full path
+            .post('https://chefportfolioo.herokuapp.com/api/recipe/add', info) //Need to update this API call when I get the full path
             .then(res => {
                 // res.data.data
                 console.log(res);
