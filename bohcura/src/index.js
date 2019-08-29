@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Link, Switch, withRouter } from 'react-
 import { reducer } from './reducers';
 import './App.css';
 
+
 import Confirmation from "./components/forms/onboarding/Confirmation";
 import Personal from "./components/forms/onboarding/Personal";
 import Signup from "./components/Signup";

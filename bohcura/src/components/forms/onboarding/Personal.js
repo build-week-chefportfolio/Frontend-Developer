@@ -109,8 +109,18 @@ const relocateOptions = [
 ];
 
 
-const Personal = ({ errors, touched, status }) => {
-
+const Personal = props => {
+  const {
+    values,
+    touched,
+    errors,
+    dirty,
+    isSubmitting,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    handleReset,
+  } = props;
 
   return (
     <Div>
@@ -134,11 +144,17 @@ const Personal = ({ errors, touched, status }) => {
             <Field type="number" name="yearsXP" placeholder="0" style={{ width: '4rem' }} />
             {errors.yearsXP && touched.yearsXP && <p>{errors.yearsXp}</p>} years(s). <br />
 
-            I'm located in <Input type="text" name="city" placeholder="city" />
-            {touched.city && errors.city && <p>{errors.city}</p>}, <Input type="text" name="state" placeholder="state" />
+            I'm located in <Field type="text" name="city" placeholder="city" />
+            {touched.city && errors.city && <p>{errors.city}</p>}, <Field type="text" name="state" placeholder="state" />
             {touched.state && errors.state && <p>{errors.state}</p>}, and I'm <br />
 
-            <Select options={relocateOptions} styles={customStyles} />
+            <select name="relocate" value={values.relocate} onChange={handleChange} >
+              <option value="Pick A Field" label="Pick A Field" />
+              <option value="not available" label="not available" />
+              <option value="currently open" label="currently open" />
+            </select>
+
+
             {errors.relocate && touched.relocate && <p>{errors.relocate}</p>} to considering to travel for culinary engagements.
             <Center>
               <button type='submit'>Submit!</button>
@@ -165,24 +181,26 @@ const FormikForm = withFormik({
     }
   },
 
-  // validationSchema: Yup.object().shape({
-  //   firstName: Yup.string()
-  //     .min(4, 'First name must be 4 characters or longer')
-  //     .required('First name is required'),
-  //   lastName: Yup.string()
-  //     .min(4, 'Last name must be 4 characters or longer')
-  //     .required('Last name is required'),
-  //   // yrsExperience: Yup.
-  //   locationCity: Yup.string()
-  //     .min(4, 'City name must be 4 characters or longer')
-  //     .required('City is required'),
-  //   locationState: Yup.string()
-  //     .min(4, 'State must be 4 characters or longer')
-  //     .required('State is required'),
-  //   // relocate:
-  // }),
+  validationSchema: Yup.object().shape({
+    firstName: Yup.string()
+      .min(4, 'First name must be 4 characters or longer')
+      .required('First name is required'),
+    lastName: Yup.string()
+      .min(4, 'Last name must be 4 characters or longer')
+      .required('Last name is required'),
+    // yrsExperience: Yup.
+    city: Yup.string()
+      .min(4, 'City name must be 4 characters or longer')
+      .required('City is required'),
+    state: Yup.string()
+      .min(1, 'State must be 4 characters or longer')
+      .required('State is required'),
+    // relocate:
+  }),
 
   handleSubmit(values, { props, setSubmitting }) {
+    console.log("this is values", values)
+    props.setChef({ values })
     props.setState({ steps: 2 })
     console.log('Checks to see if the state was updated to 2', props.state)
   }

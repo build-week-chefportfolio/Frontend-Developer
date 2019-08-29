@@ -19,26 +19,21 @@ const Onboarding = (props) => {
     const [adjust, setAdjust] = useState({ steps: 1 })
     const [chef, setChef] = useState({})
 
-    switch (chef.steps) {
+    switch (adjust.steps) {
         case 1:
-            console.log('Case One Activated', chef.steps)
+            console.log('Case One Activated', adjust.steps)
             return (
-                <Personal state={adjust} setState={setAdjust} />
+                <Personal setState={setAdjust} setChef={setChef} />
             );
         case 2:
-            console.log('Case Two Activated', chef.steps)
+            console.log('Case Two Activated', adjust.steps)
             return (
-                <Contact state={adjust} setState={setAdjust} />
+                <Contact setState={setAdjust} setChef={setChef} />
             )
         case 3:
-            console.log('Case Three Activated', chef.steps)
+            console.log('Case Four Activated', adjust.steps)
             return (
-                <Confirmation state={adjust} setState={setAdjust} />
-            )
-        case 4:
-            console.log('Case Four Activated', chef.steps)
-            return (
-                <Confirmation state={adjust} setState={setAdjust} />
+                <Confirmation setState={setAdjust} setChef={setChef} chef={chef} />
             )
         default:
             console.log('You are in Default and shouldnt be')
