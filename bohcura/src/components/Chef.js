@@ -46,13 +46,16 @@ const H2 = styled.h2`
     text-align: left;
     font-family: 'Fahkwang', sans-serif;
      line-height: 3rem;
-    
+       color: #e54236;
 `;
 
 const H3 = styled.h3`
-    font-family: 'Lato', sans-serif;
-    font-size: 1.3rem;
-   
+    font-size: 1.8rem;
+    padding-right: 2rem;
+    text-align: left;
+    font-family: 'Fahkwang', sans-serif;
+     line-height: 3rem;
+       color: black;
 `;
 
 const H4 = styled.h4`
@@ -133,7 +136,7 @@ const Chef = ({ chef, getChef, match: { params: { id } } }) => {
     <Div>
       <Title>
         <div><H1>Chef {chef.FirstNameLastName}</H1>
-          <H2>Professional Chef for {chef.yearsexp}</H2></div>
+          <H3>Professional Chef for {chef.yearsexp}{" "} years ;</H3></div>
         <div><button>Hire Me</button></div>
       </Title>
       <br/>
@@ -148,7 +151,7 @@ const Chef = ({ chef, getChef, match: { params: { id } } }) => {
       <hr />
     <br />
       <Description>
-        <h2>About Me</h2><br />
+        <H2>About Me</H2><br />
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A arcu cursus vitae
           congue. Et malesuada fames ac turpis egestas integer eget aliquet. Scelerisque eu ultrices vitae auctor eu augue ut lectus arcu. Semper risus in
           hendrerit gravida rutrum quisque non tellus. Volutpat consequat mauris nunc congue nisi vitae. Integer vitae justo eget magna fermentum iaculis
@@ -158,7 +161,7 @@ const Chef = ({ chef, getChef, match: { params: { id } } }) => {
       </Description>
       <br />
       <MyRecipes>
-        <h2>My Recipes</h2>
+        <H2>My Recipes</H2>
       </MyRecipes>
       <div className='recipes-container'>
         <Table basic='very' celled collapsing>
