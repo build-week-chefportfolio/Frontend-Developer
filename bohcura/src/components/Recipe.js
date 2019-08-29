@@ -65,7 +65,7 @@ const RecipeDiv = styled.div`
   }
 `;
 
-function Recipe ({ recipe, getRecipe, match: { params: { id }}}) {
+function Recipe({ recipe, getRecipe, match: { params: { id } } }) {
     console.log('Recipe: ', recipe);
     useEffect(() => {
         getRecipe(id);
@@ -82,7 +82,7 @@ function Recipe ({ recipe, getRecipe, match: { params: { id }}}) {
         }
     };
 
-    if(!recipe || !recipe.hasOwnProperty('RecipeName')) return <div>Loading...</div>;
+    if (!recipe || !recipe.hasOwnProperty('RecipeName')) return <div>Loading...</div>;
 
     return (
         <RecipeDiv className='recipe-page'>
@@ -102,10 +102,10 @@ function Recipe ({ recipe, getRecipe, match: { params: { id }}}) {
                             {/* Chef Icon goes here */}
                         </div>
                         <div className='name-title'>
-                            <Link to={`/chefs/${recipe.chefID}`}>
-                                <h3>{recipe.chefFirstName}</h3>
+                            {recipe.chefs && recipe.chefs.length ? (<Link to={`/chefs/${recipe.chefs[0].id}`}>
+                                <h3>{}</h3>
                                 <h3>{recipe.chefLastName}</h3>
-                            </Link>
+                            </Link>) : null}
                         </div>
                     </div>
                 </div>

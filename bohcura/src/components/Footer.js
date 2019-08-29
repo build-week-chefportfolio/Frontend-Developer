@@ -1,5 +1,4 @@
 import React from 'react';
-import '../App.css';
 import { NavLink } from "react-router-dom"
 
 import styled from 'styled-components';
@@ -69,21 +68,21 @@ const Links = styled.div`
 
 
 export default function Nav () {
-    return (
-      <>
+  return (
+    <>
       <NavContainer>
         <LogoText>
           bohcura.
         </LogoText>
 
         <Links>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/chefs">Chefs</NavLink>
-            <NavLink to="/recipes">Recipes</NavLink>
-            <NavLink to="/about">About</NavLink>
-            <NavLink to="/dashboard">My Bohcura</NavLink>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/feed/chefs">Chefs</NavLink>
+          <NavLink to="/feed/recipes">Recipes</NavLink>
+          <NavLink to="/about">About</NavLink>
+          <NavLink to="/dashboard">My Bohcura</NavLink>
         </Links>
       </NavContainer>
-      </>
-    )
+    </>
+  )
 }

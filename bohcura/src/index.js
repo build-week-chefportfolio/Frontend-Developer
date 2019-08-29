@@ -9,20 +9,19 @@ import { BrowserRouter as Router, Route, Link, Switch, withRouter } from 'react-
 import { reducer } from './reducers';
 import './App.css';
 
-import Confirmation from "./components/forms/onboarding/Confirmation";
-import Personal from "./components/forms/onboarding/Personal";
+import PrivateRoute from './utilities/PrivateRoute'
 import Signup from "./components/Signup";
 import SignIn from "./components/Signin";
 import HomePage from "./components/HomePage";
 import Nav from "./components/Nav";
 import Onboarding from "./components/forms/onboarding/Onboarding";
-import Feed from "./components/feed/Feed";
 import Dashboard from "./components/Dashboard";
 import Profile from "./components/Profile";
 import Recipe from "./components/Recipe";
 import RecipeList from './components/feed/RecipeList';
 import ChefList from "./components/feed/ChefList";
-import Contact from "./components/forms/onboarding/Contact";
+import RecipeAdd from './components/forms/RecipeAdd';
+import Chef from './components/Chef';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -37,9 +36,10 @@ function App() {
       <Route path="/onboarding" component={Onboarding} />
       <Route path="/signin" component={SignIn} />
       <Route path="/chefs" component={ChefList} />
+      <Route path='/chef/:id' component={Chef} />
       <Route path="/recipes" component={RecipeList} />
       <Route path="/profile/:id" component={Profile} />
-      <Route path="/dashboard" component={Dashboard} />
+      <PrivateRoute exact path="/dashboard" component={Dashboard} />
       <Route path="/recipe/:id" component={Recipe} />
     </div>
   )

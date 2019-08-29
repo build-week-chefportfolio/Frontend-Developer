@@ -3,6 +3,7 @@ import * as actions from '../actions';
 const initialState = {
     recipe: {},
     recipes: [],
+    chef: {},
     chefs: [],
     users: [],
     isLoading: false,
@@ -12,7 +13,7 @@ const initialState = {
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
 
-      // This grabs the Chef Data
+        // This grabs the Chef Data
         case actions.FETCH_CHEF_DATA_START:
 
             return {
@@ -26,9 +27,28 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 error: '',
-                chefs: action.payload,
+                chef: action.payload,
             };
         case actions.FETCH_CHEF_DATA_FAILURE:
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
+            };
+        case actions.FETCH_CHEFS_DATA_START:
+            return {
+                ...state,
+                isLoading: true,
+                error: ''
+            };
+        case actions.FETCH_CHEFS_DATA_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                error: '',
+                chefs: action.payload,
+            };
+        case actions.FETCH_CHEFS_DATA_FAILURE:
             return {
                 ...state,
                 isLoading: false,
@@ -70,6 +90,25 @@ export const reducer = (state = initialState, action) => {
                 recipe: action.payload
             };
         case actions.FETCH_RECIPE_DATA_FAILURE:
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
+            };
+        case actions.UPDATES_CURRENT_RECIPE_DATA_START:
+            return {
+                ...state,
+                isLoading: true,
+                error: ''
+            };
+        case actions.UPDATES_CURRENT_RECIPE_DATA_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                error: '',
+                recipes: [...state.recipes, action.payload]
+            };
+        case actions.UPDATES_CURRENT_RECIPE_DATA_FAILURE:
             return {
                 ...state,
                 isLoading: false,

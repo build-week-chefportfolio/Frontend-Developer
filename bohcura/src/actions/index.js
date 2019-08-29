@@ -1,12 +1,16 @@
 // Tim
 // Fetch
 export {
+    getChef,
     getChefs,
     getRecipe,
     getRecipes,
     FETCH_CHEF_DATA_START,
     FETCH_CHEF_DATA_SUCCESS,
     FETCH_CHEF_DATA_FAILURE,
+    FETCH_CHEFS_DATA_START,
+    FETCH_CHEFS_DATA_SUCCESS,
+    FETCH_CHEFS_DATA_FAILURE,
     FETCH_RECIPE_DATA_START,
     FETCH_RECIPE_DATA_SUCCESS,
     FETCH_RECIPE_DATA_FAILURE,
@@ -27,7 +31,7 @@ export {
 } from './deleteActions'
 // UPDATE
 export {
-    postChefs,
+    postChef,
     postRecipes,
     UPDATES_CURRENT_CHEF_DATA_START,
     UPDATES_CURRENT_CHEF_DATA_SUCCESS,

@@ -1,73 +1,192 @@
-// Can be reached by (email and phone, email, or just phone)(Select Box)
-// Email Address to be reached at
-// Phone Number
-// Public or Private (Contact Info)
+// Firstname, Lastname, Years of Experience, Location (City, State), Willing to travel (Select)
+// Lisa
 
-// Stretch - Picture / File Upload
-// Chris Hernandez
+import React from 'react';
+import Select from 'react-select';
+import { Form, Field, withFormik } from 'formik';
+import * as Yup from 'yup';
+import mapStateToProps from "react-redux/es/connect/mapStateToProps";
+import mapDispatchToProps from "react-redux/es/connect/mapDispatchToProps"
+import { postChefs } from '../../../actions';
 
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Form, Field, withFormik } from "formik";
-import * as Yup from "yup";
+import styled from 'styled-components';
+import ChefCard from '../../feed/ChefCard';
 
-const Contact = ({ errors, touched, status }) => {
-    const [contact, setContact] = useState([]);
-    console.log("testing touch", touched);
-    useEffect(() => {
-      if (status) {
-        setContact([...contact, status]);
-      }
-    }, [status]);
+const Title = styled.div`
+    display: flex;
+ 
+`;
 
-    return (
-      <div className="personal-form">
-        <h1>Contact</h1>
-        <Form>
+const Div = styled.div`
+    display: block;
+    width: 80%;
+    margin-left: 10%;
+    text-align: left;
+    alignment-baseline: bottom;
+    padding: 5%;
+`;
 
-            <div className="contactForm">
-                <Field className="contact-field" type="text" name="name" placeholder="Name" />
-                {touched.name && errors.name && (
-                    <p className="error">{errors.name}</p>
-                )}
+const Row = styled.div`
+    display: flex;
+    justify-content: space-between;
+    //margin: 1.6rem;
+    align-content: baseline;
+`;
+const H1 = styled.h1`
+    text-align: left;
+    //font-family: 'Raleway', sans-serif;
+    //font-weight: 600;
+    // color: #4d4d4d;
+    //font-size: 2.2em;
+`;
+const H2 = styled.h2`
+    font-size: 1.8rem;
+    padding-right: 2rem;
+    text-align: left;
+`;
+const H5 = styled.h5`
+    border-left: 2px solid gray;
+    line-height: 1.6rem;
+    padding-left: 1rem;
+    text-align: left;
+`;
 
-                <Field className="contact-field" type="text" name="email" placeholder="Email" />
-                {touched.email && errors.email && <p className="error">{errors.email}</p>}
+const Center = styled.div`
+    display: flex;
+    margin: auto;
+    text-align: center;
+`;
 
-                <Field className="contact-field contact-message" type="text" name="message" placeholder="Message" />
-                {touched.message && errors.message && <p className="error">{errors.Message}</p>}
+const Input = styled.input`
+    width: 16%;
+    margin-right: 1rem;
+    height: 1rem;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid #c4c4c4;
+    text-align: center;
+`;
 
-                <button className="contact-field" type="submit">Submit</button>
-            </div>
+const Paragraph = styled.div`
+    line-height: 3rem;
+    font-size: 1.2rem;
+`;
 
-        </Form>
+const customSelect = styled.select`
+      &.Select.is-open > .Select-control .Select-arrow {
+    border-color: transparent transparent red;
+`;
+
+const customStyles = {
+  option: (provided, state) => ({
+    ...provided,
+    borderBottom: '1px dotted pink',
+    color: state.isSelected ? 'red' : 'blue',
+    padding: 20,
+    width: 200
+  }),
+  control: () => ({
+    // none of react-select's styles are passed to <Control />
+    width: 200,
+  }),
+  valueContainer: (provided) => ({
+    ...provided,
+    minHeight: '1px',
+    height: '40px',
+    paddingTop: '0',
+    paddingBottom: '0',
+    width: 300
+  }),
+};
+
+
+
+// set options for react-select
+
+const relocateOptions = [
+  { value: 'currently open', label: 'currently open' },
+  { value: 'not available', label: 'not available' }
+];
+
+
+const Contact = props => {
+  const {
+    values,
+    touched,
+    errors,
+    dirty,
+    isSubmitting,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    handleReset,
+  } = props;
+
+  return (
+    <Div>
+      <div className="reg-form">
+        <H1>Welcome to bohcura! Let's create your <br />professional profile real quick..</H1>
+        <h3>Tell us a little bit about you and how you'd like clients to reach you.</h3>
+        <Title>
+          <H2 className='rightBorder'>Step 2 of 2 <br /> About You</H2>
+          <H5>TIP: User your TAB key to move quickly<br />through the fields. SHIFT+TAB moves<br />you backwards.
+          </H5>
+        </Title>
+        <Paragraph>
+          <Form>
+            I can be reached by {' '}
+            <select name="contactpref" value={values.contactpref} onChange={handleChange} >
+              <option value="email or phone" label="email or phone" />
+              <option value="email" label="email" />
+              <option value="phone" label="phone" />
+            </select>
+            . My email address is
+            <Field type="text" name="email" placeholder="you@there.com" /><br />
+            , and my phone number is I'm located in <Field type="text" name="phone" placeholder="(555) 555-555" />.<br />
+            <select name="publicBool" value={values.publicBool} onChange={handleChange} >
+              <option value="Please display" label="Please display" />
+              <option value="Don't display" label="Don't display" />
+            </select>
+            {errors.relocate && touched.relocate && <p>{errors.relocate}</p>} this info publicly.
+            <Center>
+              <button type='submit'>Submit!</button>
+            </Center>
+          </Form>
+        </Paragraph>
       </div>
-    );
-  };
+    </Div>
+  );
+};
 
-  const contactPage = withFormik({
-    mapPropsToValues({ name, email, message }) {
-      return {
-        name: name || "",
-        email: email || "",
-        message: message || "",
-      };
-    },
 
-    validationSchema: Yup.object().shape({
-      name: Yup.string().required("Please provide your name"),
-      email: Yup.string().required("Please provide an email"),
-      message: Yup.string().required("Please type your message")
-    }),
-
-    handleSubmit(values, { setStatus }) {
-      axios
-        .post("https://#", values)
-        .then(res => {
-          setStatus(res.data);
-        })
-        .catch(err => console.log(err.response));
+const FormikForm = withFormik({
+  mapPropsToValues({ contactpref, email, phone, publicBool }) {
+    return {
+      contactpref: contactpref || '',
+      email: email || '',
+      phone: phone || '',
+      public: publicBool || ''
     }
-  })(Contact);
+  },
 
-  export default contactPage;
+  validationSchema: Yup.object().shape({
+
+  }),
+
+  handleSubmit(values, { props, setSubmitting }) {
+    console.log("this is values", values)
+    console.log("this is CHEFFFF", props.chef)
+
+    props.setChef({
+      ...props.chef,
+      email: values.email,
+      contactpref: values.contactpref,
+      phone: values.phone,
+      public: values.public
+    })
+    props.setState({ steps: 3 })
+  }
+})(Contact);
+
+export default FormikForm;
