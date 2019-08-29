@@ -16,7 +16,7 @@ export const deleteChefs = (item) => {
             .then(res => {
                 // res.data.data
                 console.log(res);
-                dispatch({ type: DELETE_CHEF_DATA_SUCCESS, payload: res.data.sets });
+                dispatch({ type: DELETE_CHEF_DATA_SUCCESS, payload: res.data });
             })
             .catch(err => {
                 dispatch({ type: DELETE_CHEF_DATA_FAILURE, payload: err.response });
@@ -24,15 +24,15 @@ export const deleteChefs = (item) => {
     };
 };
 
-export const deleteRecipes = (item) => {
+export const deleteRecipe = (id) => {
     return dispatch => {
         dispatch({ type: DELETE_RECIPE_DATA_START });
         axios
-            .delete('https://chefportfolioo.herokuapp.com/api/recipes', item) //Need to update this API call when I get the full path
+            .delete(`https://chefportfolioo.herokuapp.com/api/recipe/delete${id}`) //Need to update this API call when I get the full path
             .then(res => {
                 // res.data.data
                 console.log(res);
-                dispatch({ type: DELETE_RECIPE_DATA_SUCCESS, payload: res.data.sets });
+                dispatch({ type: DELETE_RECIPE_DATA_SUCCESS, payload: res.data });
             })
             .catch(err => {
                 dispatch({ type: DELETE_RECIPE_DATA_FAILURE, payload: err.response });

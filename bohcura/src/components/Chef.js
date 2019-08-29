@@ -12,7 +12,7 @@ import styled from 'styled-components';
 // styled components
 
 
-const Chef = ( { chef, getChef, match: { params: { id } } } ) => {
+const Chef = ({ chef, getChef, match: { params: { id } } }) => {
   console.log(chef);
   const [isAdding, setIsAdding] = useState(false);
   useEffect(() => {
@@ -22,13 +22,9 @@ const Chef = ( { chef, getChef, match: { params: { id } } } ) => {
 
   const toggleIsAdding = () => setIsAdding(!isAdding);
 
-  const addRecipe = e => {
-    e.preventDefault();
-    toggleIsAdding();
-  };
 
   const convertCourse = course => {
-    switch(course) {
+    switch (course) {
       case 1: return 'First Course';
       case 2: return 'Second Course';
       case 3: return 'Third Course';
@@ -38,7 +34,7 @@ const Chef = ( { chef, getChef, match: { params: { id } } } ) => {
     }
   };
 
-  if(!chef || !chef.hasOwnProperty('FirstNameLastName')) return <div>Loading...</div>;
+  if (!chef || !chef.hasOwnProperty('FirstNameLastName')) return <div>Loading...</div>;
 
   return (
     <div>
@@ -57,20 +53,17 @@ const Chef = ( { chef, getChef, match: { params: { id } } } ) => {
       <div>
         <h2>About Me</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A arcu cursus vitae <br />
-        congue. Et malesuada fames ac turpis egestas integer eget aliquet. Scelerisque eu ultrices vitae auctor eu augue ut lectus arcu. Semper risus in <br />
-        hendrerit gravida rutrum quisque non tellus. Volutpat consequat mauris nunc congue nisi vitae. Integer vitae justo eget magna fermentum iaculis <br />
-        eu non diam. Aliquet enim tortor at auctor urna nunc. Nullam non nisi est sit amet facilisis magna. Velit laoreet id donec ultrices tincidunt arcu non <br />
-        sodales neque. Placerat in egestas erat imperdiet sed euismod nisi porta. Est lorem ipsum dolor sit. Ultricies lacus sed turpis tincidunt id aliquet <br />
-        risus feugiat in. Ultrices in iaculis nunc sed augue lacus viverra vitae congue. Sed lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt.</p>
+          congue. Et malesuada fames ac turpis egestas integer eget aliquet. Scelerisque eu ultrices vitae auctor eu augue ut lectus arcu. Semper risus in <br />
+          hendrerit gravida rutrum quisque non tellus. Volutpat consequat mauris nunc congue nisi vitae. Integer vitae justo eget magna fermentum iaculis <br />
+          eu non diam. Aliquet enim tortor at auctor urna nunc. Nullam non nisi est sit amet facilisis magna. Velit laoreet id donec ultrices tincidunt arcu non <br />
+          sodales neque. Placerat in egestas erat imperdiet sed euismod nisi porta. Est lorem ipsum dolor sit. Ultricies lacus sed turpis tincidunt id aliquet <br />
+          risus feugiat in. Ultrices in iaculis nunc sed augue lacus viverra vitae congue. Sed lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt.</p>
       </div>
       <div>
         <h2>My Recipes</h2>
       </div>
-
-      {!isAdding ? (
-        <div className='recipes-container'>
-          <button onClick={addRecipe}>Add Recipe</button>
-          <Table basic='very' celled collapsing>
+      <div className='recipes-container'>
+        <Table basic='very' celled collapsing>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>Recipe</Table.HeaderCell>
@@ -97,11 +90,7 @@ const Chef = ( { chef, getChef, match: { params: { id } } } ) => {
             })}
           </Table.Body>
         </Table>
-        </div>
-      ) : (
-          <RecipeAdd toggle={toggleIsAdding} />
-      )}
-
+      </div>
     </div>
   )
 };
