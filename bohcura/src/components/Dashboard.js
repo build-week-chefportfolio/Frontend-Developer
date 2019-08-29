@@ -12,9 +12,11 @@ import styled from 'styled-components';
 
 const Chef = ({ chef, getChef, deleteRecipe, match: { params: { id } } }) => {
     const [change, setChange] = useState(false)
+    const [recipes, setRecipes] = useState([])
 
     console.log(chef);
     const [isAdding, setIsAdding] = useState(false);
+
     useEffect(() => {
         id = localStorage.getItem('chef')
         console.log('WHAT IS THIS', id)
@@ -24,11 +26,18 @@ const Chef = ({ chef, getChef, deleteRecipe, match: { params: { id } } }) => {
 
 
 
+
     const deleteItem = (id) => {
         console.log('THIS IS INSIDE deleteItem', id)
-        deleteRecipe(id)
+        // deleteRecipe(id)
         setChange(true)
+
+        setRecipes(chef.recipe.map(recipe => {
+            return recipe
+        }))
     }
+
+
 
     const toggleIsAdding = () => setIsAdding(!isAdding);
 
@@ -88,6 +97,8 @@ const Chef = ({ chef, getChef, deleteRecipe, match: { params: { id } } }) => {
                             </Table.Row>
                         </Table.Header>
                         <Table.Body>
+                            {console.log('chef 2', chef)}
+
                             {chef.recipe.map(recipe => {
                                 return (
                                     <Table.Row>
