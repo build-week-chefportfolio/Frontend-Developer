@@ -7,8 +7,27 @@ import ChefCard from './ChefCard';
 
 
 // styled components
-const Page = styled.div`
-    padding: 5rem;
+const Div = styled.div`
+    display: block;
+    //width: 90%;
+    margin: 10%;
+    text-align: left;
+    alignment-baseline: bottom;
+    padding: 5%;
+`;
+
+const Cards = styled.div`
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+`;
+
+const Title = styled.div`
+    display: flex;
+    text-align: left;
+    justify-content: space-between;
 `;
 
 
@@ -19,13 +38,17 @@ const ChefList = (props) => {
   }, []);
 
   return (
-    <Page>
-      <h1>Professional Chefs</h1>
-      <div>search</div>
+    <Div>
+      <Title>
+        <h1>Professional Chefs</h1>
+        <div>search</div>
+      </Title>
 
-      {props.chefs.map(chef => <ChefCard chef={chef} />)}
+      <Cards>
+        {props.chefs.map(chef => <ChefCard chef={chef}/>)}
+      </Cards>
 
-    </Page>
+    </Div>
   )
 };
 
