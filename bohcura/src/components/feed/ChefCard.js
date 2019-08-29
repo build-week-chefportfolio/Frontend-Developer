@@ -13,15 +13,15 @@ import recipe from '../../assets/icons/recipe.png';
 // styled components
 
 const Card = styled.div`
-    width: 344px;
+    width: 375px;
     background-color: #f1f1f1;
-    margin: 1.5rem 1.5rem 1.5rem 2.5rem;
+    margin: 1.5rem;
     padding-bottom: .1rem;
 `;
 
 const Row = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin: .6rem;
     align-items: center;
 `;
@@ -31,7 +31,7 @@ const Button = styled.button`
     border-radius: 4px;
     font-size: 16px;
     line-height: 21px;
-    width: 7rem;
+    width: 6rem;
     padding: .75rem 0;
     color: black;
     border: none;
@@ -39,6 +39,14 @@ const Button = styled.button`
 
 const Left = styled.div`
     text-align: left;
+`;
+
+const Right = styled.div`
+    margin-left: 3rem;
+`;
+
+const H5 = styled.h5`
+    font-size: 1.2rem;
 `;
 
 class ChefCard extends Component {
@@ -59,26 +67,26 @@ class ChefCard extends Component {
   return(
 
     <Card>
-      <img src={avatar} alt={'avatar'} />
+      <img src={avatar}  alt={'avatar'} style={{width:'100%'}}/>
       <Row>
         <img src={chef} alt='chef icon'/>
-        <div>
-          <h5>{this.props.chef.FirstNameLastName}</h5>
+        <Right>
+          <H5>{this.props.chef.FirstNameLastName}</H5>
           Professional cook for {this.props.chef.yearsexp} years
-        </div>
+        </Right>
       </Row>
       <hr style={{color: '#C0BEBE', margin: '14px'}}/>
       <Row>
         <Left>
           <div className='chefRow'>
-            <img src={location} alt="map pin" />
+            <img src={location} className='styledIcon' alt="map pin" />
             {this.props.chef.location},{this.props.chef.state}
           </div>
           <div className='chefRow'>
-            <img src={phone} alt="phone icon"/>{this.props.chef.telephone}
+            <img src={phone} className='styledIcon' alt="phone icon"/>{this.props.chef.telephone}
           </div>
           <div className='chefRow'>
-            <img src={mail} alt="email icon"/>{this.props.chef.email}
+            <img src={mail} className='styledIcon' alt="email icon"/>{this.props.chef.email}
           </div>
         </Left>
         <div>

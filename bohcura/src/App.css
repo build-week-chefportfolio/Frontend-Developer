@@ -224,3 +224,15 @@ button{
 .logo {
   text-decoration: none;
 }
+
+.styledInput {
+  border: none;
+  border-bottom: 1px solid #c3c3c3;
+  text-align: center;
+}
+
+.styledIcon {
+  padding: 3px;
+  margin-left: 3px;
+  margin-right: 5px;
+}

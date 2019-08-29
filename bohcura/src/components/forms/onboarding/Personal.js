@@ -13,6 +13,7 @@ import styled from 'styled-components';
 
 const Title = styled.div`
     display: flex;
+    padding: 1.6rem 0;
 `;
 
 const Div = styled.div`
@@ -31,10 +32,11 @@ const Row = styled.div`
     align-content: baseline;
 `;
 const H1 = styled.h1`
+    line-height: 3rem;
     text-align: left;
     font-family: 'Fahkwang', sans-serif;
     font-weight: bolder;
-    font-size: 36px;
+    font-size: 2.6rem;
 `;
 const H2 = styled.h2`
     font-size: 1.8rem;
@@ -73,12 +75,14 @@ const Center = styled.div`
     display: flex;
     margin: auto;
     text-align: center;
+    padding: 1rem;
 `;
 
 const Paragraph = styled.div`
     line-height: 3rem;
     font-size: 1.2rem;
     font-family: 'Libre Franklin', sans-serif;
+    padding: 2rem 0;
 `;
 
 
@@ -100,11 +104,13 @@ const Personal = props => {
     <Div>
       <div className="reg-form">
         <H1>Welcome to bohcura! Let's create your <br />professional profile real quick..</H1>
+        <br />
         <H3>Tell us a little bit about you and how you'd like clients to reach you.</H3>
+        <br />
         <Title>
-          <H2 className='rightBorder'>Step 1 of 2 <br /> About You</H2>
+          <H2 className='rightBorder'>Step 1 of 2 <br /> About You</H2> <br />
           <H5>TIP: User your TAB key to move quickly<br />through the fields. SHIFT+TAB moves<br />you backwards.
-          </H5>
+          </H5><br />
         </Title>
         <Paragraph>
           <Form>

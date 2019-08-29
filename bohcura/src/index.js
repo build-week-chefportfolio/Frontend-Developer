@@ -22,10 +22,6 @@ import RecipeList from './components/feed/RecipeList';
 import ChefList from "./components/feed/ChefList";
 import RecipeAdd from './components/forms/RecipeAdd';
 import Chef from './components/Chef';
-import Personal from './components/forms/onboarding/Personal';
-import Contact from './components/forms/onboarding/Contact';
-import Confirmation from './components/forms/onboarding/Confirmation';
-import Footer from './components/Footer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -34,19 +30,21 @@ const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 function App() {
   return (
     <div className="App">
-
       <Nav />
       <Route exact path="/" component={HomePage} />
       <Route path="/signup" component={Signup} />
       <Route path="/onboarding" component={Onboarding} />
       <Route path="/signin" component={SignIn} />
       <Route path="/chefs" component={ChefList} />
-      {/*<Route path='/chef/:id' component={Chef} />*/}
+      <Route path='/chef/:id' component={Chef} />
       <Route path="/recipes" component={RecipeList} />
       <Route path="/profile/:id" component={Profile} />
       <PrivateRoute exact path="/dashboard" component={Dashboard} />
       <Route path="/recipe/:id" component={Recipe} />
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7204ee02eb9c31024ee1421f15993068acb1f077
     </div>
   )
 }
