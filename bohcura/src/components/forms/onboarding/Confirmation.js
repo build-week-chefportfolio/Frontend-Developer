@@ -127,15 +127,15 @@ const ProfileForm = props => {
   // Get values from store for previous values
   let values = props.values; // The previous values passed through store
   const [inputs, setInputs] = useState({
-    firstName: values.firstChild || '',
-    lastName: values.lastName || '',
-    yearsXP: values.yearsXP || 0,
-    city: values.city || '',
-    state: values.state || '',
-    phone: values.phone || '',
-    email: values.email || '',
-    relocate: values.relocate || 'Currently open',
-    contact: values.contact || 'both'
+    firstName: values.firstName || chef.firstName || '',
+    lastName: values.lastName || chef.lastName || '',
+    yearsexp: values.yearsexp || chef.yearsexp || 0,
+    city: values.city || chef.city || '',
+    state: values.state || chef.state || '',
+    telephone: values.telephone || chef.telephone || '',
+    email: values.email || chef.telephone || '',
+    relocate: values.relocate || chef.relocate || 'Currently open',
+    contact: values.contact || chef.contact || 'both'
   });
 
   const selectChange = selectedOption => {
@@ -178,7 +178,7 @@ const ProfileForm = props => {
                 </div>
               </div>
             </div>
-            <NavLink to="/"><button type='button' disabled={props.isSubmitting} className='profile-submit'>
+            <NavLink to="/"><button type='submit' disabled={props.isSubmitting} className='profile-submit'>
               Looks good Ship it!
             </button></NavLink>
           </div>
