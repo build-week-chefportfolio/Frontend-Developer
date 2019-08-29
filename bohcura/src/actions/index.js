@@ -21,7 +21,7 @@ export {
 // DELETE
 export {
     deleteChefs,
-    deleteRecipes,
+    deleteRecipe,
     DELETE_CHEF_DATA_START,
     DELETE_CHEF_DATA_SUCCESS,
     DELETE_CHEF_DATA_FAILURE,

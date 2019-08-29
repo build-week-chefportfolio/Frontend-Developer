@@ -51,22 +51,22 @@ const Links = styled.div`
 `
 
 
-export default function Nav () {
+export default function Nav() {
     return (
-      <>
-      <NavContainer>
-        <LogoText>
-          bohcura.
+        <>
+            <NavContainer>
+                <LogoText>
+                    bohcura.
         </LogoText>
 
-        <Links>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/chefs">Chefs</NavLink>
-            <NavLink to="/recipes">Recipes</NavLink>
-            <NavLink to="/about">About</NavLink>
-            <NavLink to="/dashboard">My Bohcura</NavLink>
-        </Links>
-      </NavContainer>
-      </>
+                <Links>
+                    <NavLink to="/">Home</NavLink>
+                    <NavLink to="/chefs">Chefs</NavLink>
+                    <NavLink to="/recipes">Recipes</NavLink>
+                    <NavLink to="/about">About</NavLink>
+                    <NavLink to="/dashboard">My Bohcura</NavLink>
+                </Links>
+            </NavContainer>
+        </>
     )
 }
