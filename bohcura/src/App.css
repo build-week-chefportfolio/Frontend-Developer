@@ -219,14 +219,21 @@ button{
   margin: 0 50px;
   font-weight: 600;
 }
+
+.logo {
+  text-decoration: none;
+}
+
 .styledInput {
   border: none;
   border-bottom: 1px solid #c3c3c3;
   text-align: center;
 }
 
-.logo {
-  text-decoration: none;
+.styledIcon {
+  padding: 3px;
+  margin-left: 3px;
+  margin-right: 5px;
 }
 
 .styledInput {
