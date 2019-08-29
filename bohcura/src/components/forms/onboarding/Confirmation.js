@@ -135,7 +135,8 @@ const ProfileForm = ({ values, isDisabled, errors, touched, toggle, chef }) => {
     telephone: values.telephone || chef.telephone || '',
     email: values.email || chef.telephone || '',
     relocate: values.relocate || chef.relocate || 'Currently open',
-    contact: values.contact || chef.contact || 'both'
+    contactpref: values.contactpref || chef.contactpref || 'both',
+    public: chef.public
   });
 
 
@@ -228,8 +229,7 @@ const ProfileForm = ({ values, isDisabled, errors, touched, toggle, chef }) => {
                 </div>
                 <div className='info-right'>
                   <div className='relocate-container'>
-                    {/*<Select name='relocate' value={inputs.relocate} options={relocateOptions} onChange={selectChange} />*/}
-                    <select name="relocate" value={chef.relocate} >
+                    <select name="relocate" value={chef.relocate} onChange={selectChange}>
                       <option value={chef.relocate} label={chef.relocate} />
                       {(chef.relocate === "currently open") ? <option value="not available" label="not available" /> :
                         <option value="currently open" label="currently open" />}
@@ -249,7 +249,7 @@ const ProfileForm = ({ values, isDisabled, errors, touched, toggle, chef }) => {
 };
 
 const FormikForm = withFormik({
-  mapPropsToValues({ firstName, lastName, yearsexp, city, state, telephone, email, relocate, contact, chef }) {
+  mapPropsToValues({ firstName, lastName, yearsexp, city, state, telephone, email, relocate, contactpref, chef }) {
     return {
       firstName: firstName || chef.firstName,
       lastName: lastName || chef.lastName,
@@ -259,7 +259,8 @@ const FormikForm = withFormik({
       telephone: telephone || chef.telephone,
       email: email || chef.email,
       relocate: relocate || chef.relocate,
-      contact: contact || chef.contact
+      contactpref: contactpref || chef.contactpref,
+      public: chef.public
     };
   },
   // validationSchema: Yup.object().shape({
@@ -285,6 +286,14 @@ const FormikForm = withFormik({
     console.log('HANDLESUBMIT IS BEING ACTIVATED', values);
     console.log(props);
     let contact = values.hasOwnProperty('contact') ? values.contact : 'both';
+    const relocate = (r => {
+      switch(r) {
+        case 'not available': return 0;
+        case 'currently open': return 1;
+        default: return 0;
+      }
+    })(values.relocate);
+
     const profile = {
       FirstNameLastName: values.firstName + ' ' + values.lastName,
       yearsexp: values.yearsexp,
@@ -292,8 +301,10 @@ const FormikForm = withFormik({
       state: values.state,
       telephone: values.telephone,
       email: values.email,
-      relocate: values.relocate,
-      contact: contact,
+      relocate: relocate,
+      contactpref: contact,
+      public: values.public || 1,
+      users_id: 1
     };
     console.log('AKJSHDAKSHDAKSLJDHJ', profile);
     props.setChef(profile);
