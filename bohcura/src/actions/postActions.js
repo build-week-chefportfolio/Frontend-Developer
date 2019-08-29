@@ -18,7 +18,7 @@ export const postChef = (info) => {
             .post('https://chefportfolioo.herokuapp.com/api/chefs/add', info) //Need to update this API call when I get the full path
             .then(res => {
                 // res.data.data
-                console.log('postChef worked:', res.response);
+                console.log('postChef worked:', res);
                 dispatch({ type: UPDATES_CURRENT_CHEF_DATA_SUCCESS, payload: res.data });
             })
             .catch(err => {

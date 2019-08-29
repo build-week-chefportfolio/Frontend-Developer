@@ -11,7 +11,6 @@ import Select from 'react-select';
 import Nav from '../../Nav';
 import styled from 'styled-components';
 
-import { withRouter } from "react-router-dom";
 
 const phoneValidation = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
 
@@ -287,7 +286,7 @@ const FormikForm = withFormik({
     console.log(props);
     let contact = values.hasOwnProperty('contact') ? values.contact : 'both';
     const relocate = (r => {
-      switch(r) {
+      switch (r) {
         case 'not available': return 0;
         case 'currently open': return 1;
         default: return 0;
@@ -317,4 +316,4 @@ const FormikForm = withFormik({
 
 
 
-export default withRouter(FormikForm);
+export default FormikForm;
