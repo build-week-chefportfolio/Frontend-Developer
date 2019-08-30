@@ -24,11 +24,11 @@ export const putChefs = (info) => {
     }
 }
 
-export const putRecipes = (info) => {
+export const putRecipe = (id, info) => {
     return dispatch => {
         dispatch({ type: PUT_CURRENT_RECIPE_DATA_START })
         axios
-            .put('https://chefportfolioo.herokuapp.com/api/recipes', info) //Need to update this API call when I get the full path
+            .put(`https://chefportfolioo.herokuapp.com/api/recipe/delete/${id}`, info) //Need to update this API call when I get the full path
             .then(res => {
                 // res.data.data
                 console.log(res)

@@ -3,7 +3,7 @@ import { Header, Image, Table } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import RecipeAdd from "./forms/RecipeAdd";
 import { connect } from 'react-redux';
-import { deleteRecipe } from "../store/actions";
+import { deleteRecipe, putRecipe } from "../store/actions";
 
 const RecipeListGrid = (props) => {
   let { chef, canAdd, toggle, isAdding, deleteRecipe } = props;
@@ -24,9 +24,12 @@ const RecipeListGrid = (props) => {
   };
 
   const deleteItem = (id) => {
-    console.log('THIS IS INSIDE deleteItem', id);
     deleteRecipe(id);
   };
+
+  const editItem = (id, item) => {
+    putRecipe(id, item)
+  }
 
   return !isAdding ? (
     <div className='recipes-container'>
@@ -70,4 +73,4 @@ const RecipeListGrid = (props) => {
 
 const mapStateToProps = state => state;
 
-export default connect(mapStateToProps, { deleteRecipe })(RecipeListGrid);
+export default connect(mapStateToProps, { deleteRecipe, putRecipe })(RecipeListGrid);
