@@ -14,7 +14,6 @@ import recipe from '../../assets/icons/recipe.png';
 // styled components
 
 const Card = styled.div`
-    width: 375px;
     background-color: #f1f1f1;
     margin: 1.5rem;
     padding-bottom: .1rem;
@@ -23,7 +22,7 @@ const Card = styled.div`
 const Row = styled.div`
     display: flex;
     justify-content: space-evenly;
-    margin: .6rem;
+    margin: 0.2rem .6rem 0.2rem;
     align-items: center;
 `;
 
@@ -68,9 +67,9 @@ class ChefCard extends Component {
   return(
     <NavLink to={`/chef/${this.props.chef.id}`} className="chefCardLink">
       <Card>
-        <img src={avatar}  alt={'avatar'} style={{width:'100%'}}/>
+        <img src={avatar}  alt={'avatar'} style={{width:'100%', height: "130px", overflow: "hidden"}}/>
         <Row>
-          <img src={chef} alt='chef icon'/>
+          <img src={chef} alt='chef icon' className="styledIconMain"/>
           <Right>
             <H5>{this.props.chef.FirstNameLastName}</H5>
             Professional cook for {this.props.chef.yearsexp} years

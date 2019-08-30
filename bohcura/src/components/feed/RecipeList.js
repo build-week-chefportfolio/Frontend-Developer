@@ -17,6 +17,7 @@ const RecipePage = styled.div`
 
 const ListDiv = styled.div`
   display: flex;
+  margin: 40px auto;
   flex-wrap: wrap;
   justify-content: space-evenly;
   width: 70%;
@@ -57,13 +58,16 @@ const RecipeList = ({ storeRecipes: recipes, getRecipes }) => {
   }, []);
 
   return (
-    <RecipePage className='recipe-page'>
-      <div className='right-content'>
-        <ListDiv className='recipes-list'>
-          {recipes.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} />)}
-        </ListDiv>
-      </div>
-    </RecipePage>
+    <div>
+      <h1 className="proRecipes">Professional Recipes</h1>
+      <RecipePage className='recipe-page'>
+        <div className='right-content'>
+          <ListDiv className='recipes-list'>
+            {recipes.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} />)}
+          </ListDiv>
+        </div>
+      </RecipePage>
+    </div>
   );
 
 };

@@ -2,7 +2,6 @@
   margin: 0;
 }
 .App {
-  text-align: center;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -149,6 +148,7 @@
 .homeChefContainer img{
   height: 100%;
   width: 100%;
+  max-height: 325px;
   object-fit: cover;
   object-position: 0% 80%;
 }
@@ -166,6 +166,7 @@
 .homeRecipeContainer img{
   height: 100%;
   width: 100%;
+  max-height: 325px;
   object-fit: cover;
   object-position: 0% 80%;
 }
@@ -246,10 +247,32 @@ button{
   padding: 3px;
   margin-left: 3px;
   margin-right: 5px;
+  transform: scale(0.7);
+}
+
+.styledIconMain {
+  transform: scale(0.9);
 }
 
 /* Chef Card */
 .chefCardLink {
   text-decoration: none;
   color: black;
+  width: 30%;
+}
+
+/* Chef Card List*/
+.chefList {
+  width: 80%;
+}
+
+.proChefs {
+  width: 67%;
+  margin: 20px auto;
+}
+
+/* Recipes Card List*/
+.proRecipes {
+  width: 62%;
+  margin: 20px auto;
 }
