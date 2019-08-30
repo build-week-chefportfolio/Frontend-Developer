@@ -34,7 +34,6 @@ const NavContainer = styled.div`
 //         @media (max-width: 768px) {
 //         flex-flow: column wrap;
 //         height: auto;
-
 //     }
 // `;
 
@@ -72,7 +71,7 @@ export default function Nav() {
     return (
         <>
             <NavContainer>
-                <a href="https://bohcura.netlify.com/index.html" className="logo">
+                <a href="https://bohcurachefs.netlify.com/index.html" className="logo">
                     <LogoText>bohcura.</LogoText>
                 </a>
 
@@ -81,7 +80,7 @@ export default function Nav() {
                     <NavLink to="/">Home</NavLink>
                     <NavLink to="/chefs">Chefs</NavLink>
                     <NavLink to="/recipes">Recipes</NavLink>
-                    <a href="https://bohcura.netlify.com/about.html">About</a>
+                    <a href="https://bohcurachefs.netlify.com/about.html">About</a>
                     <NavLink to="/dashboard">My Bohcura</NavLink>
                 </Links>
             </NavContainer>

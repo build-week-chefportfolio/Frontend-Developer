@@ -82,6 +82,13 @@ const Chef = (props) => {
 
   const toggleIsAdding = () => setIsAdding(!isAdding);
 
+  const relocate = () => {
+    if (chef.relocate) {
+      return "not available"
+    } else {
+      return "available"
+    }
+  }
 
   if (!chef || !chef.hasOwnProperty('FirstNameLastName')) return <div>Loading...</div>;
 
@@ -98,7 +105,7 @@ const Chef = (props) => {
       <ContactInfo>
         <div>{chef.email}</div>
         <div>{chef.telephone}</div>
-        <div>{chef.relocate}</div>
+        <div>{relocate()}</div>
       </ContactInfo>
 
       <hr />
