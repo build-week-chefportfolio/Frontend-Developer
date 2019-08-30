@@ -58,7 +58,7 @@ const RecipeListGrid = (props) => {
                 </Table.Cell>
                 <Table.Cell>
                   <button style={{ padding: '5px 10px', marginRight: '10px' }} onClick={() => deleteItem(recipe.id)}>Delete</button>
-                  <button style={{ padding: '5px 10px' }} onClick={() => deleteItem(recipe.id)}>Edit</button>
+                  <button style={{ padding: '5px 10px' }} onClick={toggle}>Edit</button>
                 </Table.Cell>
               </Table.Row>
             );
