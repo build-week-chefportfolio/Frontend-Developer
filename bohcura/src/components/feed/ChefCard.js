@@ -91,7 +91,7 @@ class ChefCard extends Component {
           </Left>
           <div>
             <Row>{this.props.chef.relocate} to relocate</Row>
-            <Row><Button>Hire Me</Button></Row>
+            <Row>Hire Me!</Row>
           </div>
         </Row>
         <hr style={{color: '#C0BEBE', margin: '14px'}}/>
