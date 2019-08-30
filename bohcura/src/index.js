@@ -20,6 +20,7 @@ import Recipe from "./components/Recipe";
 import RecipeList from './components/feed/RecipeList';
 import ChefList from "./components/feed/ChefList";
 import Chef from './components/Chef';
+import { Icon, Table } from 'semantic-ui-react';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

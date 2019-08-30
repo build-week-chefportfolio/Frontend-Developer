@@ -9,6 +9,7 @@ import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import styled from 'styled-components';
 
+import { withRouter } from "react-router-dom";
 
 const phoneValidation = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
 
@@ -21,6 +22,9 @@ Yup.addMethod(Yup.string, 'phone', function () {
 const PageDiv = styled.div`
   display: flex;
   justify-content: space-evenly;
+  width: 80%;
+  margin: auto;
+  padding-top: 5rem;
   
   div.left-page {
     
@@ -114,29 +118,56 @@ const PageDiv = styled.div`
   }
 `;
 
+const Title = styled.div`
+
+`;
+
+const H5 = styled.h5`
+    line-height: 1.6rem;
+    font-size: 1.2rem;
+    padding-left: 1rem;
+    text-align: left;
+    font-family: 'Libre Franklin', sans-serif;
+`;
+
 
 const ProfileForm = ({ values, isDisabled, errors, touched, toggle, chef }) => {
   console.log("IS THIS CHEF STILL", chef)
+  // const {
+  //   touched,
+  //   errors,
+  //   dirty,
+  //   isSubmitting,
+  //   handleBlur,
+  //   handleSubmit,
+  //   handleChange,
+  //   handleReset,
+  //   values
+  // } = props;
+
+
 
   // Get values from store for previous values
-  const [inputs, setInputs] = useState({
-    firstName: values.firstName || chef.firstName || '',
-    lastName: values.lastName || chef.lastName || '',
-    yearsexp: values.yearsexp || chef.yearsexp || 0,
-    city: values.city || chef.city || '',
-    state: values.state || chef.state || '',
-    telephone: values.telephone || chef.telephone || '',
-    email: values.email || chef.telephone || '',
-    relocate: values.relocate || chef.relocate || 'Currently open',
-    contactpref: values.contactpref || chef.contactpref || 'both',
-    public: chef.public
-  });
+  // let values = props.values; // The previous values passed through store
+  // const [inputs, setInputs] = useState({
+  //   firstName: props.chef.firstName,
+  //   lastName: props.chef.lastName,
+  //   yearsXP: props.chef.yearsXP,
+  //   city: props.chef.city,
+  //   state: props.chef.state,
+  //   phone: props.chef.phone,
+  //   email: props.chef.email,
+  //   relocate: props.chef.relocate,
+  //   contact: props.chef.contactpref
+  // });
+  // console.log('This is inputs initial state', inputs)
 
 
-  const selectChange = selectedOption => {
-    setInputs({ ...inputs, relocate: selectedOption });
-    console.log(selectedOption);
-  };
+
+  // const selectChange = selectedOption => {
+  //   setInputs({ ...inputs, relocate: selectedOption });
+  //   console.log(selectedOption);
+  // };
 
   // const setWidth = e => {
   //   let padding = e.target.type === 'number' ? 8 : 0;
@@ -150,6 +181,8 @@ const ProfileForm = ({ values, isDisabled, errors, touched, toggle, chef }) => {
   // };
 
   return (
+
+
     <div className='ProfileForm'>
       <Form>
         <PageDiv>
@@ -159,20 +192,20 @@ const ProfileForm = ({ values, isDisabled, errors, touched, toggle, chef }) => {
                 <h1 className='success-header'>
                   Awesome, Chef {'inputs.firstName'}!<br />
                   Here's how things look..
-                </h1>
+                </h1><br />
                 <h4 className='success-subheader'>
                   You'll be able to add even more things once the basics are done.
-                </h4>
+                </h4><br />
               </div>
               <div className='dialogue-review'>
                 <div className='confirm-header'>
                   Review and<br /> Confirm.
                 </div>
                 <div className='confirm-tip'>
-                  <span>TIP: Click an item on the card to edit.</span>
-                </div>
+                  <span><H5>TIP: Click an item on the card to edit.</H5></span>
+                </div><br />
               </div>
-            </div>
+            </div><br />
             <button type='submit' className='profile-submit'>
               Looks good Ship it!
             </button>
@@ -188,15 +221,15 @@ const ProfileForm = ({ values, isDisabled, errors, touched, toggle, chef }) => {
                   {/* Insert Title Image */}
                 </div>
                 <div className='title-container'>
-                  <div className='title-name'>
-                    <span className='title'>Chef</span>
+                  <Title className='title-name'>
+                    <span className='title'><h2>Chef</h2></span>
                     <Field type='text' name='firstName' placeholder={chef.firstName} />
                     <Field type='text' name='lastName' placeholder={chef.lastName} />
-                  </div>
+                  </Title>
                   <div className='experience'>
                     <span className='experience-phrase'>
                       Professional cook for
-                      <Field type='number' name='yearsexp' placeholder={chef.yearsexp} />
+                      <Field type='text' name='yearsXP' placeholder={chef.yearsXP} />
                       years
                     </span>
                   </div>
@@ -214,7 +247,7 @@ const ProfileForm = ({ values, isDisabled, errors, touched, toggle, chef }) => {
                   </div>
                   <div className='info-phone'>
                     {/* Phone Image */}
-                    <Field type='text' name='telephone' placeholder={chef.telephone} />
+                    <Field type='text' name='phone' placeholder={chef.phone} />
                   </div>
                   <div className='info-email'>
                     <Field type='email' name='email' placeholder={chef.email} />
@@ -222,7 +255,8 @@ const ProfileForm = ({ values, isDisabled, errors, touched, toggle, chef }) => {
                 </div>
                 <div className='info-right'>
                   <div className='relocate-container'>
-                    <select name="relocate" value={chef.relocate} onChange={selectChange}>
+                    {/*<Select name='relocate' value={inputs.relocate} options={relocateOptions} onChange={selectChange} />*/}
+                    <select name="relocate" value={chef.relocate} >
                       <option value={chef.relocate} label={chef.relocate} />
                       {(chef.relocate === "currently open") ? <option value="not available" label="not available" /> :
                         <option value="currently open" label="currently open" />}
@@ -238,22 +272,111 @@ const ProfileForm = ({ values, isDisabled, errors, touched, toggle, chef }) => {
         </PageDiv>
       </Form>
     </div>
+
+    // <div className='ProfileForm'>
+    //   <Form>
+    //     <PageDiv>
+    //       <div className='left-page'>
+    //         <div className='dialogue'>
+    //           <div className='dialogue-headers'>
+    //             <h1 className='success-header'>
+    //               Awesome, Chef {'inputs.firstName'}!<br />
+    //               Here's how things look..
+    //             </h1><br />
+    //             <h4 className='success-subheader'>
+    //               You'll be able to add even more things once the basics are done.
+    //             </h4><br />
+    //           </div>
+    //           <div className='dialogue-review'>
+    //             <div className='confirm-header'>
+    //               Review and<br /> Confirm.
+    //             </div>
+    //             <div className='confirm-tip'>
+    //               <span>TIP: Click an item on the card to edit.</span>
+    //             </div><br />
+    //           </div>
+    //         </div>
+    //         <button type='submit' className='profile-submit'>
+    //           Looks good Ship it!
+    //         </button>
+    //       </div>
+    //       <div className='right-page'>
+    //         <h5 className='preview-note'>Your Chef Card on the page of Chefs will look like this:</h5>
+    //         <div className='form-body'>
+    //           <div className='profile-img'>
+    //             { /* Profile Image */}
+    //           </div>
+    //           <div className='title-name'>
+    //             <div className='title-icon'>
+    //               {/* Insert Title Image */}
+    //             </div>
+    //             <div className='title-container'>
+    //               <div className='title-name'>
+    //                 <span className='title'>Chef</span>
+    //                 <Field type='text' name='firstName' placeholder={chef.firstName} />
+    //                 <Field type='text' name='lastName' placeholder={chef.lastName} />
+    //               </div>
+    //               <div className='experience'>
+    //                 <span className='experience-phrase'>
+    //                   Professional cook for
+    //                   <Field type='text' name='yearsXP' placeholder={chef.yearsXP} />
+    //                   years
+    //                 </span>
+    //               </div>
+    //             </div>
+    //           </div>
+    //           <hr className='profile-hr' /> {/* For line after profile and title boxes */}
+    //           <div className='info-container'>
+    //             <div className='info-left'>
+    //               <div className='info-location'>
+    //                 {/* Location Image */}
+    //                 <div className='info-location-container'>
+    //                   <Field type='text' name='city' placeholder={values.city} />
+    //                   <Field type='text' name='state' placeholder={chef.state} />
+    //                 </div>
+    //               </div>
+    //               <div className='info-phone'>
+    //                 {/* Phone Image */}
+    //                 <Field type='text' name='phone' placeholder={chef.phone} />
+    //               </div>
+    //               <div className='info-email'>
+    //                 <Field type='email' name='email' placeholder={chef.email} />
+    //               </div>
+    //             </div>
+    //             <div className='info-right'>
+    //               <div className='relocate-container'>
+    //                 {/*<Select name='relocate' value={inputs.relocate} options={relocateOptions} onChange={selectChange} />*/}
+    //                 <select name="relocate" value={chef.relocate} >
+    //                   <option value={chef.relocate} label={chef.relocate} />
+    //                   {(chef.relocate === "currently open") ? <option value="not available" label="not available" /> :
+    //                     <option value="currently open" label="currently open" />}
+    //                 </select>
+    //                 <span className='relocate-phrase'>
+    //                   to travel for culinary projects.
+    //                 </span>Select
+    //               </div>
+    //             </div>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </PageDiv>
+    //   </Form>
+    // </div>
   );
 };
 
 const FormikForm = withFormik({
-  mapPropsToValues({ firstName, lastName, yearsexp, city, state, telephone, email, relocate, contactpref, chef }) {
+  mapPropsToValues({ firstName, lastName, yearsXP, city, state, phone, email, relocate, contact, chef }) {
     return {
       firstName: firstName || chef.firstName,
       lastName: lastName || chef.lastName,
-      yearsexp: yearsexp || chef.yearsexp,
+      yearsXP: yearsXP || chef.yearsXP,
       city: city || chef.city,
       state: state || chef.state,
-      telephone: telephone || chef.telephone,
+      phone: phone || chef.phone,
       email: email || chef.email,
       relocate: relocate || chef.relocate,
-      contactpref: contactpref || chef.contactpref,
-      public: chef.public
+      contact: contact || chef.contact
     };
   },
   // validationSchema: Yup.object().shape({
@@ -277,37 +400,27 @@ const FormikForm = withFormik({
   // }),
   handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus, props }) {
     console.log('HANDLESUBMIT IS BEING ACTIVATED', values);
-    console.log(props);
-    let contact = values.hasOwnProperty('contact') ? values.contact : 'both';
-    const relocate = (r => {
-      switch (r) {
-        case 'not available': return 0;
-        case 'currently open': return 1;
-        default: return 0;
-      }
-    })(values.relocate);
-
-    const chefID = localStorage.getItem('chef');
-
+    // let contact = values.hasOwnProperty('contact') ? values.contact : 'both';
     const profile = {
-      FirstNameLastName: values.firstName + ' ' + values.lastName,
-      yearsexp: values.yearsexp,
-      location: values.city,
+      firstName: values.firstName,
+      lastName: values.lastName,
+      yearsXP: values.yearsXP,
+      city: values.city,
       state: values.state,
-      telephone: values.telephone,
+      phone: values.phone,
       email: values.email,
-      relocate: relocate,
-      contactpref: contact,
-      public: values.public || 1,
-      users_id: chefID
+      relocate: values.relocate,
+      contact: values.contact,
     };
     console.log('AKJSHDAKSHDAKSLJDHJ', profile);
-    props.setChef(profile);
-    props.setState({ steps: 4 });
+    // props.postChef(profile)
     setSubmitting(false)
+    // props.history.push("/")
   }
 })(ProfileForm);
 
 
 
-export default FormikForm;
+export default withRouter(FormikForm);
+
+

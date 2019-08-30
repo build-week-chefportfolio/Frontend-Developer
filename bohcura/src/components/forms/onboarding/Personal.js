@@ -18,13 +18,6 @@ const Div = styled.div`
     padding: 5%;
 `;
 
-// const Row = styled.div`
-//     display: flex;
-//     justify-content: space-between;
-//     //margin: 1.6rem;
-//     align-content: baseline;
-// `;
-
 const H1 = styled.h1`
     line-height: 3rem;
     text-align: left;
@@ -32,6 +25,7 @@ const H1 = styled.h1`
     font-weight: bolder;
     font-size: 2.6rem;
 `;
+
 const H2 = styled.h2`
     font-size: 1.8rem;
     padding-right: 2rem;
@@ -47,10 +41,6 @@ const H3 = styled.h3`
    
 `;
 
-// const H4 = styled.h4`
-//     font-family: 'Lato', sans-serif
-// `;
-
 const H5 = styled.h5`
     border-left: 2px solid gray;
     line-height: 1.6rem;
@@ -58,12 +48,6 @@ const H5 = styled.h5`
     text-align: left;
     font-family: 'Libre Franklin', sans-serif;
 `;
-
-// const H6 = styled.div`
-//     line-height: 3rem;
-//     font-size: 1.2rem;
-//     font-family: 'Libre Franklin', sans-serif;
-// `;
 
 const Center = styled.div`
     display: flex;
