@@ -10,7 +10,6 @@ import ChefCard from './ChefCard';
 const Div = styled.div`
     display: block;
     width: 80%;
-
     text-align: left;
     alignment-baseline: bottom;
     padding: 5%;
@@ -18,7 +17,6 @@ const Div = styled.div`
 
 const Cards = styled.div`
     display: flex;
-    margin: auto;
     justify-content: space-between;
     flex-wrap: wrap;
 
@@ -40,9 +38,9 @@ const ChefList = (props) => {
 
   return (
     <Div>
-      <Title>
-        <h1>Professional Chefs</h1>
-      </Title>
+      {/*<Title>*/}
+      {/*  <h1>Professional Chefs</h1>*/}
+      {/*</Title>*/}
       <Cards>
         {props.chefs.map(chef => <ChefCard chef={chef}/>)}
       </Cards>

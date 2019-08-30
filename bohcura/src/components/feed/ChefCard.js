@@ -13,10 +13,11 @@ import recipe from '../../assets/icons/recipe.png';
 // styled components
 
 const Card = styled.div`
-    width: 375px;
+    max-width: 375px;
     background-color: #f1f1f1;
-    margin: 1.5rem;
+    margin: 1.5rem 0;
     padding-bottom: .1rem;
+    
 `;
 
 const Row = styled.div`
@@ -56,11 +57,21 @@ class ChefCard extends Component {
     this.state = {
       chefs: props.chefs
     };
- }
+  }
+
 // }
 //
 // const ChefCard = ( props ) => {
 //   console.log("chef card stuff here:",props);
+
+  canRelocation() {
+    if (this.props.chefs.relocate) {
+      return "Currently open";
+    } else {
+      return "Not open"
+    }
+  }
+
 
  render() {
     console.log("ChefCard with Class", this.props.chefs);
