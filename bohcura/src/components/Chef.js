@@ -156,35 +156,6 @@ const Chef = ( props ) => {
         <H2>My Recipes</H2>
       </MyRecipes>
       <RecipeListGrid chef={chef} isAdding={isAdding} toggle={toggleIsAdding} canAdd={!id} />
-      <div className='recipes-container'>
-        <Table basic='very' celled collapsing>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>Recipe</Table.HeaderCell>
-              <Table.HeaderCell>Course</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {chef.recipe.map(recipe => {
-              return (
-                <Table.Row>
-                  <Table.Cell>
-                    <Header as='h4' image>
-                      <Link to={`/recipe/${recipe.id}`}>
-                        <Image src={null} rounded size='mini' />
-                        <Header.Content>{recipe.RecipeName}</Header.Content>
-                      </Link>
-                    </Header>
-                  </Table.Cell>
-                  <Table.Cell>
-                    {convertCourse(recipe.course)}
-                  </Table.Cell>
-                </Table.Row>
-              );
-            })}
-          </Table.Body>
-        </Table>
-      </div>
     </Div>
   )
 };
