@@ -124,13 +124,13 @@ function Recipe({ recipe, getRecipe, match: { params: { id } } }) {
                     <div className='ingredients'>
                         <h2 className='table-head'>Ingredients</h2>
                         <ul>
-                            {recipe.ingredients && recipe.ingredients.map(i => <li>{i}</li>)}
+                            {Array.isArray(recipe.ingredients) && recipe.ingredients.map(i => <li>{i}</li>)}
                         </ul>
                     </div>
                     <div className='preparation'>
                         <h2 className='table-head'>Preparation</h2>
                         <ul>
-                            {recipe.preparation && recipe.preparation.map(p => <li>{p}</li>)}
+                            {Array.isArray(recipe.preparation) && recipe.preparation.map(p => <li>{p}</li>)}
                         </ul>
                     </div>
                 </div>
