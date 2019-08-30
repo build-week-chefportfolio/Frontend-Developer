@@ -27,10 +27,9 @@ const ChefList = (props) => {
     <div>
       <h1 className="proChefs">Professional Chefs</h1>
       <Cards className="chefList">
-        {props.chefs.map(chef => <ChefCard chef={chef}/>)}
+        {props.chefs.map(chef => <ChefCard chef={chef} />)}
       </Cards>
     </div>
-
   )
 };
 

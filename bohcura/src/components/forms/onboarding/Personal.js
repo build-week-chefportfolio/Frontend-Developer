@@ -1,13 +1,6 @@
-// Firstname, Lastname, Years of Experience, Location (City, State), Willing to travel (Select)
-// Lisa
-
 import React from 'react';
-import Select from 'react-select';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
-import mapStateToProps from "react-redux/es/connect/mapStateToProps";
-import mapDispatchToProps from "react-redux/es/connect/mapDispatchToProps"
-import { postChefs } from '../../../actions';
 
 import styled from 'styled-components';
 
@@ -77,12 +70,7 @@ const Personal = props => {
     values,
     touched,
     errors,
-    dirty,
-    isSubmitting,
     handleChange,
-    handleBlur,
-    handleSubmit,
-    handleReset,
   } = props;
 
   return (

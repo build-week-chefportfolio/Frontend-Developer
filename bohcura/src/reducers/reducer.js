@@ -15,14 +15,12 @@ export const reducer = (state = initialState, action) => {
 
         // This grabs the Chef Data
         case actions.FETCH_CHEF_DATA_START:
-
             return {
                 ...state,
                 isLoading: true,
                 error: ''
             };
         case actions.FETCH_CHEF_DATA_SUCCESS:
-
             return {
                 ...state,
                 isLoading: false,
@@ -54,7 +52,7 @@ export const reducer = (state = initialState, action) => {
                 isLoading: false,
                 error: action.payload
             };
-      // This grabs the Recipe Data
+        // This grabs the Recipe Data
         case actions.FETCH_RECIPES_DATA_START:
 
             return {

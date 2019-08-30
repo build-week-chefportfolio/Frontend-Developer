@@ -1,16 +1,8 @@
-// Firstname, Lastname, Years of Experience, Location (City, State), Willing to travel (Select)
-// Lisa
-
 import React from 'react';
-import Select from 'react-select';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
-import mapStateToProps from "react-redux/es/connect/mapStateToProps";
-import mapDispatchToProps from "react-redux/es/connect/mapDispatchToProps"
-import { postChefs } from '../../../actions';
 
 import styled from 'styled-components';
-import ChefCard from '../../feed/ChefCard';
 
 
 const Title = styled.div`
@@ -27,12 +19,12 @@ const Div = styled.div`
     padding: 5%;
 `;
 
-const Row = styled.div`
-    display: flex;
-    justify-content: space-between;
-    //margin: 1.6rem;
-    align-content: baseline;
-`;
+// const Row = styled.div`
+//     display: flex;
+//     justify-content: space-between;
+//     //margin: 1.6rem;
+//     align-content: baseline;
+// `;
 const H1 = styled.h1`
     line-height: 3rem;
     text-align: left;
@@ -55,9 +47,9 @@ const H3 = styled.h3`
    
 `;
 
-const H4 = styled.h4`
-    font-family: 'Lato', sans-serif
-`;
+// const H4 = styled.h4`
+//     font-family: 'Lato', sans-serif
+// `;
 
 const H5 = styled.h5`
     border-left: 2px solid gray;
@@ -67,11 +59,11 @@ const H5 = styled.h5`
     font-family: 'Libre Franklin', sans-serif;
 `;
 
-const H6 = styled.div`
-    line-height: 3rem;
-    font-size: 1.2rem;
-    font-family: 'Libre Franklin', sans-serif;
-`;
+// const H6 = styled.div`
+//     line-height: 3rem;
+//     font-size: 1.2rem;
+//     font-family: 'Libre Franklin', sans-serif;
+// `;
 
 const Center = styled.div`
     display: flex;
@@ -97,12 +89,7 @@ const Contact = props => {
     values,
     touched,
     errors,
-    dirty,
-    isSubmitting,
     handleChange,
-    handleBlur,
-    handleSubmit,
-    handleReset,
   } = props;
 
   return (
@@ -111,7 +98,7 @@ const Contact = props => {
         <H1>Great, Chef Jane! <br /> Now, clients can reach you.. </H1>
         <br />
         <H3>You can choose whether or not to publicly share this info.</H3>
-      <br />
+        <br />
         <Title>
           <H2 className='rightBorder'>Step 2 of 2 <br /> Contact Info</H2>
           <H5>TIP: If you choose not to publicly display this info, we'll<br />only use it to send you important info. Clients can use<br />your personal contact for to connect with you.
