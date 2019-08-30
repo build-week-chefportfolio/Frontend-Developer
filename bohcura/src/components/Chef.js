@@ -128,8 +128,8 @@ const Chef = ( props ) => {
     <Div>
       <Title>
         <div><H1>Chef {chef.FirstNameLastName}</H1>
-          <H3>Professional Chef for {chef.yearsexp}{" "} years ;</H3></div>
-        <div><button>Hire Me</button></div>
+          <H3>Professional Chef for {chef.yearsexp}{" "} years</H3></div>
+        <div><button className='chefButtons'>Hire Me</button></div>
       </Title>
       <br/>
       <hr />
