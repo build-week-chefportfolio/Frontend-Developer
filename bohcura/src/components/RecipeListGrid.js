@@ -30,12 +30,12 @@ const RecipeListGrid = (props) => {
 
   return !isAdding ? (
     <div className='recipes-container'>
-      <Table basic='very' celled collapsing>
+      <Table celled>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Recipe</Table.HeaderCell>
             <Table.HeaderCell>Course</Table.HeaderCell>
-            {canAdd ? (<Table.HeaderCell><button onClick={toggle}>Add Recipe</button></Table.HeaderCell>) : null}
+            {canAdd ? (<Table.HeaderCell><button style={{padding: '5px 10px'}} onClick={toggle}>Add Recipe</button></Table.HeaderCell>) : null}
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -54,7 +54,8 @@ const RecipeListGrid = (props) => {
                   {convertCourse(recipe.course)}
                 </Table.Cell>
                 <Table.Cell>
-                  <button onClick={() => deleteItem(recipe.id)}>DELETE</button>
+                  <button  style={{padding: '5px 10px', marginRight: '10px'}} onClick={() => deleteItem(recipe.id)}>Delete</button>
+                  <button  style={{padding: '5px 10px'}} onClick={() => deleteItem(recipe.id)}>Edit</button>
                 </Table.Cell>
               </Table.Row>
             );
