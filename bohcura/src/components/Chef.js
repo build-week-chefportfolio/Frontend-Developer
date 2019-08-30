@@ -17,10 +17,10 @@ const Title = styled.div`
 const Div = styled.div`
     display: block;
     //width: 90%;
-    margin: 10%;
+    margin:0 10%;
     text-align: left;
     alignment-baseline: bottom;
-    padding: 1% 5%;
+ 
 `;
 
 const H1 = styled.h1`
@@ -46,8 +46,8 @@ const H3 = styled.h3`
     padding-right: 2rem;
     text-align: left;
     font-family: 'Fahkwang', sans-serif;
-     line-height: 3rem;
-       color: black;
+    line-height: 3rem;
+    color: black;
 `;
 
 const ContactInfo = styled.div`
