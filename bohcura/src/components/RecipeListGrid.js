@@ -24,9 +24,12 @@ const RecipeListGrid = (props) => {
   };
 
   const deleteItem = (id) => {
-    console.log('THIS IS INSIDE deleteItem', id);
     deleteRecipe(id);
   };
+
+  const editItem = (id, item) => {
+    putRecipe(id, item)
+  }
 
   return !isAdding ? (
     <div className='recipes-container'>
