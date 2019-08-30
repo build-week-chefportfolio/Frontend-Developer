@@ -139,52 +139,6 @@ const H5 = styled.h5`
 
 const ProfileForm = ({ values, isDisabled, errors, touched, toggle, chef }) => {
   console.log("IS THIS CHEF STILL", chef)
-  // const {
-  //   touched,
-  //   errors,
-  //   dirty,
-  //   isSubmitting,
-  //   handleBlur,
-  //   handleSubmit,
-  //   handleChange,
-  //   handleReset,
-  //   values
-  // } = props;
-
-
-
-  // Get values from store for previous values
-  // let values = props.values; // The previous values passed through store
-  // const [inputs, setInputs] = useState({
-  //   firstName: props.chef.firstName,
-  //   lastName: props.chef.lastName,
-  //   yearsXP: props.chef.yearsXP,
-  //   city: props.chef.city,
-  //   state: props.chef.state,
-  //   phone: props.chef.phone,
-  //   email: props.chef.email,
-  //   relocate: props.chef.relocate,
-  //   contact: props.chef.contactpref
-  // });
-  // console.log('This is inputs initial state', inputs)
-
-
-
-  // const selectChange = selectedOption => {
-  //   setInputs({ ...inputs, relocate: selectedOption });
-  //   console.log(selectedOption);
-  // };
-
-  // const setWidth = e => {
-  //   let padding = e.target.type === 'number' ? 8 : 0;
-  //   e.target.style.width = ((e.target.value.length + 1) * 8 + padding) + 'px';
-  // };
-
-  // const handleChange = e => {
-  //   e.preventDefault();
-  //   setInputs({ ...inputs, [e.target.name]: e.target.value });
-  //   setWidth(e);
-  // };
 
   return (
 
