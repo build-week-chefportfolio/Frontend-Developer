@@ -98,7 +98,7 @@ const Chef = (props) => {
       <ContactInfo>
         <div>{chef.email}</div>
         <div>{chef.telephone}</div>
-        <div>{chef.relocate}</div>
+        <div>{chef.relocate}{" "} to Relocate</div>
       </ContactInfo>
 
       <hr />
