@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import RecipeCard from './RecipeCard';
 import { getRecipes } from "../../actions";
 import { connect } from 'react-redux';

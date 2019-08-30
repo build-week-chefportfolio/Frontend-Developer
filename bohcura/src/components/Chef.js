@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getChef } from '../actions';
-import { Link } from 'react-router-dom';
-import RecipeAdd from "./forms/RecipeAdd";
 import RecipeListGrid from './RecipeListGrid';
 
 import styled from 'styled-components';
@@ -71,7 +69,7 @@ const MyRecipes = styled.div`
     padding-top: 3rem;
 `;
 
-const Chef = ( props ) => {
+const Chef = (props) => {
   let { chef, getChef, deleteRecipe } = props;
   console.log(chef);
   let id = props.match && props.match.params && props.match.params.id ? props.match.params.id : null;
@@ -94,7 +92,7 @@ const Chef = ( props ) => {
           <H3>Professional Chef for {chef.yearsexp}{" "} years</H3></div>
         <div><button className='chefButtons'>Hire Me</button></div>
       </Title>
-      <br/>
+      <br />
       <hr />
 
       <ContactInfo>
@@ -104,7 +102,7 @@ const Chef = ( props ) => {
       </ContactInfo>
 
       <hr />
-    <br />
+      <br />
       <Description>
         <H2>About Me</H2><br />
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A arcu cursus vitae
