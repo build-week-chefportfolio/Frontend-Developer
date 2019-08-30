@@ -21,22 +21,6 @@ const NavContainer = styled.div`
 `;
 
 
-// const NavigationBar = styled.div`
-//     width: 70vw;
-//     height: 75px;
-//     line-height: 50px;
-//     display: flex;
-//     flex-flow: row nowrap;
-//     justify-content: space-between;
-//     align-items: center;
-//     margin: 0 auto;
-//     z-index: 1000;
-//         @media (max-width: 768px) {
-//         flex-flow: column wrap;
-//         height: auto;
-//     }
-// `;
-
 const LogoText = styled.h1`
     margin-left: 1rem;
     font-weight: bold;
@@ -47,41 +31,26 @@ const LogoText = styled.h1`
 `;
 
 const Links = styled.div`
-    .active{
-        text-decoration: none;
-        color: #ffffff;
-        font-family: 'Lato', sans-serif;
-        font-weight: bold;
-    }
+`;
 
-    a{
-        color: #ededed;
-        margin: 0px 20px;
-        font-size: 1.2rem;
-        text-decoration: none;
-        &:hover{
-            color: #e54236;
-            transition-duration: 0.2s;
-        }
-    }
-`
 
 
 export default function Nav() {
     return (
         <>
-            <NavContainer>
+            <NavContainer className='navBar'>
                 <a href="https://bohcurachefs.netlify.com/index.html" className="logo">
-                    <LogoText>bohcura.</LogoText>
+                    <h1>bohcura.</h1>
                 </a>
 
-
-                <Links>
-                    <NavLink to="/">Home</NavLink>
-                    <NavLink to="/chefs">Chefs</NavLink>
-                    <NavLink to="/recipes">Recipes</NavLink>
-                    <a href="https://bohcurachefs.netlify.com/about.html">About</a>
-                    <NavLink to="/dashboard">My Bohcura</NavLink>
+                <Links className="nav">
+                    <div className='links'>
+                    <NavLink to="/" className='a'>Home</NavLink>
+                    <NavLink to="/chefs" className='a'>Chefs</NavLink>
+                    <NavLink to="/recipes" className='a'>Recipes</NavLink>
+                    <a className='a' href="https://bohcurachefs.netlify.com/about.html">About</a>
+                    <NavLink to="/dashboard" className='a'>My Bohcura</NavLink>
+                    </div>
                 </Links>
             </NavContainer>
         </>
