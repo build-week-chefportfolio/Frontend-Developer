@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getChef } from '../actions';
+import { getChef } from '../store/actions';
 import RecipeListGrid from './RecipeListGrid';
 
 import styled from 'styled-components';
@@ -82,6 +82,13 @@ const Chef = (props) => {
 
   const toggleIsAdding = () => setIsAdding(!isAdding);
 
+  const relocate = () => {
+    if (chef.relocate) {
+      return "not available"
+    } else {
+      return "available"
+    }
+  }
 
   if (!chef || !chef.hasOwnProperty('FirstNameLastName')) return <div>Loading...</div>;
 
@@ -98,7 +105,7 @@ const Chef = (props) => {
       <ContactInfo>
         <div>{chef.email}</div>
         <div>{chef.telephone}</div>
-        <div>{chef.relocate}{" "} to Relocate</div>
+        <div>{relocate()}{" "} to Relocate</div>
       </ContactInfo>
 
       <hr />

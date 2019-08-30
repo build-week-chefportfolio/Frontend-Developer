@@ -136,10 +136,10 @@ const FormikForm = withFormik({
 
   validationSchema: Yup.object().shape({
     firstName: Yup.string()
-      .min(4, 'First name must be 4 characters or longer')
+      .min(1, 'First name must be 1 characters or longer')
       .required('First name is required'),
     lastName: Yup.string()
-      .min(4, 'Last name must be 4 characters or longer')
+      .min(1, 'Last name must be 1 characters or longer')
       .required('Last name is required'),
     // yrsExperience: Yup.
     city: Yup.string()

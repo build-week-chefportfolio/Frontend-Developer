@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { postRecipes } from "../../actions";
+import { postRecipes } from "../../store/actions";
 import { withFormik, Form, Field, FieldArray, ErrorMessage } from "formik";
 import * as Yup from 'yup';
 import styled from 'styled-components';

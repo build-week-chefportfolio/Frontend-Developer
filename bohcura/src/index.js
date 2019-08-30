@@ -6,21 +6,20 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
 import { BrowserRouter as Router, Route, Link, Switch, withRouter } from 'react-router-dom';
-import { reducer } from './reducers';
+import { reducer } from './store/reducers';
 import './App.css';
 
 import PrivateRoute from './utilities/PrivateRoute'
-import Signup from "./components/Signup";
-import SignIn from "./components/Signin";
+import Signup from "./components/forms/Signup";
+import SignIn from "./components/forms/Signin";
 import HomePage from "./components/HomePage";
 import Nav from "./components/Nav";
 import Onboarding from "./components/forms/onboarding/Onboarding";
-import Profile from "./components/Profile";
 import Recipe from "./components/Recipe";
 import RecipeList from './components/feed/RecipeList';
 import ChefList from "./components/feed/ChefList";
 import Chef from './components/Chef';
-import { Icon, Table } from 'semantic-ui-react';
+
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -37,7 +36,6 @@ function App() {
       <Route path="/chefs" component={ChefList} />
       <Route path='/chef/:id' component={Chef} />
       <Route path="/recipes" component={RecipeList} />
-      <Route path="/profile/:id" component={Profile} />
       <PrivateRoute exact path="/dashboard" component={Chef} />
       <Route path="/recipe/:id" component={Recipe} />
       <Nav />

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import RecipeCard from './RecipeCard';
-import { getRecipes } from "../../actions";
+import { getRecipes } from "../../store/actions";
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 

@@ -19,10 +19,6 @@ Yup.addMethod(Yup.string, 'phone', function () {
   return this.test('phone', 'Phone number is not valid', value => phoneValidation.test(value));
 });
 
-const relocateOptions = [
-  { value: 'Currently open', label: 'Currently open' },
-  { value: "Not available", label: "Not available" }
-];
 
 const PageDiv = styled.div`
   display: flex;
@@ -119,6 +115,7 @@ const PageDiv = styled.div`
     }
   }
 `;
+
 
 
 const ProfileForm = ({ values, isDisabled, errors, touched, toggle, chef }) => {

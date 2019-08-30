@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
-import { getRecipe } from "../actions";
+import { getRecipe } from "../store/actions";
 import styled from "styled-components";
 import PizzaImage from '../assets/mock-images/Pizza-Easy.jpeg';
 

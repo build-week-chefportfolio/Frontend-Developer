@@ -6,7 +6,7 @@ import Personal from "./Personal"
 import Contact from "./Contact"
 import Confirmation from "./Confirmation"
 
-import { putChefs, postChef } from '../../../actions';
+import { putChefs, postChef } from '../../../store/actions';
 
 
 const Onboarding = (props) => {
