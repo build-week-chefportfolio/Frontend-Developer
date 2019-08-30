@@ -3,7 +3,7 @@ import { Header, Image, Table } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import RecipeAdd from "./forms/RecipeAdd";
 import { connect } from 'react-redux';
-import { deleteRecipe } from "../actions";
+import { deleteRecipe } from "../store/actions";
 
 const RecipeListGrid = (props) => {
   let { chef, canAdd, toggle, isAdding, deleteRecipe } = props;
@@ -35,7 +35,7 @@ const RecipeListGrid = (props) => {
           <Table.Row>
             <Table.HeaderCell>Recipe</Table.HeaderCell>
             <Table.HeaderCell>Course</Table.HeaderCell>
-            {canAdd ? (<Table.HeaderCell><button style={{padding: '5px 10px'}} onClick={toggle}>Add Recipe</button></Table.HeaderCell>) : null}
+            {canAdd ? (<Table.HeaderCell><button style={{ padding: '5px 10px' }} onClick={toggle}>Add Recipe</button></Table.HeaderCell>) : null}
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -54,8 +54,8 @@ const RecipeListGrid = (props) => {
                   {convertCourse(recipe.course)}
                 </Table.Cell>
                 <Table.Cell>
-                  <button  style={{padding: '5px 10px', marginRight: '10px'}} onClick={() => deleteItem(recipe.id)}>Delete</button>
-                  <button  style={{padding: '5px 10px'}} onClick={() => deleteItem(recipe.id)}>Edit</button>
+                  <button style={{ padding: '5px 10px', marginRight: '10px' }} onClick={() => deleteItem(recipe.id)}>Delete</button>
+                  <button style={{ padding: '5px 10px' }} onClick={() => deleteItem(recipe.id)}>Edit</button>
                 </Table.Cell>
               </Table.Row>
             );
@@ -64,10 +64,10 @@ const RecipeListGrid = (props) => {
       </Table>
     </div>
   ) : (
-    <RecipeAdd toggle={toggle} />
-  );
+      <RecipeAdd toggle={toggle} />
+    );
 };
 
 const mapStateToProps = state => state;
 
-export default connect(mapStateToProps, {deleteRecipe})(RecipeListGrid);
+export default connect(mapStateToProps, { deleteRecipe })(RecipeListGrid);

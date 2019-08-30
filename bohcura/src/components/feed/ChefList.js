@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getChefs } from '../../actions';
+import { getChefs } from '../../store/actions';
 import styled from 'styled-components';
 
 import ChefCard from './ChefCard';

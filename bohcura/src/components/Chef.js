@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getChef } from '../actions';
+import { getChef } from '../store/actions';
 import RecipeListGrid from './RecipeListGrid';
 
 import styled from 'styled-components';

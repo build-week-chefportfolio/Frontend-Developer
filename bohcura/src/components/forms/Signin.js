@@ -1,17 +1,14 @@
-/* Signup Form and Signup confirmation page */
-// Form with username, password, password verification
-// Signin ? Verify with UX
-// Ryan Does Signup
-//
+
 import React from 'react';
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
-import axios from "axios";
 
+import { axios } from 'axios'
 
-import '../App.css';
+import '../../App.css';
 
-function SignUpMod({ errors, touched, status }) {
+function SignIn({ errors, touched, status }) {
+
 
     return (
         <div className="signUpContainer">
@@ -23,8 +20,7 @@ function SignUpMod({ errors, touched, status }) {
                     {touched.email && errors.email && <p>{errors.email}</p>}
                     <Field key="password" type="password" name="password" placeholder="    Password" className="signUpPassword"></Field>
                     {touched.password && errors.password && <p>{errors.password}</p>}
-                    <Field key="confirmPassword" type="password" name="confirmPassword" placeholder="    Re-Type Password" className="signUpConfirmPassword"></Field>
-                    {touched.password && errors.password && <p>{errors.password}</p>}
+
                     <button type="submit" className="signUpButton">Sign Up Now</button>
                 </Form>
             </div>
@@ -33,11 +29,10 @@ function SignUpMod({ errors, touched, status }) {
 }
 
 const formikHOC = withFormik({
-    mapPropsToValues({ email, password, confirmPassword }) {
+    mapPropsToValues({ email, password }) {
         return {
             email: email || "",
             password: password || "",
-            confirmPassword: confirmPassword || ""
         };
     },
     validationSchema: yup.object().shape({
@@ -47,28 +42,25 @@ const formikHOC = withFormik({
         password: yup.string()
             .min(6, "Password must be 6 characters or longer")
             .required("Password is required"),
-        confirmPassword: yup.string()
-            .oneOf([yup.ref('password'), null], 'Passwords must match')
-            .required("Password is required")
     }),
-    handleSubmit(values, { setStatus, props }) {
+    handleSubmit(values, { setStatus }) {
         const loginInfo = {
             'username': values.email,
             'password': values.password
         }
-        axios
-            .post('https://chefportfolioo.herokuapp.com/api/auth/register', loginInfo)
-            .then(response => {
-                console.log(response.data);
-                localStorage.setItem('token', response.data.password)
-                localStorage.setItem('chef', JSON.stringify(response.data.id))
 
+        axios
+            .post('https://chefportfolioo.herokuapp.com/api/auth/login', loginInfo)
+            .then(res => {
+                localStorage.setItem('token', res.data.message)
+                console.log(res.data);
+                //Need to find out if he can make the login return the user_ID attached so that we can render the proper Chef profile
             })
             .catch(err => {
                 console.log('SignUp Failed', err)
+                localStorage.removeItem('token')
             })
-        props.history.push("/onboarding")
     }
-})(SignUpMod);
+})(SignIn);
 
 export default formikHOC
