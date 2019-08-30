@@ -9,14 +9,16 @@ import ChefCard from './ChefCard';
 // styled components
 const Div = styled.div`
     display: block;
-    width: 80%;
+    //width: 90%;
+    margin: 0 10%;
     text-align: left;
     alignment-baseline: bottom;
-    padding: 5%;
-`;
+    //padding: 5%;
+// `;
 
 const Cards = styled.div`
     display: flex;
+    margin: 0;
     justify-content: space-between;
     flex-wrap: wrap;
 
@@ -26,7 +28,6 @@ const Title = styled.div`
     display: flex;
     text-align: left;
     justify-content: space-between;
-    margin: 1.7%;
 `;
 
 
@@ -38,12 +39,15 @@ const ChefList = (props) => {
 
   return (
     <Div>
-      {/*<Title>*/}
-      {/*  <h1>Professional Chefs</h1>*/}
-      {/*</Title>*/}
+      <Title>
+        <h1>Professional Chefs</h1>
+        <div>search</div>
+      </Title>
+
       <Cards>
         {props.chefs.map(chef => <ChefCard chef={chef}/>)}
       </Cards>
+
     </Div>
   )
 };

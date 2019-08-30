@@ -1,18 +1,19 @@
 * {
   margin: 0;
 }
+
 .App {
   text-align: center;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  /*max-width: 1440px;*/
+  min-height: 100vh;
 }
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
   pointer-events: none;
 }
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -23,9 +24,11 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
 .App-link {
   color: #61dafb;
 }
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -34,6 +37,9 @@
     transform: rotate(360deg);
   }
 }
+
+
+
 /* SIGN UP COMPONENT */
 .signUpContainer{
   display: flex;
@@ -49,21 +55,25 @@
   text-align: center;
   vertical-align: center;
 }
+
 .signUpBottom {
   display: flex;
   width: 90%;
   margin: 200px auto;
   justify-content: space-between;
 }
+
 .signUpBottom p {
   font-size: 150%;
   text-align: left;
 }
+
 .signUpForm {
   width: 37%;
   margin-left: 100px;
   margin-right: 50px;
 }
+
 .signUpForm button{
   width: 75%;
   background: #C4C4C4;
@@ -71,6 +81,7 @@
   border-radius: 5px;
   height: 40px;
 }
+
 .signUpText {
   width: 45%;
   margin-top: 0px;
@@ -82,6 +93,7 @@
   text-align: left;
   vertical-align: center;
 }
+
 .signUpEmail {
   background: #FFFFFF;
   width: 100%;
@@ -92,6 +104,7 @@
   border-bottom: 2px solid grey;
   margin-top: 0;
 }
+
 .signUpPassword {
   background: #FFFFFF;
   width: 100%;
@@ -110,20 +123,25 @@
   border: none;
   border-bottom: 2px solid grey;
 }
+
 .contactForm {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 .contact-field {
   margin: 10px 0;
 }
+
 .contact-message {
   height: 100px;
   width: 300px;
 }
+
 /* PUBLIC HOME COMPONENT */
+
 .homeContainer {
   position: relative;
   display: flex;
@@ -131,8 +149,9 @@
   flex-wrap: wrap;
   width: 80%;
   height: 500px;
-  margin: 0 auto;
+  margin: 100px auto 0;
 }
+
 .homeContainer h1{
   margin-bottom: 50px;
   height: 100px;
@@ -142,16 +161,19 @@
   line-height: 47px;
   text-align: left;
 }
+
 .homeChefContainer {
   width: 38vw;
   height: 22vw;
 }
+
 .homeChefContainer img{
   height: 100%;
   width: 100%;
   object-fit: cover;
   object-position: 0% 80%;
 }
+
 .homeChefContainer h2{
   font-family: 'Fahkwang', sans-serif;
   color: #CC3B31;
@@ -159,16 +181,19 @@
   font-size: 36px;
   line-height: 47px;
 }
+
 .homeRecipeContainer {
   width: 38vw;
   height: 22vw;
 }
+
 .homeRecipeContainer img{
   height: 100%;
   width: 100%;
   object-fit: cover;
   object-position: 0% 80%;
 }
+
 .homeRecipeContainer h2{
   font-family: 'Fahkwang', sans-serif;
   color: #CC3B31;
@@ -176,33 +201,40 @@
   font-size: 36px;
   line-height: 47px;
 }
+
 .chefButtons {
   width: 100%;
   display: flex;
   height: 5%;
   justify-content: space-between;
 }
+
 button{
   border: none;
   background: none;
   border: 1px solid rgb(124, 216, 201);
   border-radius: 5px;
   width: 30%;
+  color: rgb(124, 216, 201);
   font-weight: 600;
 }
+
 .recipeButtons {
   display: flex;
   justify-content: center;
   width: 100%;
   height: 5%;
 }
+
 .chefNavLink {
   text-decoration: none;
 }
+
 .recipeNavLink {
   text-decoration: none;
 }
 /* Nav Bar */
+
 .navBar {
   position: absolute;
   top: 0;
@@ -213,6 +245,7 @@ button{
   align-items: center;
   justify-content: space-between;
 }
+
 .navItem {
   text-decoration: none;
   color: #D9D9D9;
@@ -220,10 +253,6 @@ button{
   font-weight: 600;
 }
 
-.logo {
-  text-decoration: none;
-}
-
 .styledInput {
   border: none;
   border-bottom: 1px solid #c3c3c3;
@@ -234,22 +263,4 @@ button{
   padding: 3px;
   margin-left: 3px;
   margin-right: 5px;
-}
-
-.styledInput {
-  border: none;
-  border-bottom: 1px solid #c3c3c3;
-  text-align: center;
-}
-
-.styledIcon {
-  padding: 3px;
-  margin-left: 3px;
-  margin-right: 5px;
-}
-
-/* Chef Card */
-.chefCardLink {
-  text-decoration: none;
-  color: black;
 }
