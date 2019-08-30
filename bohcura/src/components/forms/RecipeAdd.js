@@ -8,17 +8,37 @@ import { connect } from 'react-redux';
 const RecipeDiv = styled.div`
   width: 80%;
   
+  div.buttons {
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    button {
+      padding: 5px 10px;
+      width: 35%;
+    }
+  }
+  
   div.required-fields {
     div.fields {
       display: flex;
       flex-direction: column;
       
-    }
-  }
-  div.optional-fields {
-    div.fields {
-      display: flex;
-      flex-direction: column;
+      div {
+        display: flex;
+        flex-direction: column;
+        p {
+          padding-top: 10px;
+          margin-bottom: -10px;
+          font-weight: bold;
+        }
+        input {
+          border: 1px solid lightblue;
+          border-radius: 3px;
+          margin: 10px 0;
+          height: 35px;
+          width: 50%;
+        }
+      }
     }
   }
 `;
@@ -41,31 +61,32 @@ const RecipeAdd = ({ values, isDisabled, errors, touched, toggle }) => {
   };
 
   return (
-    <div className='form-add-recipe'>
+    <RecipeDiv className='form-add-recipe'>
       <Form>
         <div className='required-fields'>
-          <h3>Required</h3>
           <div className='fields'>
             <div><Field type='text' name='RecipeName' placeholder='Name' /></div>
             {touched.RecipeName && errors.RecipeName && <p>{errors.RecipeName}</p>}
             <div><Field type='text' name='description' placeholder='Description (At least 10 characters)' /></div>
             <div><Field type='text' name='prepTime' placeholder='Prep Time' /></div>
             <div><Field type='text' name='cookTime' placeholder='Cook Time' /></div>
-            <div>Course: <Field type='number' name='course' placeholder={0} /></div>
-            <div>Serves: <Field type='number' name='serves' placeholder={0} /></div>
+            <div>
+              <p>Course</p>
+              <Field type='number' name='course' placeholder={0} />
+            </div>
+            <div>
+              <p>Serves</p>
+              <Field type='number' name='serves' placeholder={0} />
+            </div>
 
           </div>
         </div>
-        <div className='optional-fields'>
-          <h4>Optional</h4>
-          <div className='fields'>
-            {/* Ingredients and Preparation will use FieldArrays */}
-          </div>
+        <div className='buttons'>
+          <button type='submit' onClick={() => console.log('Clicked')}>Add Recipe</button>
+          <button onClick={toggle}>Cancel</button>
         </div>
-        <button type='submit' onClick={() => console.log('Clicked')}>Add Recipe</button>
-        <button onClick={toggle}>Cancel</button>
       </Form>
-    </div>
+    </RecipeDiv>
   );
 };
 
