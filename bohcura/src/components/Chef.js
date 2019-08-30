@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 // How are we routing to the page?  Just filtering by id?  Or using an action?
 
-// styled components
+// Styling
 const Title = styled.div`
     display: flex;
     justify-content: space-between;
@@ -20,7 +20,7 @@ const Div = styled.div`
     margin: 10%;
     text-align: left;
     alignment-baseline: bottom;
-    padding: 5%;
+    padding: 1% 5%;
 `;
 
 const H1 = styled.h1`
@@ -97,7 +97,7 @@ const Chef = (props) => {
       <Title>
         <div><H1>Chef {chef.FirstNameLastName}</H1>
           <H3>Professional Chef for {chef.yearsexp}{" "} years</H3></div>
-        <div><button className='chefButtons'>Hire Me</button></div>
+        <div><H3>Hire Me!</H3></div>
       </Title>
       <br />
       <hr />
@@ -105,7 +105,7 @@ const Chef = (props) => {
       <ContactInfo>
         <div>{chef.email}</div>
         <div>{chef.telephone}</div>
-        <div>{relocate()}</div>
+        <div>{relocate()}{" "} to Relocate</div>
       </ContactInfo>
 
       <hr />

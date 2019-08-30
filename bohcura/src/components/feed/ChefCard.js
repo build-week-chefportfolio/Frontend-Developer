@@ -94,11 +94,12 @@ class ChefCard extends Component {
               <Row><Button>Hire Me</Button></Row>
             </div>
 
-            <div>
-              <Row>{this.props.chef.relocate} to relocate</Row>
-              <Row>Hire Me!</Row>
-            </div>
+            {/*<div>*/}
+            {/*  <Row>{this.props.chef.relocate} to relocate</Row>*/}
+            {/*  <Row>Hire Me!</Row>*/}
+            {/*</div>*/}
           </Row>
+
           <hr style={{ color: '#C0BEBE', margin: '14px' }} />
           <Row>
             <img src={recipe} alt="recipe book" />
