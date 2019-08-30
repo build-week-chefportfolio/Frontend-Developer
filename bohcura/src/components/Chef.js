@@ -108,7 +108,7 @@ const MyRecipes = styled.div`
     padding-top: 3rem;
 `;
 
-const Chef = ( props ) => {
+const Chef = (props) => {
   let { chef, getChef, deleteRecipe } = props;
   console.log(chef);
   let id = props.match && props.match.params && props.match.params.id ? props.match.params.id : null;
@@ -131,7 +131,7 @@ const Chef = ( props ) => {
           <H3>Professional Chef for {chef.yearsexp}{" "} years</H3></div>
         <div><button className='chefButtons'>Hire Me</button></div>
       </Title>
-      <br/>
+      <br />
       <hr />
 
       <ContactInfo>
@@ -141,7 +141,7 @@ const Chef = ( props ) => {
       </ContactInfo>
 
       <hr />
-    <br />
+      <br />
       <Description>
         <H2>About Me</H2><br />
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A arcu cursus vitae
