@@ -3,7 +3,7 @@ import React from 'react';
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
 
-import { axiosWithAuth } from '../utilities/axiosWithAuth'
+import { axios } from 'axios'
 
 import '../App.css';
 
@@ -49,7 +49,7 @@ const formikHOC = withFormik({
             'password': values.password
         }
 
-        axiosWithAuth()
+        axios
             .post('https://chefportfolioo.herokuapp.com/api/auth/login', loginInfo)
             .then(res => {
                 localStorage.setItem('token', res.data.message)

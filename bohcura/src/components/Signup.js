@@ -7,9 +7,7 @@ import React from 'react';
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
 import axios from "axios";
-// import { connect } from "react-redux";
 
-import { axiosWithAuth } from '../utilities/axiosWithAuth'
 
 import '../App.css';
 

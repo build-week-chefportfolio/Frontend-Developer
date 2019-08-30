@@ -7,8 +7,6 @@
 import React, { useState } from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import Select from 'react-select';
-import Nav from '../../Nav';
 import styled from 'styled-components';
 
 
@@ -19,10 +17,6 @@ Yup.addMethod(Yup.string, 'phone', function () {
   return this.test('phone', 'Phone number is not valid', value => phoneValidation.test(value));
 });
 
-const relocateOptions = [
-  { value: 'Currently open', label: 'Currently open' },
-  { value: "Not available", label: "Not available" }
-];
 
 const PageDiv = styled.div`
   display: flex;
@@ -144,16 +138,16 @@ const ProfileForm = ({ values, isDisabled, errors, touched, toggle, chef }) => {
     console.log(selectedOption);
   };
 
-  const setWidth = e => {
-    let padding = e.target.type === 'number' ? 8 : 0;
-    e.target.style.width = ((e.target.value.length + 1) * 8 + padding) + 'px';
-  };
+  // const setWidth = e => {
+  //   let padding = e.target.type === 'number' ? 8 : 0;
+  //   e.target.style.width = ((e.target.value.length + 1) * 8 + padding) + 'px';
+  // };
 
-  const handleChange = e => {
-    e.preventDefault();
-    setInputs({ ...inputs, [e.target.name]: e.target.value });
-    setWidth(e);
-  };
+  // const handleChange = e => {
+  //   e.preventDefault();
+  //   setInputs({ ...inputs, [e.target.name]: e.target.value });
+  //   setWidth(e);
+  // };
 
   return (
     <div className='ProfileForm'>
