@@ -7,14 +7,6 @@ import ChefCard from './ChefCard';
 
 
 // styled components
-const Div = styled.div`
-    display: block;
-    width: 95%;
-    text-align: left;
-    alignment-baseline: bottom;
-    padding: 5%;
-`;
-
 const Cards = styled.div`
     display: flex;
     margin: 40px auto;
@@ -23,12 +15,6 @@ const Cards = styled.div`
     width: 70%;
 `;
 
-const Title = styled.div`
-    display: flex;
-    text-align: left;
-    justify-content: space-between;
-    margin: 1.7%;
-`;
 
 
 const ChefList = (props) => {
