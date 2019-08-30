@@ -10,11 +10,11 @@ export const UPDATES_CURRENT_RECIPE_DATA_FAILURE = 'UPDATES_CURRENT_RECIPE_DATA_
 
 export const postChef = (info) => {
     console.log('postChef body');
-    return dispatch => {
+    return async dispatch => {
         console.log('Action Reached');
         dispatch({ type: UPDATES_CURRENT_CHEF_DATA_START });
         console.log('Posting Chef...');
-        axios
+        return await axios
             .post('https://chefportfolioo.herokuapp.com/api/chefs/add', info) //Need to update this API call when I get the full path
             .then(res => {
                 // res.data.data
