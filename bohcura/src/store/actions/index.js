@@ -43,7 +43,7 @@ export {
 // PUT
 export {
     putChefs,
-    putRecipes,
+    putRecipe,
     PUT_CURRENT_CHEF_DATA_START,
     PUT_CURRENT_CHEF_DATA_SUCCESS,
     PUT_CURRENT_CHEF_DATA_FAILURE,

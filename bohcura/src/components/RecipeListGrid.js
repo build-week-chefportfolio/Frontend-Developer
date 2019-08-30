@@ -3,7 +3,7 @@ import { Header, Image, Table } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import RecipeAdd from "./forms/RecipeAdd";
 import { connect } from 'react-redux';
-import { deleteRecipe } from "../store/actions";
+import { deleteRecipe, putRecipe } from "../store/actions";
 
 const RecipeListGrid = (props) => {
   let { chef, canAdd, toggle, isAdding, deleteRecipe } = props;
@@ -73,4 +73,4 @@ const RecipeListGrid = (props) => {
 
 const mapStateToProps = state => state;
 
-export default connect(mapStateToProps, { deleteRecipe })(RecipeListGrid);
+export default connect(mapStateToProps, { deleteRecipe, putRecipe })(RecipeListGrid);

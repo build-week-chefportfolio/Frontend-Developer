@@ -24,7 +24,7 @@ export const putChefs = (info) => {
     }
 }
 
-export const putRecipe = (id) => {
+export const putRecipe = (id, info) => {
     return dispatch => {
         dispatch({ type: PUT_CURRENT_RECIPE_DATA_START })
         axios
