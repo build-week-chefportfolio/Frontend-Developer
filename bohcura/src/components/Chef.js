@@ -25,12 +25,6 @@ const Div = styled.div`
     padding: 5%;
 `;
 
-const Row = styled.div`
-    display: flex;
-    justify-content: space-between;
-    //margin: 1.6rem;
-    align-content: baseline;
-`;
 const H1 = styled.h1`
     text-align: left;
     font-family: 'Fahkwang', sans-serif;
@@ -56,37 +50,6 @@ const H3 = styled.h3`
     font-family: 'Fahkwang', sans-serif;
      line-height: 3rem;
        color: black;
-`;
-
-const H4 = styled.h4`
-    font-family: 'Lato', sans-serif
-`;
-
-const H5 = styled.h5`
-    border-left: 2px solid gray;
-    line-height: 1.6rem;
-
-    text-align: left;
-    font-family: 'Libre Franklin', sans-serif;
-`;
-
-const H6 = styled.div`
-    line-height: 3rem;
-    font-size: 1.2rem;
-    font-family: 'Libre Franklin', sans-serif;
-`;
-
-const Center = styled.div`
-    display: flex;
-    margin: auto;
-    text-align: center;
-`;
-
-const Paragraph = styled.div`
-    line-height: 3rem;
-    font-size: 1.4rem;
-    font-family: 'Libre Franklin', sans-serif;
-    text-align: justify-all;
 `;
 
 const ContactInfo = styled.div`
