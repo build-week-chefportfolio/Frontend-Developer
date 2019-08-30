@@ -57,10 +57,14 @@ class ChefCard extends Component {
       chefs: props.chefs
     };
   }
-  // }
-  //
-  // const ChefCard = ( props ) => {
-  //   console.log("chef card stuff here:",props);
+
+  relocate = () => {
+    if (this.props.chef.relocate) {
+      return "not available"
+    } else {
+      return "available"
+    }
+  }
 
   render() {
     console.log("ChefCard with Class", this.props.chefs);
@@ -90,7 +94,7 @@ class ChefCard extends Component {
               </div>
             </Left>
             <div>
-              <Row>{this.props.chef.relocate} to relocate</Row>
+              <Row>{this.relocate()}</Row>
               <Row><Button>Hire Me</Button></Row>
             </div>
 
