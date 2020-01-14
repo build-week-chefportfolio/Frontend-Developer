@@ -115,8 +115,6 @@ class ChefCard extends Component {
         </Card>
       </NavLink>
 
-
-
     )
   }
 };

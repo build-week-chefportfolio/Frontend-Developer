@@ -8,7 +8,6 @@ import Confirmation from "./Confirmation"
 
 import { putChefs, postChef } from '../../../store/actions';
 
-
 const Onboarding = (props) => {
     const [adjust, setAdjust] = useState({ steps: 1 })
     const [chef, setChef] = useState({})
@@ -51,31 +50,3 @@ const mapStateToProps = state => {
 }
 
 export default withRouter(connect(mapStateToProps, { putChefs, postChef })(Onboarding))
-
-
-
-/**    switch (action.type) {
-        case FETCH_SMURF_DATA_START:
-            return {
-                ...state,
-                isLoading: true,
-                error: ''
-            };
-        case FETCH_SMURF_DATA_SUCCESS:
-            console.log('This should be an array', action.payload)
-            return {
-                ...state,
-                isLoading: false,
-                smurfs: action.payload,
-                error: ''
-            };
-        case FETCH_SMURF_DATA_FAILURE:
-            console.log('This should be an array', action.payload)
-            return {
-                ...state,
-                isLoading: false,
-                error: action.payload
-            };
-        default:
-            return state;
-    } */
