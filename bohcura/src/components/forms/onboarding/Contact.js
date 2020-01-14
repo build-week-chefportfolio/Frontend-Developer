@@ -4,7 +4,6 @@ import * as Yup from 'yup';
 
 import styled from 'styled-components';
 
-
 const Title = styled.div`
     display: flex;
     padding: 1.6rem 0;
