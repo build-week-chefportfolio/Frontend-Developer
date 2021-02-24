@@ -1,7 +1,7 @@
 # frontend
 Frontend Repo for Chef Portfolio App
 
-
+# DEPLOYED LINK https://bohcura-app.netlify.app/
 
 Bohcura
 August 23, 2019
